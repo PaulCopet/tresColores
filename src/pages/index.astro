@@ -1,10 +1,8 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import Prueba from "../components/Prueba.astro";
 ---
 
 <Layout>
-        <Welcome />
-        <Prueba />
+        <Prueba client:load />
 </Layout>

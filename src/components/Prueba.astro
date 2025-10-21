@@ -1,10 +1,20 @@
+---
+import gsap from "gsap";
+
+gsap.to(".pelota", {
+        y: 300,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+});
+---
+
 <div class="flex flex-col gap-7 w-screen h-screen bg-amber-300">
-        <h1 class="text-white font-extrabold text-5xl pt-20">
-                Componente Prueba
-        </h1>
+        <h1 class="text-white font-extrabold text-5xl pt-20">Animación GSAP</h1>
         <p class="text-white text-xl">
                 Este es un componente de prueba con fondo amarillo.
         </p>
 
-        <div class="w-15 h-15 bg-blue-500 rounded-e-full"></div>
+        <div class="pelota w-20 h-20 bg-blue-500 rounded-full"></div>
 </div>
