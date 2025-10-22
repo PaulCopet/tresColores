@@ -1,0 +1,256 @@
+{
+    "historias": [
+        {
+            "id": "1948-04-09",
+            "fecha": "1948-04-09",
+            "nombre": "El Bogotazo",
+            "descripcion": "Ola de disturbios, protestas, desórdenes y represión que siguieron al asesinato del líder liberal Jorge Eliécer Gaitán el 9 de abril de 1948 en Bogotá. Este acontecimiento marcó el inicio de La Violencia en Colombia, un periodo de confrontación bipartidista entre liberales y conservadores que duró hasta los años 60.",
+            "integrantes": [
+                {
+                    "nombre": "Jorge Eliécer Gaitán",
+                    "rol": "Líder Liberal Asesinado",
+                    "descripcion": "Político, abogado y líder del partido liberal colombiano, candidato presidencial para las elecciones de 1950."
+                },
+                {
+                    "nombre": "Juan Roa Sierra",
+                    "rol": "Asesino",
+                    "descripcion": "Presunto asesino de Gaitán, fue linchado por la multitud minutos después del magnicidio."
+                },
+                {
+                    "nombre": "Mariano Ospina Pérez",
+                    "rol": "Presidente de Colombia",
+                    "descripcion": "Presidente conservador en ejercicio durante el Bogotazo."
+                }
+            ],
+            "ubicacion": "Bogotá, Colombia",
+            "consecuencias": [
+                "Inicio del periodo conocido como La Violencia",
+                "Más de 3,000 muertos en los días posteriores al asesinato",
+                "Destrucción del centro de Bogotá",
+                "Radicalización del conflicto bipartidista"
+            ]
+        },
+        {
+            "id": "1985-11-06",
+            "fecha": "1985-11-06",
+            "nombre": "Toma del Palacio de Justicia",
+            "descripcion": "El 6 de noviembre de 1985, un comando del grupo guerrillero M-19 tomó por asalto el Palacio de Justicia en Bogotá. La retoma por parte del Ejército colombiano resultó en la muerte de 11 magistrados de la Corte Suprema de Justicia, varios empleados, guerrilleros y civiles. Este evento es considerado una de las mayores tragedias en la historia judicial de Colombia.",
+            "integrantes": [
+                {
+                    "nombre": "Luis Otero",
+                    "rol": "Comandante M-19",
+                    "descripcion": "Líder del comando guerrillero que ejecutó la toma del Palacio."
+                },
+                {
+                    "nombre": "Alfonso Reyes Echandía",
+                    "rol": "Presidente Corte Suprema",
+                    "descripcion": "Presidente de la Corte Suprema de Justicia, murió durante la retoma."
+                },
+                {
+                    "nombre": "Belisario Betancur",
+                    "rol": "Presidente de Colombia",
+                    "descripcion": "Presidente que ordenó la retoma militar del edificio."
+                },
+                {
+                    "nombre": "Andrés Almarales",
+                    "rol": "Guerrillero M-19",
+                    "descripcion": "Uno de los comandantes del asalto, murió durante la retoma."
+                }
+            ],
+            "ubicacion": "Palacio de Justicia, Bogotá",
+            "consecuencias": [
+                "Muerte de aproximadamente 100 personas",
+                "11 magistrados asesinados",
+                "Desaparición forzada de civiles",
+                "Destrucción de procesos judiciales contra narcotraficantes",
+                "Debilitamiento institucional del sistema judicial"
+            ]
+        },
+        {
+            "id": "1989-08-18",
+            "fecha": "1989-08-18",
+            "nombre": "Asesinato de Luis Carlos Galán",
+            "descripcion": "El candidato presidencial del Partido Liberal, Luis Carlos Galán Sarmiento, fue asesinado durante un mitin político en Soacha el 18 de agosto de 1989. Galán era un ferviente opositor al narcotráfico y su asesinato fue ordenado por el Cartel de Medellín. Su muerte marcó una escalada en la guerra contra el narcotráfico en Colombia.",
+            "integrantes": [
+                {
+                    "nombre": "Luis Carlos Galán",
+                    "rol": "Candidato Presidencial",
+                    "descripcion": "Político liberal, periodista y opositor del narcotráfico. Líder del Nuevo Liberalismo."
+                },
+                {
+                    "nombre": "Pablo Escobar Gaviria",
+                    "rol": "Narcotraficante",
+                    "descripcion": "Líder del Cartel de Medellín, señalado como autor intelectual del magnicidio."
+                },
+                {
+                    "nombre": "Alberto Santofimio Botero",
+                    "rol": "Político",
+                    "descripcion": "Condenado como coautor del asesinato por instigar a Escobar."
+                },
+                {
+                    "nombre": "Jairo Ortega",
+                    "rol": "Sicario",
+                    "descripcion": "Uno de los asesinos materiales del crimen."
+                }
+            ],
+            "ubicacion": "Soacha, Cundinamarca",
+            "consecuencias": [
+                "Declaración del estado de sitio",
+                "Intensificación de la guerra contra el narcotráfico",
+                "Endurecimiento de la extradición",
+                "Oleada de atentados terroristas del Cartel de Medellín",
+                "Victoria presidencial de César Gaviria"
+            ]
+        },
+        {
+            "id": "2002-02-20",
+            "fecha": "2002-02-20",
+            "nombre": "Secuestro de Íngrid Betancourt",
+            "descripcion": "La candidata presidencial Íngrid Betancourt fue secuestrada por las FARC el 20 de febrero de 2002 en San Vicente del Caguán cuando se dirigía a una reunión en la zona de distensión. Permaneció en cautiverio durante 6 años y 4 meses hasta su liberación en la Operación Jaque el 2 de julio de 2008.",
+            "integrantes": [
+                {
+                    "nombre": "Íngrid Betancourt",
+                    "rol": "Secuestrada",
+                    "descripcion": "Política y candidata presidencial por el partido Verde Oxígeno, senadora de la república."
+                },
+                {
+                    "nombre": "Clara Rojas",
+                    "rol": "Secuestrada",
+                    "descripcion": "Gerente de campaña de Betancourt, secuestrada junto a ella."
+                },
+                {
+                    "nombre": "Manuel Marulanda Vélez",
+                    "rol": "Líder FARC",
+                    "descripcion": "Máximo comandante de las FARC en el momento del secuestro."
+                },
+                {
+                    "nombre": "Raúl Reyes",
+                    "rol": "Comandante FARC",
+                    "descripcion": "Vocero internacional de las FARC durante el secuestro."
+                }
+            ],
+            "ubicacion": "San Vicente del Caguán, Caquetá",
+            "consecuencias": [
+                "Mayor visibilidad internacional del conflicto armado",
+                "Presión internacional sobre las FARC",
+                "Exitosa Operación Jaque en 2008",
+                "Liberación de 15 secuestrados incluyendo tres estadounidenses",
+                "Símbolo de la lucha contra el secuestro en Colombia"
+            ]
+        },
+        {
+            "id": "2016-11-24",
+            "fecha": "2016-11-24",
+            "nombre": "Acuerdo de Paz con las FARC",
+            "descripcion": "Después de más de 50 años de conflicto armado, el gobierno colombiano y las FARC firmaron el Acuerdo Final para la Terminación del Conflicto en el Teatro Colón de Bogotá el 24 de noviembre de 2016. Este acuerdo puso fin oficialmente al conflicto armado más prolongado del hemisferio occidental.",
+            "integrantes": [
+                {
+                    "nombre": "Juan Manuel Santos",
+                    "rol": "Presidente de Colombia",
+                    "descripcion": "Presidente que lideró las negociaciones de paz, Premio Nobel de la Paz 2016."
+                },
+                {
+                    "nombre": "Rodrigo Londoño (Timochenko)",
+                    "rol": "Comandante FARC",
+                    "descripcion": "Máximo líder de las FARC durante las negociaciones y firma del acuerdo."
+                },
+                {
+                    "nombre": "Humberto de la Calle",
+                    "rol": "Jefe Negociador Gobierno",
+                    "descripcion": "Jefe del equipo negociador del gobierno colombiano."
+                },
+                {
+                    "nombre": "Iván Márquez",
+                    "rol": "Jefe Negociador FARC",
+                    "descripcion": "Líder del equipo negociador de las FARC."
+                },
+                {
+                    "nombre": "Sergio Jaramillo",
+                    "rol": "Alto Comisionado para la Paz",
+                    "descripcion": "Arquitecto del marco jurídico del proceso de paz."
+                }
+            ],
+            "ubicacion": "La Habana, Cuba (negociaciones) / Bogotá, Colombia (firma)",
+            "consecuencias": [
+                "Desarme de más de 7,000 guerrilleros",
+                "Creación de la Jurisdicción Especial para la Paz (JEP)",
+                "Transformación de las FARC en partido político",
+                "Reconocimiento de víctimas del conflicto",
+                "Premio Nobel de la Paz para Juan Manuel Santos",
+                "Polarización política en Colombia"
+            ]
+        },
+        {
+            "id": "1999-01-07",
+            "fecha": "1999-01-07",
+            "nombre": "Creación de la Zona de Distensión",
+            "descripcion": "El presidente Andrés Pastrana estableció una zona desmilitarizada de 42,000 km² (equivalente al tamaño de Suiza) en cinco municipios del sur del país para facilitar negociaciones de paz con las FARC. La zona existió entre 1999 y 2002, pero las FARC utilizaron el territorio para fortalecer militarmente su organización.",
+            "integrantes": [
+                {
+                    "nombre": "Andrés Pastrana Arango",
+                    "rol": "Presidente de Colombia",
+                    "descripcion": "Presidente que creó la zona de distensión para negociar con las FARC."
+                },
+                {
+                    "nombre": "Manuel Marulanda Vélez (Tirofijo)",
+                    "rol": "Comandante FARC",
+                    "descripcion": "Líder máximo de las FARC, famoso por no asistir al inicio de las negociaciones."
+                },
+                {
+                    "nombre": "Víctor G. Ricardo",
+                    "rol": "Alto Comisionado para la Paz",
+                    "descripcion": "Encargado de las negociaciones por parte del gobierno."
+                },
+                {
+                    "nombre": "Raúl Reyes",
+                    "rol": "Vocero FARC",
+                    "descripcion": "Representante de las FARC en las negociaciones."
+                }
+            ],
+            "ubicacion": "Municipios de San Vicente del Caguán, La Macarena, Mesetas, La Uribe y Vista Hermosa",
+            "consecuencias": [
+                "Fortalecimiento militar de las FARC",
+                "Aumento de secuestros",
+                "Pérdida de confianza en procesos de paz",
+                "Ruptura de negociaciones en 2002",
+                "Inicio de la política de Seguridad Democrática de Álvaro Uribe"
+            ]
+        },
+        {
+            "id": "1993-12-02",
+            "fecha": "1993-12-02",
+            "nombre": "Muerte de Pablo Escobar",
+            "descripcion": "El narcotraficante más buscado del mundo, Pablo Escobar Gaviria, fue abatido por el Bloque de Búsqueda de la Policía Nacional en un operativo en Medellín el 2 de diciembre de 1993. Su muerte marcó el fin del Cartel de Medellín y un punto de inflexión en la guerra contra el narcotráfico en Colombia.",
+            "integrantes": [
+                {
+                    "nombre": "Pablo Escobar Gaviria",
+                    "rol": "Narcotraficante",
+                    "descripcion": "Fundador y líder del Cartel de Medellín, considerado uno de los criminales más ricos de la historia."
+                },
+                {
+                    "nombre": "Hugo Aguilar",
+                    "rol": "Comandante Bloque de Búsqueda",
+                    "descripcion": "Oficial de policía que lideró el operativo final contra Escobar."
+                },
+                {
+                    "nombre": "César Gaviria",
+                    "rol": "Presidente de Colombia",
+                    "descripcion": "Presidente durante la captura y muerte de Escobar."
+                },
+                {
+                    "nombre": "Carlos Castaño",
+                    "rol": "Líder Paramilitar",
+                    "descripcion": "Líder de Los Pepes (Perseguidos por Pablo Escobar), grupo que colaboró en su persecución."
+                }
+            ],
+            "ubicacion": "Barrio Los Olivos, Medellín",
+            "consecuencias": [
+                "Desmantelamiento del Cartel de Medellín",
+                "Ascenso del Cartel de Cali",
+                "Reducción significativa de atentados terroristas",
+                "Recuperación de la imagen de Colombia",
+                "Consolidación de estructuras paramilitares"
+            ]
+        }
+    ]
+}
