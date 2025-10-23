@@ -1,8 +1,173 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Prueba from "../components/Prueba.astro";
 ---
 
-<Layout>
-        <Prueba />
+<Layout title="Tres Colores">
+        <main>
+                <h1>Tres Colores - Base de Datos</h1>
+
+                <div class="layer">
+                        <h2>Enviar Dato a Firestore</h2>
+                        <input
+                                type="text"
+                                id="mensaje-input"
+                                placeholder="Escribe tu mensaje aqui"
+                        />
+                        <button id="enviar-btn">
+                                Enviar Dato a la Base de Datos
+                        </button>
+                </div>
+
+                <div class="layer">
+                        <h2>Datos en la Base de Datos</h2>
+                        <div id="lista-datos">Cargando...</div>
+                </div>
+        </main>
 </Layout>
+
+<script>
+        async function cargarDatos() {
+                const listaDatos = document.getElementById("lista-datos");
+                if (listaDatos) {
+                        listaDatos.textContent = "Cargando...";
+                        try {
+                                const res = await fetch("/api/obtener-pruebas");
+                                const data = await res.json();
+
+                                if (data.success && data.datos.length > 0) {
+                                        listaDatos.innerHTML = data.datos
+                                                .map(
+                                                        (item: any) => `
+                                                        <div class="dato-item">
+                                                                <strong>ID:</strong> ${item.id}<br>
+                                                                <strong>Mensaje:</strong> ${item.mensaje}<br>
+                                                                <strong>Fecha:</strong> ${new Date(item.timestamp).toLocaleString()}<br>
+                                                        </div>
+                                                `,
+                                                )
+                                                .join("");
+                                } else {
+                                        listaDatos.textContent =
+                                                "No hay datos en la base de datos";
+                                }
+                        } catch (error) {
+                                listaDatos.textContent =
+                                        "Error al cargar datos: " + error;
+                        }
+                }
+        }
+
+        document.getElementById("enviar-btn")?.addEventListener(
+                "click",
+                async () => {
+                        const mensajeInput = document.getElementById(
+                                "mensaje-input",
+                        ) as HTMLInputElement;
+                        const listaDatos =
+                                document.getElementById("lista-datos");
+
+                        const mensaje = mensajeInput?.value || "";
+
+                        if (!mensaje.trim()) {
+                                alert("Por favor escribe un mensaje");
+                                return;
+                        }
+
+                        if (listaDatos) {
+                                listaDatos.textContent =
+                                        "Enviando dato a Firestore...";
+                                try {
+                                        await fetch("/api/guardar-prueba", {
+                                                method: "POST",
+                                                headers: {
+                                                        "Content-Type":
+                                                                "application/json",
+                                                },
+                                                body: JSON.stringify({
+                                                        mensaje,
+                                                }),
+                                        });
+
+                                        mensajeInput.value = "";
+                                        await cargarDatos();
+                                } catch (error) {
+                                        listaDatos.textContent =
+                                                "Error: " + error;
+                                }
+                        }
+                },
+        );
+
+        // Cargar datos al iniciar
+        cargarDatos();
+</script>
+
+<style>
+        main {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                font-family: monospace;
+        }
+
+        h1 {
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+        }
+
+        .layer {
+                border: 1px solid black;
+                padding: 15px;
+                margin: 20px 0;
+                background: white;
+        }
+
+        .layer h2 {
+                margin-top: 0;
+                border-bottom: 1px solid black;
+                padding-bottom: 5px;
+        }
+
+        button {
+                padding: 10px 15px;
+                margin: 5px;
+                border: 1px solid black;
+                background: white;
+                cursor: pointer;
+                font-family: monospace;
+        }
+
+        button:hover {
+                background: black;
+                color: white;
+        }
+
+        input {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid black;
+                font-family: monospace;
+                font-size: 14px;
+                box-sizing: border-box;
+        }
+
+        input:focus {
+                outline: none;
+                background: #f9f9f9;
+        }
+
+        #lista-datos {
+                padding: 10px;
+                border: 1px solid black;
+                background: white;
+                min-height: 100px;
+        }
+
+        .dato-item {
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #666;
+                background: #f9f9f9;
+        }
+</style>

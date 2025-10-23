@@ -11,4 +11,8 @@ export const firebaseManager = {
         console.log('Data Layer: FirebaseManager accediendo a coleccion audit_logs');
         return adminDb.collection('audit_logs');
     },
+    pruebas: () => {
+        console.log('Data Layer: FirebaseManager accediendo a coleccion pruebas');
+        return adminDb.collection('pruebas');
+    },
 };

@@ -18,7 +18,7 @@ if (privateKey && privateKey.includes('\\n')) {
 let app: App;
 
 if (clientEmail && privateKey) {
-    console.log('Backend: Firebase Admin SDK - Usando credenciales de Service Account');
+    console.log('Backend: funcionando con credenciales');
     app = getApps().length
         ? (getApps()[0] as App)
         : initializeApp({
@@ -29,7 +29,7 @@ if (clientEmail && privateKey) {
             }),
         });
 } else {
-    console.log('Backend: Firebase Admin SDK - Inicializando sin credenciales Admin (solo projectId)');
+    console.log('Backend: funcionando sin credenciales');
     app = getApps().length
         ? (getApps()[0] as App)
         : initializeApp({

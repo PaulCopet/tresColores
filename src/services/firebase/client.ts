@@ -1,12 +1,9 @@
-// Firebase Web (Client SDK) - Modular v9
-// Only import this in browser/client-side code.
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 console.log('Frontend: Inicializando conexion con Firebase Client SDK');
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDHDuAKIbPltzb8Zj9opaVEQJDnxztyowQ",
     authDomain: "trescolores-650d9.firebaseapp.com",
