@@ -3,7 +3,10 @@ import type { App } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 
-const projectId = process.env.FIREBASE_PROJECT_ID;
+console.log('Backend: Iniciando Firebase Admin SDK');
+
+// Configuración directa de Firebase (para desarrollo)
+const projectId = 'trescolores-650d9';
 const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
 let privateKey = process.env.FIREBASE_PRIVATE_KEY;
 
@@ -11,20 +14,35 @@ if (privateKey && privateKey.includes('\\n')) {
     privateKey = privateKey.replace(/\\n/g, '\n');
 }
 
-if (!projectId || !clientEmail || !privateKey) {
-    console.warn('[firebaseAdmin] Missing one or more Firebase Admin env vars.');
+// Si no hay credenciales de Admin SDK, usar configuración básica
+let app: App;
+
+if (clientEmail && privateKey) {
+    console.log('Backend: Firebase Admin SDK - Usando credenciales de Service Account');
+    app = getApps().length
+        ? (getApps()[0] as App)
+        : initializeApp({
+            credential: cert({
+                projectId,
+                clientEmail,
+                privateKey,
+            }),
+        });
+} else {
+    console.log('Backend: Firebase Admin SDK - Inicializando sin credenciales Admin (solo projectId)');
+    app = getApps().length
+        ? (getApps()[0] as App)
+        : initializeApp({
+            projectId,
+        });
 }
 
-const app: App = getApps().length
-    ? (getApps()[0] as App)
-    : initializeApp({
-        credential: cert({
-            projectId,
-            clientEmail,
-            privateKey,
-        }),
-    });
+console.log('Backend: Firebase Admin SDK inicializado correctamente con proyecto:', projectId);
 
 export const adminAuth = getAuth(app);
+console.log('Backend: Conexion con Firebase Authentication establecida');
+
 export const adminDb = getFirestore(app);
+console.log('Backend: Conexion con Firestore establecida');
+
 export default app;

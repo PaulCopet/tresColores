@@ -4,20 +4,26 @@ import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
-// Astro exposes public env vars with PUBLIC_ prefix via import.meta.env
+console.log('Frontend: Inicializando conexion con Firebase Client SDK');
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
-    authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.PUBLIC_FIREBASE_APP_ID,
-    measurementId: import.meta.env.PUBLIC_FIREBASE_MEASUREMENT_ID,
+    apiKey: "AIzaSyDHDuAKIbPltzb8Zj9opaVEQJDnxztyowQ",
+    authDomain: "trescolores-650d9.firebaseapp.com",
+    projectId: "trescolores-650d9",
+    storageBucket: "trescolores-650d9.firebasestorage.app",
+    messagingSenderId: "144531600305",
+    appId: "1:144531600305:web:f8822e7f61dd703fd84390"
 };
 
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+console.log('Frontend: Firebase Client SDK inicializado correctamente');
 
 // Useful singletons
 export const auth = getAuth(app);
+console.log('Frontend: Firebase Authentication conectado');
+
 export const db = getFirestore(app);
+console.log('Frontend: Firestore conectado');
+
 export default app;
