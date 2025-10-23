@@ -8,7 +8,6 @@ export async function auditLog(event: string, payload: unknown) {
             ts: new Date().toISOString(),
         });
     } catch (e) {
-        // swallow to not break main flow
         console.warn('[auditLog] failed', e);
     }
 }

@@ -1,6 +1,6 @@
-// Example Services Layer
 import { getUserById } from '../data/repositories.js';
-import { z } from 'zod';
+// importamos zod que nos sirve para validaciones
+import { z } from 'zod'; 
 
 export const GetUserSchema = z.object({ id: z.string().min(1) });
 

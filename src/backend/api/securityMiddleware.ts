@@ -8,14 +8,6 @@ export function secureHandler(handler: HandlerWithUser) {
         const authHeader = ctx.request.headers.get('authorization') ?? undefined;
         const user = await verifyBearerToken(authHeader);
 
-        // Si deseas forzar autenticación, descomenta este bloque
-        // if (!user) {
-        //   return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), {
-        //     status: 401,
-        //     headers: { 'content-type': 'application/json' },
-        //   });
-        // }
-
         return handler(ctx, user);
     };
 }
