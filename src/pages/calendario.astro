@@ -12,10 +12,49 @@ import historiaData from "../data/historias-colombia.json";
 
 <style is:global>
         /* Estilos personalizados para el calendario */
+
+        /* Remover cualquier color verde predeterminado */
+        .react-calendar__tile--now {
+                background: #eff6ff !important;
+                color: #1e40af !important;
+                font-weight: 600;
+        }
+
+        .react-calendar__tile--now:enabled:hover,
+        .react-calendar__tile--now:enabled:focus {
+                background: #dbeafe !important;
+        }
+
+        /* Día seleccionado/activo - AZUL */
+        .react-calendar__tile--active,
+        .react-calendar__tile--active:enabled:hover,
+        .react-calendar__tile--active:enabled:focus {
+                background: linear-gradient(
+                        135deg,
+                        #2563eb 0%,
+                        #1d4ed8 100%
+                ) !important;
+                color: white !important;
+                border-radius: 0.25rem !important;
+                box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3) !important;
+        }
+
+        /* Días con eventos */
         .has-event {
-                background-color: #e2f0ff;
-                color: #1a73e8;
+                background: linear-gradient(
+                        135deg,
+                        #dbeafe 0%,
+                        #bfdbfe 100%
+                ) !important;
+                color: #1e40af !important;
                 font-weight: bold;
+                position: relative;
+                border: 1px solid #93c5fd !important;
+        }
+
+        .has-event-period {
+                position: relative;
+                font-weight: 600;
         }
 
         .react-calendar {
@@ -29,23 +68,99 @@ import historiaData from "../data/historias-colombia.json";
 
         .react-calendar__tile {
                 padding: 1em 0.5em;
+                position: relative;
         }
 
         .react-calendar__tile:enabled:hover,
         .react-calendar__tile:enabled:focus {
-                background-color: #f0f7ff;
+                background-color: #eff6ff !important;
                 border-radius: 0.25rem;
         }
 
-        .react-calendar__tile--active {
-                background: #1a73e8 !important;
-                color: white !important;
-                border-radius: 0.25rem;
+        /* Hover especial para fechas con eventos */
+        .has-event:enabled:hover,
+        .has-event:enabled:focus {
+                background: linear-gradient(
+                        135deg,
+                        #bfdbfe 0%,
+                        #93c5fd 100%
+                ) !important;
+                transform: scale(1.05);
+                transition: all 0.2s ease;
         }
 
         .calendar-container {
                 background-color: #f8fafc;
                 border-radius: 1rem;
                 padding: 2rem;
+        }
+
+        /* Estilos para la navegación del calendario (mes/año) */
+        .react-calendar__navigation {
+                background: linear-gradient(
+                        135deg,
+                        #1e40af 0%,
+                        #2563eb 100%
+                ) !important;
+                border-radius: 0.5rem 0.5rem 0 0;
+                padding: 0.5rem;
+                margin-bottom: 0;
+        }
+
+        .react-calendar__navigation button {
+                color: white !important;
+                font-weight: 600;
+                font-size: 1rem;
+                min-width: 44px;
+                background: transparent;
+        }
+
+        .react-calendar__navigation button:enabled:hover,
+        .react-calendar__navigation button:enabled:focus {
+                background-color: rgba(255, 255, 255, 0.2) !important;
+                border-radius: 0.25rem;
+        }
+
+        .react-calendar__navigation button:disabled {
+                opacity: 0.5;
+        }
+
+        .react-calendar__navigation__label__labelText {
+                font-weight: 700;
+                text-transform: capitalize;
+        }
+
+        /* Estilos para vista de año y década */
+        .react-calendar__year-view .react-calendar__tile,
+        .react-calendar__decade-view .react-calendar__tile,
+        .react-calendar__century-view .react-calendar__tile {
+                padding: 1.5em 0.5em;
+        }
+
+        /* Personalización de la barra de scroll */
+        ::-webkit-scrollbar {
+                width: 10px;
+                height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+                background: #eff6ff;
+                border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+                background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                border-radius: 10px;
+                border: 2px solid #eff6ff;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+
+        /* Firefox */
+        * {
+                scrollbar-width: thin;
+                scrollbar-color: #3b82f6 #eff6ff;
         }
 </style>
