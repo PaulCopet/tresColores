@@ -1,4 +1,5 @@
-import type { User } from '../logic/models.js';
+import type { User, EventModel } from '../logic/models.js';
+import { firebaseManager } from './firebaseManager.js';
 
 console.log('Data Layer: Repositories cargado');
 

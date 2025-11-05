@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CalendarView from "../components/CalendarView";
+import historiaData from "../data/historias-colombia.json";
+---
+
+<Layout title="">
+        <main class="container mx-auto px-4">
+                <CalendarView client:load historias={historiaData.historias} />
+        </main>
+</Layout>
+
+<style is:global>
+        /* Estilos personalizados para el calendario */
+        .has-event {
+                background-color: #e2f0ff;
+                color: #1a73e8;
+                font-weight: bold;
+        }
+
+        .react-calendar {
+                width: 100% !important;
+                max-width: 100% !important;
+                background: white;
+                border: 1px solid #e2e8f0;
+                border-radius: 0.5rem;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .react-calendar__tile {
+                padding: 1em 0.5em;
+        }
+
+        .react-calendar__tile:enabled:hover,
+        .react-calendar__tile:enabled:focus {
+                background-color: #f0f7ff;
+                border-radius: 0.25rem;
+        }
+
+        .react-calendar__tile--active {
+                background: #1a73e8 !important;
+                color: white !important;
+                border-radius: 0.25rem;
+        }
+
+        .calendar-container {
+                background-color: #f8fafc;
+                border-radius: 1rem;
+                padding: 2rem;
+        }
+</style>

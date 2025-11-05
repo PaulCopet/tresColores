@@ -1,173 +1,118 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CalendarView from "../components/CalendarView";
+import historiaData from "../data/historias-colombia.json";
 ---
 
-<Layout title="Tres Colores">
-        <main>
-                <h1>Tres Colores - Base de Datos</h1>
-
-                <div class="layer">
-                        <h2>Enviar Dato a Firestore</h2>
-                        <input
-                                type="text"
-                                id="mensaje-input"
-                                placeholder="Escribe tu mensaje aqui"
-                        />
-                        <button id="enviar-btn">
-                                Enviar Dato a la Base de Datos
-                        </button>
-                </div>
-
-                <div class="layer">
-                        <h2>Datos en la Base de Datos</h2>
-                        <div id="lista-datos">Cargando...</div>
-                </div>
+<Layout title="Calendario Histórico de Colombia">
+        <main class="container mx-auto px-4 py-8">
+                <CalendarView client:load historias={historiaData.historias} />
         </main>
 </Layout>
 
-<script>
-        async function cargarDatos() {
-                const listaDatos = document.getElementById("lista-datos");
-                if (listaDatos) {
-                        listaDatos.textContent = "Cargando...";
-                        try {
-                                const res = await fetch("/api/obtener-pruebas");
-                                const data = await res.json();
-
-                                if (data.success && data.datos.length > 0) {
-                                        listaDatos.innerHTML = data.datos
-                                                .map(
-                                                        (item: any) => `
-                                                        <div class="dato-item">
-                                                                <strong>ID:</strong> ${item.id}<br>
-                                                                <strong>Mensaje:</strong> ${item.mensaje}<br>
-                                                                <strong>Fecha:</strong> ${new Date(item.timestamp).toLocaleString()}<br>
-                                                        </div>
-                                                `,
-                                                )
-                                                .join("");
-                                } else {
-                                        listaDatos.textContent =
-                                                "No hay datos en la base de datos";
-                                }
-                        } catch (error) {
-                                listaDatos.textContent =
-                                        "Error al cargar datos: " + error;
-                        }
-                }
+<style is:global>
+        /* Estilos personalizados para el calendario */
+        .has-event {
+                background-color: #22c55e !important;
+                color: white !important;
+                font-weight: bold;
+                position: relative;
         }
 
-        document.getElementById("enviar-btn")?.addEventListener(
-                "click",
-                async () => {
-                        const mensajeInput = document.getElementById(
-                                "mensaje-input",
-                        ) as HTMLInputElement;
-                        const listaDatos =
-                                document.getElementById("lista-datos");
-
-                        const mensaje = mensajeInput?.value || "";
-
-                        if (!mensaje.trim()) {
-                                alert("Por favor escribe un mensaje");
-                                return;
-                        }
-
-                        if (listaDatos) {
-                                listaDatos.textContent =
-                                        "Enviando dato a Firestore...";
-                                try {
-                                        await fetch("/api/guardar-prueba", {
-                                                method: "POST",
-                                                headers: {
-                                                        "Content-Type":
-                                                                "application/json",
-                                                },
-                                                body: JSON.stringify({
-                                                        mensaje,
-                                                }),
-                                        });
-
-                                        mensajeInput.value = "";
-                                        await cargarDatos();
-                                } catch (error) {
-                                        listaDatos.textContent =
-                                                "Error: " + error;
-                                }
-                        }
-                },
-        );
-
-        // Cargar datos al iniciar
-        cargarDatos();
-</script>
-
-<style>
-        main {
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 20px;
-                font-family: monospace;
+        .has-event::after {
+                content: "";
+                position: absolute;
+                bottom: 0.25rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 1.5rem;
+                height: 0.25rem;
+                background-color: rgba(255, 255, 255, 0.7);
+                border-radius: 0.125rem;
         }
 
-        h1 {
-                border-bottom: 2px solid black;
-                padding-bottom: 10px;
-        }
-
-        .layer {
-                border: 1px solid black;
-                padding: 15px;
-                margin: 20px 0;
+        .react-calendar {
+                width: 100% !important;
+                max-width: 100% !important;
                 background: white;
+                border: none;
+                font-family: "Inter", system-ui, sans-serif;
         }
 
-        .layer h2 {
-                margin-top: 0;
-                border-bottom: 1px solid black;
-                padding-bottom: 5px;
+        .react-calendar__navigation {
+                margin-bottom: 1rem;
         }
 
-        button {
-                padding: 10px 15px;
-                margin: 5px;
-                border: 1px solid black;
-                background: white;
-                cursor: pointer;
-                font-family: monospace;
+        .react-calendar__navigation button {
+                font-size: 1.25rem;
+                color: #166534;
+                transition: all 0.2s;
+                border-radius: 0.5rem;
+                min-width: 44px;
+                background: none;
         }
 
-        button:hover {
-                background: black;
-                color: white;
+        .react-calendar__navigation button:enabled:hover,
+        .react-calendar__navigation button:enabled:focus {
+                background-color: #dcfce7;
         }
 
-        input {
-                width: 100%;
-                padding: 10px;
-                margin: 10px 0;
-                border: 1px solid black;
-                font-family: monospace;
-                font-size: 14px;
-                box-sizing: border-box;
+        .react-calendar__month-view__weekdays {
+                font-size: 1rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: #166534;
         }
 
-        input:focus {
-                outline: none;
-                background: #f9f9f9;
+        .react-calendar__month-view__weekdays abbr {
+                text-decoration: none;
+                cursor: default;
         }
 
-        #lista-datos {
-                padding: 10px;
-                border: 1px solid black;
-                background: white;
-                min-height: 100px;
+        .react-calendar__tile {
+                padding: 1.5em 0.5em;
+                font-size: 1rem;
+                border-radius: 0.5rem;
+                transition: all 0.2s;
         }
 
-        .dato-item {
-                padding: 10px;
-                margin: 10px 0;
-                border: 1px solid #666;
-                background: #f9f9f9;
+        .react-calendar__tile:enabled:hover,
+        .react-calendar__tile:enabled:focus {
+                background-color: #dcfce7;
+                color: #166534;
+        }
+
+        .react-calendar__tile--active {
+                background: #15803d !important;
+                color: white !important;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .react-calendar__tile--now {
+                background: #f0fdf4;
+                border: 2px solid #22c55e;
+        }
+
+        .calendar-container {
+                background-color: transparent;
+        }
+
+        /* Personalización del scroll */
+        ::-webkit-scrollbar {
+                width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+                background: #22c55e;
+                border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+                background: #15803d;
         }
 </style>
