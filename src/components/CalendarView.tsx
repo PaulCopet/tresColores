@@ -4,6 +4,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import type { EventModel } from '../backend/logic/models';
 import EventModal from './EventModal';
+import LoginModal from './LoginModal';
 import { gsap } from 'gsap';
 
 interface CalendarViewProps {
@@ -23,6 +24,8 @@ const CalendarView: React.FC<CalendarViewProps> = () => {
     const tooltipRef = useRef<HTMLDivElement>(null);
     const calendarBtnRef = useRef<HTMLButtonElement>(null);
     const listBtnRef = useRef<HTMLButtonElement>(null);
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+    const [usuario, setUsuario] = useState<{ nombre: string; correo: string; rol: string } | null>(null);
 
     // Cargar datos desde la API
     useEffect(() => {
@@ -39,6 +42,12 @@ const CalendarView: React.FC<CalendarViewProps> = () => {
         };
 
         fetchHistorias();
+
+        // Cargar sesión desde localStorage
+        const sesionGuardada = localStorage.getItem('usuario');
+        if (sesionGuardada) {
+            setUsuario(JSON.parse(sesionGuardada));
+        }
     }, []);
 
     // Animación del tooltip con GSAP
@@ -242,27 +251,61 @@ const CalendarView: React.FC<CalendarViewProps> = () => {
         setDisplayedEventos([evento]); // Solo mostramos el evento seleccionado
     };
 
+    const handleLogin = (usuarioData: { nombre: string; correo: string; rol: string }) => {
+        setUsuario(usuarioData);
+        // El localStorage ya se maneja dentro del LoginModal
+    };
+
+    const handleLogout = () => {
+        setUsuario(null);
+        localStorage.removeItem('usuario');
+    };
+
+    // Obtener iniciales del nombre para el avatar
+    const getInitials = (nombre: string) => {
+        return nombre
+            .split(' ')
+            .map(n => n[0])
+            .join('')
+            .toUpperCase()
+            .slice(0, 2);
+    };
+
     return (
         <div>
-            {/* Barra de navegación superior */}
+            {/* Navbar superior con avatar, buscador y toggle */}
             <div className="mb-6">
-                <div className="container">
+                <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between gap-4">
-                        <div className="relative grow max-w-xl">
+                        {/* Buscador */}
+                        <div className="relative grow max-w-2xl">
                             <input
                                 type="text"
                                 placeholder="Buscar eventos históricos de Colombia..."
-                                className="w-full p-2 border border-gray-200 rounded-xl bg-white 
+                                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl bg-white 
                                         transition-all duration-300 
-                                        focus:border-blue-500 focus:ring-1 focus:ring-blue-200 focus:outline-none
+                                        focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none
                                         text-base"
                                 value={searchTerm}
                                 onChange={handleSearch}
                             />
+                            <svg
+                                className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                />
+                            </svg>
                         </div>
 
                         {/* Toggle de vista - Estilo switch */}
-                        <div className="flex items-center bg-gray-100 rounded-full p-1 relative">
+                        <div className="flex items-center bg-gray-100 rounded-full p-1 relative shrink-0">
                             <button
                                 ref={calendarBtnRef}
                                 onClick={() => setViewMode('calendar')}
@@ -286,7 +329,7 @@ const CalendarView: React.FC<CalendarViewProps> = () => {
                                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                                     />
                                 </svg>
-                                <span className="font-medium">Calendario</span>
+                                <span className="font-medium hidden sm:inline">Calendario</span>
                             </button>
 
                             <button
@@ -312,8 +355,50 @@ const CalendarView: React.FC<CalendarViewProps> = () => {
                                         d="M4 6h16M4 12h16M4 18h16"
                                     />
                                 </svg>
-                                <span className="font-medium">Lista</span>
+                                <span className="font-medium hidden sm:inline">Lista</span>
                             </button>
+                        </div>
+
+                        {/* Avatar / Botón de Login */}
+                        <div className="shrink-0">
+                            {usuario ? (
+                                <div className="relative group">
+                                    <button className="w-12 h-12 rounded-full bg-linear-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                                        {getInitials(usuario.nombre)}
+                                    </button>
+                                    {/* Tooltip con info del usuario */}
+                                    <div className="absolute right-0 top-14 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
+                                        <p className="font-medium">{usuario.nombre}</p>
+                                        <p className="text-gray-300 capitalize">{usuario.rol}</p>
+                                        <button
+                                            onClick={handleLogout}
+                                            className="mt-1 text-red-400 hover:text-red-300 text-xs"
+                                        >
+                                            Cerrar sesión
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <button
+                                    onClick={() => setIsLoginOpen(true)}
+                                    className="w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md"
+                                    aria-label="Iniciar sesión"
+                                >
+                                    <svg
+                                        className="w-6 h-6 text-gray-600"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                                        />
+                                    </svg>
+                                </button>
+                            )}
                         </div>
                     </div>
 
@@ -530,6 +615,13 @@ const CalendarView: React.FC<CalendarViewProps> = () => {
                     onClose={() => setSelectedEvento(null)}
                 />
             )}
+
+            {/* Modal de Login */}
+            <LoginModal
+                isOpen={isLoginOpen}
+                onClose={() => setIsLoginOpen(false)}
+                onLoginSuccess={handleLogin}
+            />
         </div>
     );
 };

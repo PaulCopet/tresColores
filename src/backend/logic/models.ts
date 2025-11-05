@@ -3,6 +3,15 @@ export type User = {
     email?: string;
 };
 
+export interface UsuarioModel {
+    id: string;
+    nombre: string;
+    correo: string;
+    contraseña: string;
+    rol: 'admin' | 'usuario';
+    fechaRegistro: string;
+}
+
 export interface Integrante {
     nombre: string;
     rol: string;
