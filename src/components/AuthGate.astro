@@ -1,0 +1,14 @@
+---
+const { requireAdmin = false } = Astro.props as { requireAdmin?: boolean };
+const res = await fetch(Astro.request.url.origin + '/api/auth/me', { headers: { cookie: Astro.request.headers.get('cookie') || '' } });
+const me = res.ok ? await res.json() : null;
+const role = me?.claims?.role || null;
+
+if (!me?.uid) {
+  return Astro.redirect('/login');
+}
+if (requireAdmin && role !== 'admin') {
+  return Astro.redirect('/');
+}
+---
+<slot />

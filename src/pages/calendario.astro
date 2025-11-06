@@ -1,15 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CalendarView from "../components/CalendarView";
-import historiaData from "../data/historias-colombia.json";
+import "../styles/variables.css"
 ---
 
 <Layout title="">
         <main class="container mx-auto px-4 py-6">
-                <CalendarView client:load historias={historiaData.historias} />
+                <CalendarView client:load />
         </main>
 </Layout>
-
 
 <script is:inline>
   (function () {
@@ -128,7 +127,7 @@ import historiaData from "../data/historias-colombia.json";
     transition: transform 140ms ease, background-color 180ms ease, box-shadow 180ms ease;
     border-radius: 0.75rem;
     min-width: 44px;
-    background: transparent;
+    background: white;
     padding: 0.5rem 0.6rem;
     border: 0;
   }
@@ -146,7 +145,7 @@ import historiaData from "../data/historias-colombia.json";
     font-weight: 700;
     text-transform: uppercase;
     color: var(--accent-ink);
-    background: linear-gradient(180deg, rgba(204, 246, 228, 0.38), transparent);
+    background: linear-gradient(180deg, rgba(204, 246, 228, 0.38), white);
   }
   .react-calendar__month-view__weekdays abbr { text-decoration: none; cursor: default; }
 
@@ -196,7 +195,7 @@ import historiaData from "../data/historias-colombia.json";
                 font-weight: 600;
                 font-size: 1rem;
                 min-width: 44px;
-                background: transparent;
+                background: white;
         }
 
         .react-calendar__navigation button:enabled:hover,

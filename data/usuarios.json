@@ -1,0 +1,20 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Administrador",
+      "correo": "admin@trescolores.com",
+      "contraseña": "Admin123",
+      "rol": "admin",
+      "fechaRegistro": "2024-01-01"
+    },
+    {
+      "id": "2",
+      "nombre": "Juan Pérez",
+      "correo": "juan2020@gmail.com",
+      "contraseña": "juan123",
+      "rol": "usuario",
+      "fechaRegistro": "2024-06-15"
+    }
+  ]
+}

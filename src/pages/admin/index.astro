@@ -1,0 +1,42 @@
+---
+import AuthGate from '../../components/AuthGate.astro';
+---
+<AuthGate requireAdmin={true}>
+  <html lang="es">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Admin | Calendario Colombia</title>
+    </head>
+    <body style="font-family: system-ui, sans-serif; padding:1rem; max-width:960px; margin-inline:auto;">
+      <h1>Panel Admin</h1>
+      <p>Tu sesión tiene rol <code>admin</code>. Desde aquí puedes crear/editar eventos.</p>
+      <section style="margin-top:1rem;">
+        <form id="set-role" style="display:flex; gap:.5rem; flex-wrap:wrap;">
+          <input type="email" name="email" placeholder="email del usuario" required style="padding:.5rem; border:1px solid #ddd; border-radius:.5rem;" />
+          <select name="role" style="padding:.5rem; border:1px solid #ddd; border-radius:.5rem;">
+            <option value="usuario">usuario</option>
+            <option value="admin">admin</option>
+          </select>
+          <button type="submit" style="padding:.5rem 1rem; border:0; background:#111; color:white; border-radius:.5rem;">Asignar rol</button>
+          <span id="role-msg"></span>
+        </form>
+      </section>
+
+      <script type="module">
+        const form = document.getElementById('set-role');
+        form?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const data = Object.fromEntries(new FormData(form));
+          const res = await fetch('/api/users/set-role', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(data)
+          });
+          const out = document.getElementById('role-msg');
+          out.textContent = res.ok ? 'Rol actualizado' : 'No se pudo actualizar';
+        });
+      </script>
+    </body>
+  </html>
+</AuthGate>

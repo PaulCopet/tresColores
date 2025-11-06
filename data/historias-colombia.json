@@ -1,34 +1,5 @@
-    "historias": [
-        {
-            "id": "1948-04-09",
-            "fecha": "1948-04-09",
-            "nombre": "El Bogotazo",
-            "descripcion": "El 9 de abril de 1948, a la 1:05 p.m., Jorge Eliécer Gaitán, el líder indiscutible del Partido Liberal y candidato presidencial con mayor favorabilidad para las elecciones de 1950, fue asesinado de tres disparos en el centro de Bogotá cuando se dirigía a almorzar. Juan Roa Sierra, un joven de 24 años, fue identificado como el asesino y fue linchado por la multitud enfurecida minutos después del crimen. La noticia del magnicidio se propagó rápidamente por la ciudad, desatando una ola masiva de violencia, saqueos, incendios y enfrentamientos entre civiles y las fuerzas del orden. Durante los días siguientes, el centro de Bogotá fue devastado por el fuego y la destrucción. Edificios gubernamentales, tranvías, negocios y viviendas fueron incendiados. Se estima que más de 3,000 personas murieron en la capital y miles más en todo el país en las semanas posteriores. El presidente conservador Mariano Ospina Pérez declaró el estado de sitio y utilizó al ejército para reprimir los disturbios. Este acontecimiento traumático marcó el inicio del periodo histórico conocido como 'La Violencia', una guerra civil no declarada entre militantes liberales y conservadores que se extendió por las zonas rurales de Colombia durante más de una década, cobrando la vida de aproximadamente 200,000 personas. El Bogotazo también tuvo repercusiones internacionales, ya que coincidió con la IX Conferencia Panamericana que se celebraba en la ciudad, lo que llevó a algunos sectores a especular sobre posibles conspiraciones internacionales detrás del asesinato de Gaitán.",
-            "integrantes": [
-                {
-                    "nombre": "Jorge Eliécer Gaitán",
-                    "rol": "Líder Liberal Asesinado",
-                    "descripcion": "Político, abogado y líder del partido liberal colombiano, candidato presidencial para las elecciones de 1950."
-                },
-                {
-                    "nombre": "Juan Roa Sierra",
-                    "rol": "Asesino",
-                    "descripcion": "Presunto asesino de Gaitán, fue linchado por la multitud minutos después del magnicidio."
-                },
-                {
-                    "nombre": "Mariano Ospina Pérez",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente conservador en ejercicio durante el Bogotazo."
-                }
-            ],
-            "ubicacion": "Bogotá, Colombia",
-            "consecuencias": [
-                "Inicio del periodo conocido como La Violencia",
-                "Más de 3,000 muertos en los días posteriores al asesinato",
-                "Destrucción del centro de Bogotá",
-                "Radicalización del conflicto bipartidista"
-            ]
-        },
+   {
+     "historias": [
         {
             "id": "1958-12-01",
             "fecha": "1958-12-01",

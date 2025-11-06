@@ -2,26 +2,29 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 
-interface LoginModalProps {
+interface RegisterModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSwitchToRegister: () => void; // abre el modal de registro
-  onLoginSuccess?: (usuario: {
+  onSwitchToLogin: () => void; // abre el modal de login
+  onRegisterSuccess?: (usuario: {
     nombre: string;
     correo: string;
     rol: string;
   }) => void;
 }
 
-const LoginModal: React.FC<LoginModalProps> = ({
+const RegisterModal: React.FC<RegisterModalProps> = ({
   isOpen,
   onClose,
-  onSwitchToRegister,
-  onLoginSuccess,
+  onSwitchToLogin,
+  onRegisterSuccess,
 }) => {
+  const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
   const [pass, setPass] = useState("");
+  const [pass2, setPass2] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const [showPass2, setShowPass2] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -69,35 +72,39 @@ const LoginModal: React.FC<LoginModalProps> = ({
     e.preventDefault();
     setError("");
 
+    if (!nombre.trim()) return setError("El nombre es obligatorio");
     if (!/\S+@\S+\.\S+/.test(correo)) return setError("Correo inválido");
-    if (!pass) return setError("La contraseña es obligatoria");
+    if (pass.length < 6)
+      return setError("La contraseña debe tener al menos 6 caracteres");
+    if (pass !== pass2) return setError("Las contraseñas no coinciden");
 
     try {
       setLoading(true);
 
-      // 👉 Deja aquí tu lógica real de login (Firebase Auth o tu /api/login)
-      // Ejemplo manteniendo tu endpoint:
-      const resp = await fetch("/api/login", {
+      // 👉 Endpoint que ya conecta con Firebase (Auth + Firestore)
+      const resp = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ correo, contraseña: pass }),
+        body: JSON.stringify({ nombre, correo, contraseña: pass }),
       });
       const data = await resp.json();
-
       if (!data?.success)
-        throw new Error(data?.message || "Credenciales incorrectas");
+        throw new Error(data?.message || "No se pudo registrar");
 
+      // Esperamos que el backend devuelva {usuario:{nombre,correo,rol}}
       const usuario = {
-        nombre: data.usuario?.nombre ?? "Usuario",
+        nombre: data.usuario?.nombre ?? nombre,
         correo: data.usuario?.correo ?? correo,
         rol: data.usuario?.rol ?? "usuario",
       };
 
+      // Guarda sesión local si quieres
       localStorage.setItem("usuario", JSON.stringify(usuario));
-      onLoginSuccess?.(usuario);
+
+      onRegisterSuccess?.(usuario);
       closeWithAnim();
     } catch (err: any) {
-      setError(err?.message || "No se pudo iniciar sesión.");
+      setError(err?.message || "Error al registrar el usuario.");
     } finally {
       setLoading(false);
     }
@@ -123,7 +130,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
           <div className="flex items-center justify-between">
             <h2 className="text-white text-xl sm:text-2xl font-bold tracking-tight">
-              Iniciar Sesión
+              Crear cuenta
             </h2>
             <button
               onClick={closeWithAnim}
@@ -147,7 +154,36 @@ const LoginModal: React.FC<LoginModalProps> = ({
           )}
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Email */}
+            {/* Nombre */}
+            <div>
+              <label className={labelBase}>Nombre</label>
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                  <svg
+                    className="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5.121 17.804A7 7 0 0112 14a7 7 0 016.879 3.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  className={inputBase}
+                  placeholder="Tu nombre"
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* Correo */}
             <div>
               <label className={labelBase}>Correo electrónico</label>
               <div className="relative">
@@ -227,6 +263,51 @@ const LoginModal: React.FC<LoginModalProps> = ({
               </div>
             </div>
 
+            {/* Confirm Password */}
+            <div>
+              <label className={labelBase}>Confirmar contraseña</label>
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                  <svg
+                    className="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 11c1.657 0 3-1.567 3-3.5S13.657 4 12 4 9 5.567 9 7.5 10.343 11 12 11z"
+                    />
+                    <path
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19 21v-2a7 7 0 10-14 0v2"
+                    />
+                  </svg>
+                </span>
+                <input
+                  type={showPass2 ? "text" : "password"}
+                  className={`${inputBase} pr-11`}
+                  placeholder="••••••••"
+                  value={pass2}
+                  onChange={(e) => setPass2(e.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPass2((s) => !s)}
+                  className="absolute inset-y-0 right-0 pr-3 text-slate-400 hover:text-slate-600"
+                  aria-label={
+                    showPass2 ? "Ocultar contraseña" : "Mostrar contraseña"
+                  }
+                >
+                  {showPass2 ? "🙈" : "👁️"}
+                </button>
+              </div>
+            </div>
+
             {/* CTA */}
             <button
               type="submit"
@@ -257,25 +338,25 @@ const LoginModal: React.FC<LoginModalProps> = ({
                       className="opacity-75"
                     />
                   </svg>
-                  Ingresando…
+                  Registrando…
                 </>
               ) : (
-                "Ingresar"
+                "Registrarme"
               )}
             </button>
 
             {/* Switch */}
             <p className="text-center text-sm text-slate-600">
-              ¿No tienes cuenta?{" "}
+              ¿Ya tienes cuenta?{" "}
               <button
                 type="button"
                 onClick={() => {
                   closeWithAnim();
-                  onSwitchToRegister();
+                  onSwitchToLogin();
                 }}
                 className="font-semibold text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline"
               >
-                Regístrate
+                Inicia sesión
               </button>
             </p>
           </form>
@@ -284,8 +365,8 @@ const LoginModal: React.FC<LoginModalProps> = ({
     </div>
   );
 
-  // 👉 Portal para asegurar backdrop a pantalla completa
+  // Portal para backdrop a pantalla completa
   return createPortal(modalUI, document.body);
 };
 
-export default LoginModal;
+export default RegisterModal;
