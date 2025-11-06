@@ -1,1 +1,40 @@
 @import "tailwindcss";
+
+* {
+  transition: all 1s ease;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Sobrescribir estilos del calendario para forzar colores azules */
+.react-calendar__tile--now {
+  background: #eff6ff !important;
+  color: #1e40af !important;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #dbeafe !important;
+}
+
+/* Asegurar que el tile activo sea azul */
+.react-calendar__tile--active,
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  color: white !important;
+}
+
+/* Remover cualquier estilo verde que pueda estar aplicándose */
+.react-calendar abbr {
+  text-decoration: none;
+}

@@ -1,0 +1,16 @@
+  :root {
+    --bg: #f7fffb;              /* fondo general muy claro */
+    --card: #ffffff;            /* cartas y superficies */
+    --text: #314341;            /* gris verdoso */
+    --muted: #eef6f2;           /* bloques secundarios */
+    --accent-50: #effef7;
+    --accent-100: #e0fbef;
+    --accent-200: #ccf6e4;
+    --accent-300: #b4f0d7;
+    --accent-400: #97e7c6;
+    --accent-500: #73dbb0;      /* menta viva (con moderación) */
+    --accent-600: #48c69a;
+    --accent-ink: #0f3e2f;      /* contraste para texto */
+    --ring: #b9f4d8;
+    --shadow: 0 14px 36px rgba(16, 185, 129, 0.10);
+  }
