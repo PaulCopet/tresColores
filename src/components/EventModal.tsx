@@ -12,7 +12,7 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
     return (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
             <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto mx-4 shadow-2xl">
-                <div className="sticky top-0 bg-white p-6 border-b border-green-100 z-10">
+                <div className="sticky top-0 bg-white p-6 border-b border-blue-100 z-10">
                     <div className="flex justify-between items-start">
                         <div>
                             <h2 className="text-3xl font-bold text-gray-800">{evento.nombre}</h2>
@@ -51,12 +51,12 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
                             {evento.integrantes.map((integrante, index) => (
                                 <div
                                     key={index}
-                                    className="bg-green-50 p-4 rounded-xl border border-green-100"
+                                    className="bg-blue-50 p-4 rounded-xl border border-blue-100"
                                 >
-                                    <p className="font-bold text-green-800 text-lg">
+                                    <p className="font-bold text-blue-800 text-lg">
                                         {integrante.nombre}
                                     </p>
-                                    <p className="text-green-700 font-medium mt-1">
+                                    <p className="text-blue-700 font-medium mt-1">
                                         {integrante.rol}
                                     </p>
                                     <p className="text-gray-600 mt-2 text-sm">
@@ -76,7 +76,7 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
                                         key={index}
                                         className="flex items-start gap-3 text-gray-700"
                                     >
-                                        <span className="text-green-600 mt-1">•</span>
+                                        <span className="text-blue-600 mt-1">•</span>
                                         <span>{consecuencia}</span>
                                     </li>
                                 ))}
