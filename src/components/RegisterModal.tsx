@@ -1,16 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "gsap";
+import type { UsuarioSesion } from "../shared/authTypes";
 
 interface RegisterModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSwitchToLogin: () => void; // abre el modal de login
-  onRegisterSuccess?: (usuario: {
-    nombre: string;
-    correo: string;
-    rol: string;
-  }) => void;
+  onRegisterSuccess?: (usuario: UsuarioSesion) => void;
 }
 
 const RegisterModal: React.FC<RegisterModalProps> = ({
@@ -33,32 +30,29 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
 
   useEffect(() => {
     if (isOpen && overlayRef.current && modalRef.current) {
-      gsap.fromTo(
-        overlayRef.current,
+      gsap.fromTo(overlayRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.25 }
+        { opacity: 1, duration: 0.2, ease: 'power2.out' }
       );
-      gsap.fromTo(
-        modalRef.current,
-        { opacity: 0, y: -18, scale: 0.98 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "power3.out" }
+      gsap.fromTo(modalRef.current,
+        { opacity: 0, scale: 0.9, y: 20 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: 'power3.out' }
       );
     }
   }, [isOpen]);
 
   const closeWithAnim = () => {
-    if (!overlayRef.current || !modalRef.current) return onClose();
-    gsap.to(modalRef.current, {
-      opacity: 0,
-      y: -10,
-      scale: 0.98,
-      duration: 0.2,
-    });
-    gsap.to(overlayRef.current, {
-      opacity: 0,
-      duration: 0.2,
-      onComplete: onClose,
-    });
+    if (overlayRef.current && modalRef.current) {
+      gsap.to(modalRef.current, {
+        opacity: 0, scale: 0.95, y: 10, duration: 0.2, ease: 'power2.in'
+      });
+      gsap.to(overlayRef.current, {
+        opacity: 0, duration: 0.2, ease: 'power2.in',
+        onComplete: onClose
+      });
+    } else {
+      onClose();
+    }
   };
 
   const inputBase =
@@ -100,6 +94,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
 
       // Guarda sesión local si quieres
       localStorage.setItem("usuario", JSON.stringify(usuario));
+      localStorage.removeItem("authTokens");
 
       onRegisterSuccess?.(usuario);
       closeWithAnim();
@@ -115,7 +110,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
   const modalUI = (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[2000] w-screen h-screen bg-slate-900/60 backdrop-blur-sm
+      className="fixed inset-0 z-2000 w-screen h-screen bg-slate-900/60
                  flex items-center justify-center px-4"
       onClick={closeWithAnim}
     >
@@ -127,7 +122,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
+        <div className="bg-linear-to-r from-blue-600 to-indigo-600 px-6 py-4">
           <div className="flex items-center justify-between">
             <h2 className="text-white text-xl sm:text-2xl font-bold tracking-tight">
               Crear cuenta
@@ -144,7 +139,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
 
         {/* Card */}
         <div
-          className="bg-white/90 backdrop-blur-xl border border-slate-200/80
+          className="bg-white border border-slate-200
                         shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)] p-6"
         >
           {error && (
@@ -313,7 +308,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
               type="submit"
               disabled={loading}
               className="w-full inline-flex items-center justify-center gap-2 rounded-xl
-                         bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3
+                         bg-linear-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3
                          shadow-lg shadow-blue-600/20 hover:from-blue-700 hover:to-indigo-700
                          focus:ring-4 focus:ring-blue-200 transition disabled:opacity-60"
             >

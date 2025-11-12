@@ -1,22 +1,42 @@
 // src/pages/api/historias.ts
 import type { APIRoute } from 'astro';
-import { getDb } from '../../services/firebase/admin';
+import { getAllEventsService } from '../../backend/logic/services';
 
+console.log('API Layer: /api/historias cargado');
+
+/**
+ * GET /api/historias
+ * Obtiene todos los eventos históricos
+ * Sigue arquitectura: API Layer → Logic Layer → Data Layer
+ */
 export const GET: APIRoute = async () => {
+  console.log('API Layer: GET /api/historias - Solicitud recibida');
+
   try {
-    const db = getDb();
-    const snap = await db.collection('events').orderBy('fecha').get();
-    const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    return new Response(JSON.stringify({ success: true, data }), {
-      headers: { 'content-type': 'application/json' },
-    });
+    console.log('API Layer: Llamando a Logic Layer (getAllEventsService)');
+    const result = await getAllEventsService();
+
+    const status = result.success ? 200 : 500;
+
+    console.log(`API Layer: Respondiendo con status ${status}, ${result.success ? result.data?.length : 0} eventos`);
+    return new Response(
+      JSON.stringify(result),
+      {
+        headers: { 'content-type': 'application/json' },
+        status
+      }
+    );
   } catch (e: any) {
-    const msg = e?.message === 'NO_CREDS'
-      ? 'No hay credenciales. Define FIREBASE_SERVICE_ACCOUNT_BASE64 (recomendado) o FIREBASE_SERVICE_ACCOUNT_PATH, o bien FIREBASE_PROJECT_ID/FIREBASE_CLIENT_EMAIL/FIREBASE_PRIVATE_KEY.'
-      : (e?.message || 'Server error');
-    return new Response(JSON.stringify({ success: false, error: msg }), {
-      headers: { 'content-type': 'application/json' },
-      status: 500,
-    });
+    console.error('API Layer: Error en GET /api/historias:', e);
+    return new Response(
+      JSON.stringify({
+        success: false,
+        error: e?.message || 'Error interno del servidor'
+      }),
+      {
+        headers: { 'content-type': 'application/json' },
+        status: 500,
+      }
+    );
   }
 };

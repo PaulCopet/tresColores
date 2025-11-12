@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AdminDashboard from "../../components/AdminDashboard";
+---
+
+<Layout title="Panel de Administración - Historias de Colombia">
+        <AdminDashboard client:load />
+</Layout>
+
+<script>
+        // Verificar si el usuario es admin
+        const usuarioStr = localStorage.getItem("usuario");
+        if (!usuarioStr) {
+                window.location.href = "/calendario";
+        } else {
+                try {
+                        const usuario = JSON.parse(usuarioStr);
+                        if (usuario.rol !== "admin") {
+                                window.location.href = "/calendario";
+                        }
+                } catch {
+                        window.location.href = "/calendario";
+                }
+        }
+</script>

@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { gsap } from "gsap";
-import "animate.css";
 import type { EventModel } from "../backend/logic/models";
 import EventModal from "./EventModal";
 import LoginModal from "./LoginModal";
-import RegisterModal from "./RegisterModal";
+// import RegisterModal from "./RegisterModal";
+import AdminPanel from "./AdminPanel";
 import { createPortal } from "react-dom";
+import type { AuthTokens, UsuarioSesion } from "../shared/authTypes";
 
 const CalendarView: React.FC = () => {
   // ====== Estado general ======
@@ -27,14 +28,14 @@ const CalendarView: React.FC = () => {
     x: number;
     y: number;
   } | null>(null);
+  const calendarRootRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const calendarBtnRef = useRef<HTMLButtonElement>(null);
-  const listBtnRef = useRef<HTMLButtonElement>(null);
 
   // ====== Auth y modales ======
-  const [usuario, setUsuario] = useState<{ nombre: string; correo: string; rol: string } | null>(null);
+  const [usuario, setUsuario] = useState<UsuarioSesion | null>(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  // const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
 
   // ====== Popover avatar (portal fijo) ======
   const anchorRef = useRef<HTMLButtonElement>(null);
@@ -46,9 +47,10 @@ const CalendarView: React.FC = () => {
     if (!anchorRef.current) return;
     const r = anchorRef.current.getBoundingClientRect();
     const width = 200; // ancho del popover
+    const centerX = r.left + r.width / 2;
     setMenuPos({
       top: r.bottom + 8,
-      left: Math.max(8, r.right - width),
+      left: Math.max(8, Math.min(centerX - width / 2, window.innerWidth - width - 8)),
     });
   };
 
@@ -93,51 +95,84 @@ const CalendarView: React.FC = () => {
     };
   }, [menuOpen]);
 
+  // Animaciones con GSAP
+  useEffect(() => {
+    if (viewMode === "calendar") {
+      // Animar buscador
+      gsap.fromTo(
+        "[data-search]",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }
+      );
+
+      // Animar calendario
+      gsap.fromTo(
+        "[data-calendar]",
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.3, delay: 0.1, ease: "power2.out" }
+      );
+
+      // Animar lista del día
+      gsap.fromTo(
+        "[data-events]",
+        { opacity: 0, x: 20 },
+        { opacity: 1, x: 0, duration: 0.3, delay: 0.1, ease: "power2.out" }
+      );
+    } else {
+      // Vista lista
+      gsap.fromTo(
+        "[data-search]",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }
+      );
+
+      gsap.fromTo(
+        "[data-list]",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.3, delay: 0.1, ease: "power2.out" }
+      );
+    }
+  }, [viewMode, historias, date]);
+
+  // ====== Funciones para recargar datos ======
+  const fetchHistorias = async () => {
+    try {
+      const res = await fetch("/api/historias");
+      const data = await res.json();
+      if (data.success) setHistorias(data.data);
+    } catch (e) {
+      console.error("Error al cargar historias:", e);
+    }
+  };
+
   // ====== Data & sesión ======
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch("/api/historias");
-        const data = await res.json();
-        if (data.success) setHistorias(data.data);
-      } catch (e) {
-        console.error("Error al cargar historias:", e);
-      }
-    })();
+    fetchHistorias();
 
     const sesion = localStorage.getItem("usuario");
     if (sesion) {
       try {
-        setUsuario(JSON.parse(sesion));
+        const base = JSON.parse(sesion) as UsuarioSesion;
+        if (base && base.correo) {
+          const tokensRaw = localStorage.getItem("authTokens");
+          let tokens: AuthTokens | undefined;
+          if (tokensRaw) {
+            try {
+              tokens = JSON.parse(tokensRaw) as AuthTokens;
+            } catch {
+              localStorage.removeItem("authTokens");
+            }
+          }
+          setUsuario(tokens ? { ...base, tokens } : base);
+        }
       } catch {
         localStorage.removeItem("usuario");
+        localStorage.removeItem("authTokens");
       }
+    } else {
+      localStorage.removeItem("authTokens");
     }
   }, []);
-
-  // ====== Animaciones ======
-  useEffect(() => {
-    if (tooltip && tooltipRef.current) {
-      gsap.fromTo(
-        tooltipRef.current,
-        { opacity: 0, scale: 0.8, y: -10 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(1.7)" }
-      );
-    }
-  }, [tooltip]);
-
-  useEffect(() => {
-    const activeBtn = viewMode === "calendar" ? calendarBtnRef.current : listBtnRef.current;
-    const inactiveBtn = viewMode === "calendar" ? listBtnRef.current : calendarBtnRef.current;
-    if (activeBtn && inactiveBtn) {
-      gsap.fromTo(activeBtn, { scale: 0.95, opacity: 0.8 }, { scale: 1, opacity: 1, duration: 0.4, ease: "elastic.out(1,0.6)" });
-      const activeIcon = activeBtn.querySelector("svg");
-      if (activeIcon) {
-        gsap.fromTo(activeIcon, { rotate: -10, scale: 0.8 }, { rotate: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
-      }
-      gsap.to(inactiveBtn, { scale: 0.95, duration: 0.3, ease: "power2.out" });
-    }
-  }, [viewMode]);
 
   // ====== Helpers calendario ======
   const tileClassName = ({ date, view }: { date: Date; view: string }) => {
@@ -167,14 +202,7 @@ const CalendarView: React.FC = () => {
   };
 
   const handleTileLeave = () => {
-    if (tooltipRef.current) {
-      gsap.to(tooltipRef.current, {
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.2,
-        onComplete: () => setTooltip(null),
-      });
-    } else setTooltip(null);
+    setTooltip(null);
   };
 
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
@@ -238,39 +266,49 @@ const CalendarView: React.FC = () => {
 
   // ====== Auth handlers ======
   const openLogin = () => {
-    setIsRegisterOpen(false);
+    // setIsRegisterOpen(false);
     setIsLoginOpen(true);
   };
-  const openRegister = () => {
-    setIsLoginOpen(false);
-    setIsRegisterOpen(true);
-  };
-  const handleAuthSuccess = (u: { nombre: string; correo: string; rol: string }) => {
+  // const openRegister = () => {
+  //   setIsLoginOpen(false);
+  //   setIsRegisterOpen(true);
+  // };
+  const handleAuthSuccess = (u: UsuarioSesion) => {
     setUsuario(u);
-    localStorage.setItem("usuario", JSON.stringify(u));
+    const { tokens, ...usuarioPlano } = u;
+    localStorage.setItem("usuario", JSON.stringify(usuarioPlano));
+    if (tokens) {
+      localStorage.setItem("authTokens", JSON.stringify(tokens));
+    } else {
+      localStorage.removeItem("authTokens");
+    }
     setIsLoginOpen(false);
-    setIsRegisterOpen(false);
+    // setIsRegisterOpen(false);
   };
   const handleLogout = () => {
     setMenuOpen(false);
     setUsuario(null);
     localStorage.removeItem("usuario");
+    localStorage.removeItem("authTokens");
   };
 
   return (
-    <div>
+    <div ref={calendarRootRef}>
       {/* NAV superior */}
       <div className="mb-6">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between gap-4">
             {/* Buscador */}
-            <div className="relative grow max-w-2xl animate__animated animate__fadeInDown">
+            <div
+              className="relative grow max-w-2xl"
+              data-search
+            >
               <input
                 type="text"
                 placeholder="Buscar eventos históricos de Colombia..."
                 className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-3xl bg-white 
-                           transition-all duration-300 focus:border-blue-500 focus:ring-2
-                           focus:ring-blue-200 focus:outline-none text-base"
+                            transition-all duration-300 focus:border-blue-500 focus:ring-2
+                          focus:ring-blue-200 focus:outline-none text-base"
                 value={searchTerm}
                 onChange={handleSearch}
               />
@@ -280,13 +318,11 @@ const CalendarView: React.FC = () => {
             </div>
 
             {/* Toggle vista */}
-            <div className="flex items-center bg-gray-100 rounded-full p-1 relative shrink-0 animate__animated animate__fadeInLeft">
+            <div className="flex items-center bg-gray-100 rounded-full p-1 relative shrink-0">
               <button
-                ref={calendarBtnRef}
                 onClick={() => setViewMode("calendar")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors duration-300 ${
-                  viewMode === "calendar" ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:text-gray-900"
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${viewMode === "calendar" ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:text-gray-900"
+                  }`}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -295,11 +331,9 @@ const CalendarView: React.FC = () => {
               </button>
 
               <button
-                ref={listBtnRef}
                 onClick={() => setViewMode("list")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors duration-300 ${
-                  viewMode === "list" ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:text-gray-900"
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${viewMode === "list" ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:text-gray-900"
+                  }`}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -309,17 +343,16 @@ const CalendarView: React.FC = () => {
             </div>
 
             {/* Acciones de usuario */}
-            <div className="shrink-0 flex items-center gap-3 animate__animated animate__fadeInUp">
+            <div className="shrink-0 flex items-center gap-3">
               {usuario ? (
                 <>
                   <button
                     ref={anchorRef}
                     onClick={toggleMenu}
-                    onMouseEnter={openMenu}
-                    className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700
-                               flex items-center justify-center text-white font-bold text-sm
-                               shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
-                    aria-haspopup="menu"
+                    className="w-12 h-12 rounded-full bg-blue-600
+                              flex items-center justify-center text-white font-bold text-sm
+                              shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                    aria-haspopup="true"
                     aria-expanded={menuOpen}
                     title={`${usuario.nombre} (${usuario.rol})`}
                   >
@@ -336,12 +369,28 @@ const CalendarView: React.FC = () => {
                     createPortal(
                       <div
                         ref={menuRef}
-                        role="menu"
-                        className="fixed z-[99999] w-[200px] rounded-xl bg-slate-900 text-white p-3 shadow-2xl"
-                        style={{ top: menuPos.top, left: menuPos.left }}
+                        className="fixed z-50 w-[200px] rounded-xl bg-slate-900 text-white p-3 shadow-2xl popover-menu"
+                        style={{ top: `${menuPos.top}px`, left: `${menuPos.left}px` }}
                       >
                         <p className="font-semibold leading-5 truncate">{usuario.nombre || "—"}</p>
                         <p className="text-xs text-slate-300 capitalize">{usuario.rol || "usuario"}</p>
+
+                        {/* Botones de panel admin solo para administradores */}
+                        {usuario.rol === 'admin' && (
+                          <>
+                            <a
+                              href="/admin/dashboard"
+                              className="mt-3 w-full text-sm bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors flex items-center justify-center gap-2"
+                            >
+                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                              </svg>
+                              Panel Admin
+                            </a>
+
+                          </>
+                        )}
+
                         <button onClick={handleLogout} className="mt-2 text-sm text-red-400 hover:text-red-300">
                           Cerrar sesión
                         </button>
@@ -357,12 +406,12 @@ const CalendarView: React.FC = () => {
                   >
                     Ingresar
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => setIsRegisterOpen(true)}
                     className="px-3.5 py-1.5 rounded-full bg-gray-100 text-gray-800 text-sm font-medium hover:bg-gray-200 transition"
                   >
                     Registrarse
-                  </button>
+                  </button> */}
                 </>
               )}
             </div>
@@ -370,7 +419,7 @@ const CalendarView: React.FC = () => {
 
           {/* Resultados de búsqueda */}
           {isSearching && searchResults.length > 0 && (
-            <div className="absolute left-0 mt-1 w-xl bg-white rounded-xl shadow-xl border border-blue-100 overflow-y-auto max-h-[80vh] z-[99]">
+            <div className="absolute left-0 mt-1 w-xl bg-white rounded-xl shadow-xl border border-blue-100 overflow-y-auto max-h-[80vh] z-40">
               {searchResults.map((evento) => (
                 <div
                   key={evento.id}
@@ -400,7 +449,10 @@ const CalendarView: React.FC = () => {
         {viewMode === "calendar" ? (
           <div className="grid lg:grid-cols-5 gap-8">
             {/* Calendario */}
-            <div className="lg:col-span-3 animate__animated animate__fadeInLeft">
+            <div
+              className="lg:col-span-3"
+              data-calendar
+            >
               <div className="bg-white rounded-2xl shadow-xl p-6 mb-8">
                 <Calendar
                   onChange={(v: any) => {
@@ -417,7 +469,10 @@ const CalendarView: React.FC = () => {
             </div>
 
             {/* Lista del día */}
-            <div className="lg:col-span-2 animate__animated animate__fadeInRight">
+            <div
+              className="lg:col-span-2"
+              data-events
+            >
               <div>
                 {displayedEventos.length > 0 ? (
                   <div className="bg-white rounded-2xl shadow-xl p-6">
@@ -454,7 +509,7 @@ const CalendarView: React.FC = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="bg-white/80 backdrop-blur rounded-2xl shadow-lg p-8 text-center z-10">
+                  <div className="bg-white rounded-2xl shadow-lg p-8 text-center z-10">
                     <p className="text-gray-600 text-lg">No hay eventos registrados para esta fecha</p>
                   </div>
                 )}
@@ -463,7 +518,7 @@ const CalendarView: React.FC = () => {
           </div>
         ) : (
           // Vista de lista
-          <div className="bg-white rounded-2xl shadow-xl p-6">
+          <div className="bg-white rounded-2xl shadow-xl p-6" data-list>
             {historias.length > 0 ? (
               <div className="space-y-4">
                 {historias
@@ -533,17 +588,25 @@ const CalendarView: React.FC = () => {
         isOpen={isLoginOpen}
         onClose={() => setIsLoginOpen(false)}
         onLoginSuccess={handleAuthSuccess}
-        onSwitchToRegister={openRegister}
+      // onSwitchToRegister={openRegister}
       />
 
-      <RegisterModal
+      {/* <RegisterModal
         isOpen={isRegisterOpen}
         onClose={() => setIsRegisterOpen(false)}
         onRegisterSuccess={handleAuthSuccess}
         onSwitchToLogin={openLogin}
+      /> */}
+
+      {/* Panel de Administración */}
+      <AdminPanel
+        isOpen={isAdminPanelOpen}
+        onClose={() => setIsAdminPanelOpen(false)}
+        onEventCreated={fetchHistorias}
       />
     </div>
   );
 };
+
 
 export default CalendarView;

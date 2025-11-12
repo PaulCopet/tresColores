@@ -10,25 +10,35 @@ interface EventModalProps {
 
 const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
-  const modalRef   = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   // Si no hay evento, no renderiza
   if (!evento) return null;
 
-  // Animaciones + bloqueo de scroll + ESC
+  // Animación de entrada
   useEffect(() => {
-    // lock scroll
+    if (evento && overlayRef.current && modalRef.current) {
+      gsap.set(overlayRef.current, { opacity: 0 });
+      gsap.set(modalRef.current, { scale: 0.8 });
+
+      gsap.to(overlayRef.current, {
+        opacity: 1,
+        duration: 0.15,
+        ease: 'power2.out'
+      });
+
+      gsap.to(modalRef.current, {
+        scale: 1,
+        duration: 0.2,
+        ease: 'power2.out'
+      });
+    }
+  }, [evento]);
+
+  // Bloqueo de scroll + ESC
+  useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-
-    if (overlayRef.current && modalRef.current) {
-      gsap.fromTo(overlayRef.current, { opacity: 0 }, { opacity: 1, duration: 0.25 });
-      gsap.fromTo(
-        modalRef.current,
-        { opacity: 0, y: -18, scale: 0.98 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: 'power3.out' }
-      );
-    }
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') handleClose();
@@ -43,9 +53,21 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
   }, []);
 
   const handleClose = () => {
-    if (!overlayRef.current || !modalRef.current) return onClose();
-    gsap.to(modalRef.current, { opacity: 0, y: -10, scale: 0.98, duration: 0.2 });
-    gsap.to(overlayRef.current, { opacity: 0, duration: 0.2, onComplete: onClose });
+    if (overlayRef.current && modalRef.current) {
+      gsap.to(modalRef.current, {
+        scale: 0.8,
+        duration: 0.18,
+        ease: 'power2.in'
+      });
+      gsap.to(overlayRef.current, {
+        opacity: 0,
+        duration: 0.18,
+        ease: 'power2.in',
+        onComplete: onClose
+      });
+    } else {
+      onClose();
+    }
   };
 
   const fechaBonita = (() => {
@@ -60,7 +82,8 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
   return createPortal(
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[2000] w-screen h-screen bg-slate-900/60 backdrop-blur-sm
+      style={{ opacity: 0 }}
+      className="fixed inset-0 z-2000 w-screen h-screen bg-slate-900/60
                  flex items-center justify-center px-4"
       onClick={handleClose}
     >
@@ -68,11 +91,12 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
         ref={modalRef}
         role="dialog"
         aria-modal="true"
-        className="relative w-full max-w-3xl overflow-hidden rounded-2xl"
+        style={{ transform: 'scale(0.8)' }}
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-hidden rounded-2xl flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header en gradiente */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-5">
+        <div className="bg-linear-to-r from-blue-600 to-indigo-600 px-6 py-5">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
               <h2 className="text-white text-2xl sm:text-3xl font-bold leading-tight truncate">
@@ -81,15 +105,15 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-2 text-xs font-medium text-white/95 bg-white/10 px-3 py-1 rounded-full">
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3M5 11h14M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3M5 11h14M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   {fechaBonita}
                 </span>
                 {evento.ubicacion && (
                   <span className="inline-flex items-center gap-2 text-xs font-medium text-white/95 bg-white/10 px-3 py-1 rounded-full">
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z"/>
-                      <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M19.5 8c0 7-7.5 13-7.5 13S4.5 15 4.5 8a7.5 7.5 0 1115 0z"/>
+                      <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z" />
+                      <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M19.5 8c0 7-7.5 13-7.5 13S4.5 15 4.5 8a7.5 7.5 0 1115 0z" />
                     </svg>
                     {evento.ubicacion}
                   </span>
@@ -107,8 +131,8 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
           </div>
         </div>
 
-        {/* Card “glass” */}
-        <div className="bg-white/90 backdrop-blur-xl border border-slate-200/80
+        {/* Card "glass" */}
+        <div className="bg-white border border-slate-200
                         shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)]">
           {/* Contenido scrolleable */}
           <div className="max-h-[78vh] overflow-y-auto p-6 space-y-8">
@@ -149,7 +173,7 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
 
             {/* Consecuencias */}
             {consecuencias.length > 0 && (
-              <section>
+              <section className='pb-5'>
                 <h3 className="text-lg font-semibold text-slate-800 mb-4">Consecuencias históricas</h3>
                 <ul className="space-y-3">
                   {consecuencias.map((c, i) => (
@@ -161,18 +185,6 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
                 </ul>
               </section>
             )}
-          </div>
-
-          {/* Footer fijo */}
-          <div className="sticky bottom-0 bg-white/90 backdrop-blur px-6 py-4 border-t border-slate-200/80 flex justify-end">
-            <button
-              onClick={handleClose}
-              className="inline-flex items-center justify-center rounded-xl
-                         bg-slate-900 text-white font-semibold px-5 py-2.5
-                         hover:bg-black/90 transition"
-            >
-              Cerrar
-            </button>
           </div>
         </div>
       </div>

@@ -15,6 +15,15 @@ body {
   overflow-x: hidden;
 }
 
+/* Ajustes mínimos del calendario */
+.react-calendar__navigation {
+  background: transparent !important;
+}
+
+.react-calendar__navigation button {
+  color: #111827 !important;
+}
+
 /* Sobrescribir estilos del calendario para forzar colores azules */
 .react-calendar__tile--now {
   background: #eff6ff !important;

@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { auth, db } from '../../services/firebase/client'; 
+import { auth, db } from '../../services/firebase/client';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signOut,
 } from 'firebase/auth';
 import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
 
@@ -39,29 +38,35 @@ const AuthModal: React.FC<AuthModalProps> = ({
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMode(initialMode);           // resetea modo si el padre lo cambia
+    setMode(initialMode);
     setError('');
     setNombre('');
     setCorreo('');
     setContraseña('');
   }, [isOpen, initialMode]);
 
-  // Animación
   useEffect(() => {
-    if (isOpen && modalRef.current && overlayRef.current) {
-      gsap.fromTo(overlayRef.current, { opacity: 0 }, { opacity: 1, duration: 0.25 });
-      gsap.fromTo(
-        modalRef.current,
-        { opacity: 0, scale: 0.9, y: -24 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: 'back.out(1.6)' }
+    if (isOpen && overlayRef.current && modalRef.current) {
+      gsap.fromTo(overlayRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.2, ease: 'power2.out' }
+      );
+      gsap.fromTo(modalRef.current,
+        { opacity: 0, scale: 0.9, y: 20 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: 'power3.out' }
       );
     }
   }, [isOpen]);
 
   const closeWithAnim = () => {
-    if (modalRef.current && overlayRef.current) {
-      gsap.to(modalRef.current, { opacity: 0, scale: 0.9, duration: 0.2 });
-      gsap.to(overlayRef.current, { opacity: 0, duration: 0.2, onComplete: onClose });
+    if (overlayRef.current && modalRef.current) {
+      gsap.to(modalRef.current, {
+        opacity: 0, scale: 0.95, y: 10, duration: 0.2, ease: 'power2.in'
+      });
+      gsap.to(overlayRef.current, {
+        opacity: 0, duration: 0.2, ease: 'power2.in',
+        onComplete: onClose
+      });
     } else {
       onClose();
     }
@@ -134,7 +139,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
       onClick={closeWithAnim}
     >
       <div
@@ -143,7 +148,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6">
+        <div className="bg-linear-to-r from-blue-600 to-blue-700 p-6">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold text-white">
               {mode === 'login' ? 'Iniciar Sesión' : 'Crear Cuenta'}
@@ -155,7 +160,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
               type="button"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
@@ -210,13 +215,13 @@ const AuthModal: React.FC<AuthModalProps> = ({
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
                 <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                 </svg>
                 {mode === 'login' ? 'Ingresando...' : 'Creando cuenta...'}
               </>

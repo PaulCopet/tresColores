@@ -1,22 +1,27 @@
-import { initializeApp, getApps, getApp } from 'firebase/app';
+import { initializeApp, getApps, getApp, type FirebaseOptions } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { env } from '../env';
 
 console.log('Frontend: Inicializando conexion con Firebase Client SDK');
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDHDuAKIbPltzb8Zj9opaVEQJDnxztyowQ",
-    authDomain: "trescolores-650d9.firebaseapp.com",
-    projectId: "trescolores-650d9",
-    storageBucket: "trescolores-650d9.firebasestorage.app",
-    messagingSenderId: "144531600305",
-    appId: "1:144531600305:web:f8822e7f61dd703fd84390"
+const firebaseConfig: FirebaseOptions = {
+    apiKey: env('PUBLIC_FIREBASE_API_KEY'),
+    authDomain: env('PUBLIC_FIREBASE_AUTH_DOMAIN'),
+    projectId: env('PUBLIC_FIREBASE_PROJECT_ID'),
+    storageBucket: env('PUBLIC_FIREBASE_STORAGE_BUCKET'),
+    messagingSenderId: env('PUBLIC_FIREBASE_MESSAGING_SENDER_ID'),
+    appId: env('PUBLIC_FIREBASE_APP_ID'),
+    measurementId: env('PUBLIC_FIREBASE_MEASUREMENT_ID')
 };
 
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId) {
+    throw new Error('Faltan variables PUBLIC_FIREBASE_* requeridas para inicializar el cliente.');
+}
+
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig as Record<string, string>);
 console.log('Frontend: Firebase Client SDK inicializado correctamente');
 
-// Useful singletons
 export const auth = getAuth(app);
 console.log('Frontend: Firebase Authentication conectado');
 

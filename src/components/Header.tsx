@@ -1,38 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import LoginModal from './LoginModal';
-import { gsap } from 'gsap';
+import type { AuthTokens, UsuarioSesion } from '../shared/authTypes';
 
 const Header: React.FC = () => {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
-    const [usuario, setUsuario] = useState<{ nombre: string; rol: string } | null>(null);
+    const [usuario, setUsuario] = useState<UsuarioSesion | null>(null);
 
     // Cargar sesión desde localStorage al montar
     useEffect(() => {
         const sesionGuardada = localStorage.getItem('usuario');
         if (sesionGuardada) {
-            setUsuario(JSON.parse(sesionGuardada));
+            try {
+                const base = JSON.parse(sesionGuardada) as UsuarioSesion;
+                const tokensRaw = localStorage.getItem('authTokens');
+                let tokens: AuthTokens | undefined;
+                if (tokensRaw) {
+                    try {
+                        tokens = JSON.parse(tokensRaw) as AuthTokens;
+                    } catch {
+                        localStorage.removeItem('authTokens');
+                    }
+                }
+                setUsuario(tokens ? { ...base, tokens } : base);
+            } catch {
+                localStorage.removeItem('usuario');
+                localStorage.removeItem('authTokens');
+            }
+        } else {
+            localStorage.removeItem('authTokens');
         }
     }, []);
 
-    const handleLogin = (nombre: string, rol: string) => {
-        const usuarioData = { nombre, rol };
-        setUsuario(usuarioData);
-        localStorage.setItem('usuario', JSON.stringify(usuarioData));
-
-        // Mostrar mensaje de bienvenida
-        const welcomeMsg = document.getElementById('welcome-message');
-        if (welcomeMsg) {
-            gsap.fromTo(
-                welcomeMsg,
-                { opacity: 0, y: -20 },
-                { opacity: 1, y: 0, duration: 0.5, ease: 'back.out(1.7)' }
-            );
+    const handleLogin = (usuarioSesion: UsuarioSesion) => {
+        const { tokens, ...usuarioPlano } = usuarioSesion;
+        setUsuario(usuarioPlano);
+        localStorage.setItem('usuario', JSON.stringify(usuarioPlano));
+        if (tokens) {
+            localStorage.setItem('authTokens', JSON.stringify(tokens));
+        } else {
+            localStorage.removeItem('authTokens');
         }
+        setIsLoginOpen(false);
     };
 
     const handleLogout = () => {
         setUsuario(null);
         localStorage.removeItem('usuario');
+        localStorage.removeItem('authTokens');
     };
 
     return (
@@ -56,7 +70,7 @@ const Header: React.FC = () => {
                             {usuario ? (
                                 <>
                                     {/* Mensaje de bienvenida */}
-                                    <div id="welcome-message" className="text-right hidden sm:block">
+                                    <div className="text-right hidden sm:block">
                                         <p className="text-sm font-medium text-gray-800">
                                             Bienvenido, <span className="text-blue-600">{usuario.nombre}</span>
                                         </p>
@@ -78,7 +92,7 @@ const Header: React.FC = () => {
                                 /* Botón de ingresar */
                                 <button
                                     onClick={() => setIsLoginOpen(true)}
-                                    className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-medium shadow-md hover:shadow-lg"
+                                    className="flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-medium shadow-md hover:shadow-lg"
                                 >
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
@@ -95,7 +109,8 @@ const Header: React.FC = () => {
             <LoginModal
                 isOpen={isLoginOpen}
                 onClose={() => setIsLoginOpen(false)}
-                onLogin={handleLogin}
+                onSwitchToRegister={() => setIsLoginOpen(false)}
+                onLoginSuccess={handleLogin}
             />
         </>
     );

@@ -1,16 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "gsap";
+import type { AuthTokens, UsuarioSesion } from "../shared/authTypes";
 
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSwitchToRegister: () => void; // abre el modal de registro
-  onLoginSuccess?: (usuario: {
-    nombre: string;
-    correo: string;
-    rol: string;
-  }) => void;
+  onSwitchToRegister?: () => void; // abre el modal de registro
+  onLoginSuccess?: (usuario: UsuarioSesion) => void;
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({
@@ -30,32 +27,29 @@ const LoginModal: React.FC<LoginModalProps> = ({
 
   useEffect(() => {
     if (isOpen && overlayRef.current && modalRef.current) {
-      gsap.fromTo(
-        overlayRef.current,
+      gsap.fromTo(overlayRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.25 }
+        { opacity: 1, duration: 0.2, ease: 'power2.out' }
       );
-      gsap.fromTo(
-        modalRef.current,
-        { opacity: 0, y: -18, scale: 0.98 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "power3.out" }
+      gsap.fromTo(modalRef.current,
+        { opacity: 0, scale: 0.9, y: 20 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: 'power3.out' }
       );
     }
   }, [isOpen]);
 
   const closeWithAnim = () => {
-    if (!overlayRef.current || !modalRef.current) return onClose();
-    gsap.to(modalRef.current, {
-      opacity: 0,
-      y: -10,
-      scale: 0.98,
-      duration: 0.2,
-    });
-    gsap.to(overlayRef.current, {
-      opacity: 0,
-      duration: 0.2,
-      onComplete: onClose,
-    });
+    if (overlayRef.current && modalRef.current) {
+      gsap.to(modalRef.current, {
+        opacity: 0, scale: 0.95, y: 10, duration: 0.2, ease: 'power2.in'
+      });
+      gsap.to(overlayRef.current, {
+        opacity: 0, duration: 0.2, ease: 'power2.in',
+        onComplete: onClose
+      });
+    } else {
+      onClose();
+    }
   };
 
   const inputBase =
@@ -87,6 +81,19 @@ const LoginModal: React.FC<LoginModalProps> = ({
       if (!data?.success)
         throw new Error(data?.message || "Credenciales incorrectas");
 
+      const tokensRaw = data.tokens as AuthTokens | undefined;
+      const expiresIn = tokensRaw?.expiresIn;
+      const parsedTokens = tokensRaw?.idToken
+        ? {
+          idToken: tokensRaw.idToken,
+          refreshToken: tokensRaw.refreshToken,
+          expiresIn,
+          expiresAt:
+            tokensRaw.expiresAt ??
+            (typeof expiresIn === "number" ? Date.now() + expiresIn * 1000 : undefined),
+        }
+        : undefined;
+
       const usuario = {
         nombre: data.usuario?.nombre ?? "Usuario",
         correo: data.usuario?.correo ?? correo,
@@ -94,7 +101,20 @@ const LoginModal: React.FC<LoginModalProps> = ({
       };
 
       localStorage.setItem("usuario", JSON.stringify(usuario));
-      onLoginSuccess?.(usuario);
+      if (parsedTokens) {
+        localStorage.setItem("authTokens", JSON.stringify(parsedTokens));
+      } else {
+        localStorage.removeItem("authTokens");
+      }
+
+      const usuarioConTokens: UsuarioSesion = { ...usuario, tokens: parsedTokens };
+      onLoginSuccess?.(usuarioConTokens);
+
+      if (usuario.rol === "admin" && typeof window !== "undefined") {
+        window.location.href = "/admin/dashboard";
+        return;
+      }
+
       closeWithAnim();
     } catch (err: any) {
       setError(err?.message || "No se pudo iniciar sesión.");
@@ -108,7 +128,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
   const modalUI = (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[2000] w-screen h-screen bg-slate-900/60 backdrop-blur-sm
+      className="fixed inset-0 z-2000 w-screen h-screen bg-slate-900/60
                  flex items-center justify-center px-4"
       onClick={closeWithAnim}
     >
@@ -120,7 +140,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
+        <div className="bg-linear-to-r from-blue-600 to-indigo-600 px-6 py-4">
           <div className="flex items-center justify-between">
             <h2 className="text-white text-xl sm:text-2xl font-bold tracking-tight">
               Iniciar Sesión
@@ -137,7 +157,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
 
         {/* Card */}
         <div
-          className="bg-white/90 backdrop-blur-xl border border-slate-200/80
+          className="bg-white border border-slate-200
                         shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)] p-6"
         >
           {error && (
@@ -232,7 +252,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
               type="submit"
               disabled={loading}
               className="w-full inline-flex items-center justify-center gap-2 rounded-xl
-                         bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3
+                         bg-linear-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3
                          shadow-lg shadow-blue-600/20 hover:from-blue-700 hover:to-indigo-700
                          focus:ring-4 focus:ring-blue-200 transition disabled:opacity-60"
             >
@@ -265,19 +285,19 @@ const LoginModal: React.FC<LoginModalProps> = ({
             </button>
 
             {/* Switch */}
-            <p className="text-center text-sm text-slate-600">
+            {/* <p className="text-center text-sm text-slate-600">
               ¿No tienes cuenta?{" "}
               <button
                 type="button"
                 onClick={() => {
                   closeWithAnim();
-                  onSwitchToRegister();
+                  onSwitchToRegister?.();
                 }}
                 className="font-semibold text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline"
               >
                 Regístrate
               </button>
-            </p>
+            </p> */}
           </form>
         </div>
       </div>
