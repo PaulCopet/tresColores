@@ -13,14 +13,14 @@ export const GetUserSchema = z.object({ id: z.string().min(1) });
 const IntegranteSchema = z.object({
     nombre: z.string().min(1, 'El nombre del integrante es obligatorio'),
     rol: z.string().min(1, 'El rol del integrante es obligatorio'),
-    descripcion: z.string().optional().default('')
+    descripcion: z.string().default('')
 });
 
 // Schema para crear un evento
 export const CreateEventSchema = z.object({
     nombre: z.string().min(1, 'El título del evento es obligatorio'),
     fecha: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'La fecha debe estar en formato YYYY-MM-DD'),
-    descripcion: z.string().min(10, 'La descripción debe tener al menos 10 caracteres'),
+    descripcion: z.string().min(1, 'La descripción es obligatoria'),
     ubicacion: z.string().min(1, 'La ubicación es obligatoria'),
     integrantes: z.array(IntegranteSchema).min(1, 'Debe agregar al menos un integrante'),
     consecuencias: z.array(z.string()).optional().default([])

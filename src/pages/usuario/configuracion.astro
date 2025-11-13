@@ -1,0 +1,10 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import UserSettings from "../../components/UserSettings";
+---
+
+<Layout title="Configuración de Usuario">
+        <div class="container mx-auto px-4 py-8">
+                <UserSettings client:only="react" />
+        </div>
+</Layout>

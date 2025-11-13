@@ -10,9 +10,11 @@ import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
 type Mode = 'login' | 'register';
 
 export interface AuthUser {
+  uid: string;
   nombre: string;
   correo: string;
   rol: string;
+  avatarNumber?: number;
 }
 
 interface AuthModalProps {
@@ -77,16 +79,35 @@ const AuthModal: React.FC<AuthModalProps> = ({
     setIsLoading(true);
     try {
       const cred = await signInWithEmailAndPassword(auth, correo.trim(), contraseña);
-      // trae rol/nombre desde Firestore
-      const snap = await getDoc(doc(db, 'users', cred.user.uid));
-      const data = snap.exists() ? snap.data() as any : {};
-      const rol = data?.rol ?? 'usuario';
-      const nombreUi =
-        data?.nombre ??
-        cred.user.displayName ??
-        correo.split('@')[0];
 
-      onAuthSuccess?.({ nombre: nombreUi, correo, rol });
+      // Obtener datos del usuario desde Firestore
+      const userDocRef = doc(db, 'users', cred.user.uid);
+      const snap = await getDoc(userDocRef);
+      const data = snap.exists() ? snap.data() as any : {};
+
+      // rol: 1 = usuario, 2 = admin
+      const rolNumero = data?.rol ?? 1;
+      const rol = rolNumero === 2 ? 'admin' : 'usuario';
+
+      const nombreUi = data?.nombre ?? cred.user.displayName ?? correo.split('@')[0];
+      const avatarNumber = data?.avatarNumber || 1;
+
+      // Migración: Si el documento no tiene uid o avatarNumber, agregarlos
+      if (!data?.uid || !data?.avatarNumber) {
+        await setDoc(userDocRef, {
+          ...data,
+          uid: cred.user.uid,
+          avatarNumber: data?.avatarNumber || 1,
+        }, { merge: true });
+      }
+
+      onAuthSuccess?.({
+        uid: cred.user.uid,
+        nombre: nombreUi,
+        correo,
+        rol,
+        avatarNumber
+      });
       closeWithAnim();
     } catch (e: any) {
       setError(e?.message || 'No se pudo iniciar sesión');
@@ -100,17 +121,23 @@ const AuthModal: React.FC<AuthModalProps> = ({
     setIsLoading(true);
     try {
       const { user } = await createUserWithEmailAndPassword(auth, correo.trim(), contraseña);
+
+      // Guardar en Firestore con rol = 1 (usuario por defecto)
       await setDoc(doc(db, 'users', user.uid), {
+        uid: user.uid,
         nombre: nombre || correo.split('@')[0],
         correo,
-        rol: 'usuario',               // SIEMPRE usuario (admin solo por dashboard/script)
+        rol: 1, // 1 = usuario, 2 = admin (cambiar manualmente en Firestore)
+        avatarNumber: 1, // Avatar 1 por defecto
         createdAt: serverTimestamp(),
       });
 
       onAuthSuccess?.({
+        uid: user.uid,
         nombre: nombre || correo.split('@')[0],
         correo,
         rol: 'usuario',
+        avatarNumber: 1
       });
       closeWithAnim();
     } catch (e: any) {
@@ -230,7 +257,8 @@ const AuthModal: React.FC<AuthModalProps> = ({
             )}
           </button>
 
-          {/* Toggle login/registro */}
+          {/* Toggle login/registro - Temporalmente ocultado */}
+          {/* 
           <p className="text-center text-sm text-gray-600">
             {mode === 'login' ? (
               <>
@@ -256,6 +284,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
               </>
             )}
           </p>
+          */}
         </form>
       </div>
     </div>

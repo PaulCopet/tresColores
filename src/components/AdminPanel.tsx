@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import type { EventModel, Integrante } from '../backend/logic/models';
+import Toast from './Toast';
 
 interface AdminPanelProps {
     isOpen: boolean;
@@ -23,6 +24,9 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, onEventCreated
     const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [currentTab, setCurrentTab] = useState<'basic' | 'integrantes' | 'consecuencias'>('basic');
+    const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState('');
+    const [toastType, setToastType] = useState<'success' | 'error' | 'info'>('success');
 
     // Refs para animaciones
     const modalRef = useRef<HTMLDivElement>(null);
@@ -170,15 +174,23 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, onEventCreated
                 const data = await response.json();
 
                 if (data.ok || data.success) {
-                    setSuccess('Evento actualizado exitosamente');
                     if (onEventCreated) {
                         onEventCreated();
                     }
+                    
+                    // Cerrar modal inmediatamente
+                    handleClose();
+                    
+                    // Mostrar toast después de cerrar modal
                     setTimeout(() => {
-                        handleClose();
-                    }, 1500);
+                        setToastMessage('Evento actualizado exitosamente');
+                        setToastType('success');
+                        setShowToast(true);
+                    }, 300);
                 } else {
-                    setError(data.message || data.error || 'Error al actualizar el evento');
+                    setToastMessage(data.message || data.error || 'Error al actualizar el evento');
+                    setToastType('error');
+                    setShowToast(true);
                 }
             } else {
                 const response = await fetch('/api/eventos/create', {
@@ -192,19 +204,29 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, onEventCreated
                 const data = await response.json();
 
                 if (data.success) {
-                    setSuccess('¡Evento creado exitosamente!');
                     if (onEventCreated) {
                         onEventCreated();
                     }
+                    
+                    // Cerrar modal inmediatamente
+                    handleClose();
+                    
+                    // Mostrar toast después de cerrar modal
                     setTimeout(() => {
-                        handleClose();
-                    }, 2000);
+                        setToastMessage('¡Evento creado exitosamente!');
+                        setToastType('success');
+                        setShowToast(true);
+                    }, 300);
                 } else {
-                    setError(data.message || 'Error al crear el evento');
+                    setToastMessage(data.message || 'Error al crear el evento');
+                    setToastType('error');
+                    setShowToast(true);
                 }
             }
         } catch (err) {
-            setError('Error al conectar con el servidor. Intenta de nuevo.');
+            setToastMessage('Error al conectar con el servidor. Intenta de nuevo.');
+            setToastType('error');
+            setShowToast(true);
         } finally {
             setIsLoading(false);
         }
@@ -239,14 +261,25 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, onEventCreated
         setConsecuencias(newConsecuencias);
     };
 
-    if (!isOpen) return null;
+    if (!isOpen) return (
+        <>
+            {/* Toast de notificación - siempre disponible */}
+            <Toast
+                message={toastMessage}
+                type={toastType}
+                isVisible={showToast}
+                onClose={() => setShowToast(false)}
+            />
+        </>
+    );
 
     return (
-        <div
-            ref={overlayRef}
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
-            onClick={handleClose}
-        >
+        <>
+            <div
+                ref={overlayRef}
+                className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+                onClick={handleClose}
+            >
             <div
                 ref={modalRef}
                 className="bg-white rounded-2xl max-w-4xl w-full shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
@@ -563,6 +596,15 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, onEventCreated
                 </div>
             </div>
         </div>
+            
+            {/* Toast de notificación - fuera del modal */}
+            <Toast
+                message={toastMessage}
+                type={toastType}
+                isVisible={showToast}
+                onClose={() => setShowToast(false)}
+            />
+        </>
     );
 };
 

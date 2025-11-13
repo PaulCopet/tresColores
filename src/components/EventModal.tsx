@@ -1,19 +1,47 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { gsap } from 'gsap';
-import type { EventModel } from '../backend/logic/models';
+import type { EventModel, Comentario } from '../backend/logic/models';
+import type { UsuarioSesion } from '../shared/authTypes';
+import CommentsSection from './CommentsSection';
 
 interface EventModalProps {
   evento: EventModel | null;
+  usuario: UsuarioSesion | null;
   onClose: () => void;
 }
 
-const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
+const EventModal: React.FC<EventModalProps> = ({ evento, usuario, onClose }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  const [comentarios, setComentarios] = useState<Comentario[]>([]);
+  const [loadingComentarios, setLoadingComentarios] = useState(true);
 
   // Si no hay evento, no renderiza
   if (!evento) return null;
+
+  // Cargar comentarios desde la API
+  useEffect(() => {
+    const fetchComentarios = async () => {
+      if (!evento?.id) return;
+
+      try {
+        setLoadingComentarios(true);
+        const res = await fetch(`/api/comentarios/evento?eventoId=${encodeURIComponent(evento.id)}`);
+        const data = await res.json();
+
+        if (data.success) {
+          setComentarios(data.data);
+        }
+      } catch (error) {
+        console.error('Error al cargar comentarios:', error);
+      } finally {
+        setLoadingComentarios(false);
+      }
+    };
+
+    fetchComentarios();
+  }, [evento?.id]);
 
   // Animación de entrada
   useEffect(() => {
@@ -83,8 +111,8 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
     <div
       ref={overlayRef}
       style={{ opacity: 0 }}
-      className="fixed inset-0 z-2000 w-screen h-screen bg-slate-900/60
-                 flex items-center justify-center px-4"
+      className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm 
+                 flex items-center justify-center p-4 md:p-6"
       onClick={handleClose}
     >
       <div
@@ -92,99 +120,219 @@ const EventModal: React.FC<EventModalProps> = ({ evento, onClose }) => {
         role="dialog"
         aria-modal="true"
         style={{ transform: 'scale(0.8)' }}
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-hidden rounded-2xl flex flex-col"
+        className="relative w-full h-[90vh] md:max-w-4xl lg:max-w-5xl 
+                   bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header en gradiente */}
-        <div className="bg-linear-to-r from-blue-600 to-indigo-600 px-6 py-5">
-          <div className="flex items-start justify-between gap-4">
-            <div className="min-w-0">
-              <h2 className="text-white text-2xl sm:text-3xl font-bold leading-tight truncate">
+        {/* Header minimalista */}
+        <div className="flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex-1 min-w-0">
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 truncate">
                 {evento.nombre}
-              </h2>
-              <div className="mt-2 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-2 text-xs font-medium text-white/95 bg-white/10 px-3 py-1 rounded-full">
-                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3M5 11h14M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </h1>
+              <div className="flex items-center gap-4 mt-2 text-sm text-gray-600">
+                <div className="flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   {fechaBonita}
-                </span>
+                </div>
                 {evento.ubicacion && (
-                  <span className="inline-flex items-center gap-2 text-xs font-medium text-white/95 bg-white/10 px-3 py-1 rounded-full">
-                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z" />
-                      <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M19.5 8c0 7-7.5 13-7.5 13S4.5 15 4.5 8a7.5 7.5 0 1115 0z" />
+                  <div className="flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     {evento.ubicacion}
-                  </span>
+                  </div>
                 )}
               </div>
             </div>
 
             <button
               onClick={handleClose}
-              className="shrink-0 rounded-lg p-2 text-white/90 hover:text-white hover:bg-white/10 transition"
-              aria-label="Cerrar"
+              className="flex-shrink-0 w-8 h-8 rounded-full hover:bg-gray-100 
+                         flex items-center justify-center transition-colors"
+              aria-label="Cerrar modal"
             >
-              ✕
+              <svg className="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
           </div>
         </div>
 
-        {/* Card "glass" */}
-        <div className="bg-white border border-slate-200
-                        shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)]">
-          {/* Contenido scrolleable */}
-          <div className="max-h-[78vh] overflow-y-auto p-6 space-y-8">
-            {/* Descripción */}
-            {evento.descripcion && (
-              <section>
-                <h3 className="text-lg font-semibold text-slate-800 mb-2">Descripción</h3>
-                <p className="text-slate-700 leading-relaxed">
-                  {evento.descripcion}
-                </p>
-              </section>
-            )}
+        {/* Contenido principal con scroll */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-6 space-y-8">
+            {/* Grid principal de contenido */}
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Columna principal - Descripción */}
+              <div className="lg:col-span-2 space-y-6">
+                {evento.descripcion && (
+                  <div className="bg-gray-50 rounded-xl p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-1 h-6 bg-blue-600 rounded-full"></div>
+                      <h2 className="text-xl font-bold text-gray-900">Historia del Evento</h2>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed text-base">
+                      {evento.descripcion}
+                    </p>
+                  </div>
+                )}
 
-            {/* Personajes */}
-            {integrantes.length > 0 && (
-              <section>
-                <h3 className="text-lg font-semibold text-slate-800 mb-4">Personajes principales</h3>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {integrantes.map((it, idx) => (
-                    <article
-                      key={idx}
-                      className="rounded-xl border border-blue-100 bg-blue-50/60 p-4"
-                    >
-                      <p className="text-blue-800 font-bold text-lg truncate">{it.nombre}</p>
-                      {it.rol && (
-                        <p className="text-blue-700 font-medium mt-1">{it.rol}</p>
-                      )}
-                      {it.descripcion && (
-                        <p className="text-slate-700 mt-2 text-sm leading-relaxed">
-                          {it.descripcion}
-                        </p>
-                      )}
-                    </article>
-                  ))}
-                </div>
-              </section>
-            )}
+                {/* Consecuencias */}
+                {consecuencias.length > 0 && (
+                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-1 h-6 bg-indigo-600 rounded-full"></div>
+                      <h2 className="text-xl font-bold text-gray-900">Impacto Histórico</h2>
+                    </div>
+                    <div className="space-y-3">
+                      {consecuencias.map((c, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-indigo-600 rounded-full mt-2 shrink-0"></div>
+                          <p className="text-gray-700 text-base leading-relaxed">{c}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
-            {/* Consecuencias */}
-            {consecuencias.length > 0 && (
-              <section className='pb-5'>
-                <h3 className="text-lg font-semibold text-slate-800 mb-4">Consecuencias históricas</h3>
-                <ul className="space-y-3">
-                  {consecuencias.map((c, i) => (
-                    <li key={i} className="flex items-start gap-3 text-slate-700">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-blue-600"></span>
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
+              {/* Sidebar - Personajes */}
+              <div className="lg:col-span-1">
+                {integrantes.length > 0 && (
+                  <div className="bg-white border border-gray-200 rounded-xl p-6 sticky top-0">
+                    <div className="flex items-center gap-2 mb-6">
+                      <div className="w-1 h-6 bg-green-600 rounded-full"></div>
+                      <h2 className="text-xl font-bold text-gray-900">Protagonistas</h2>
+                    </div>
+                    <div className="space-y-4">
+                      {integrantes.map((it, idx) => (
+                        <div
+                          key={idx}
+                          className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-100"
+                        >
+                          <h3 className="font-bold text-gray-900 text-base mb-1">{it.nombre}</h3>
+                          {it.rol && (
+                            <p className="text-green-700 font-medium text-sm mb-2">{it.rol}</p>
+                          )}
+                          {it.descripcion && (
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                              {it.descripcion}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Sección de comentarios - ancho completo */}
+            <div className="border-t border-gray-200 pt-8">
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-1 h-6 bg-orange-600 rounded-full"></div>
+                <h2 className="text-xl font-bold text-gray-900">Comentarios de la Comunidad</h2>
+              </div>
+
+              <CommentsSection
+                eventoId={evento.id}
+                comentarios={comentarios}
+                usuario={usuario}
+                onAddComment={async (contenido) => {
+                  if (!usuario) return;
+
+                  try {
+                    const res = await fetch('/api/comentarios/usuario', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        eventoId: evento.id,
+                        usuarioId: usuario.correo,
+                        usuarioNombre: usuario.nombre,
+                        contenido,
+                      }),
+                    });
+
+                    const data = await res.json();
+
+                    if (data.success) {
+                      const nuevoComentario: Comentario = {
+                        id: data.data.id,
+                        eventoId: evento.id,
+                        usuarioId: usuario.correo,
+                        usuarioNombre: usuario.nombre,
+                        contenido,
+                        fechaCreacion: new Date().toISOString(),
+                        estado: 'pendiente',
+                      };
+                      setComentarios([...comentarios, nuevoComentario]);
+                      alert('Comentario enviado. Será visible una vez aprobado por un administrador.');
+                    } else {
+                      alert('Error al crear comentario: ' + data.error);
+                    }
+                  } catch (error) {
+                    console.error('Error al crear comentario:', error);
+                    alert('Error al crear comentario');
+                  }
+                }}
+                onEditComment={async (comentarioId: string, nuevoContenido: string) => {
+                  try {
+                    const res = await fetch('/api/comentarios/usuario', {
+                      method: 'PUT',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        comentarioId,
+                        contenido: nuevoContenido,
+                      }),
+                    });
+
+                    const data = await res.json();
+
+                    if (data.success) {
+                      setComentarios(
+                        comentarios.map((c) =>
+                          c.id === comentarioId
+                            ? { ...c, contenido: nuevoContenido, estado: 'pendiente' as const }
+                            : c
+                        )
+                      );
+                      alert('Comentario editado. Será revisado nuevamente.');
+                    } else {
+                      alert('Error al editar comentario: ' + data.error);
+                    }
+                  } catch (error) {
+                    console.error('Error al editar comentario:', error);
+                    alert('Error al editar comentario');
+                  }
+                }}
+                onDeleteComment={async (comentarioId) => {
+                  if (!confirm('¿Estás seguro de eliminar este comentario?')) return;
+
+                  try {
+                    const res = await fetch(`/api/comentarios/usuario?comentarioId=${encodeURIComponent(comentarioId)}`, {
+                      method: 'DELETE',
+                    });
+
+                    const data = await res.json();
+
+                    if (data.success) {
+                      setComentarios(comentarios.filter((c) => c.id !== comentarioId));
+                      alert('Comentario eliminado');
+                    } else {
+                      alert('Error al eliminar comentario: ' + data.error);
+                    }
+                  } catch (error) {
+                    console.error('Error al eliminar comentario:', error);
+                    alert('Error al eliminar comentario');
+                  }
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

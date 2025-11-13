@@ -9,8 +9,10 @@ export type AuthTokens = {
 };
 
 export type UsuarioSesion = {
+    uid: string;
     nombre: string;
     correo: string;
     rol: string;
+    avatarNumber?: number;
     tokens?: AuthTokens;
 };

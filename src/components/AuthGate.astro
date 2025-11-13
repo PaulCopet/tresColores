@@ -1,14 +1,30 @@
 ---
 const { requireAdmin = false } = Astro.props as { requireAdmin?: boolean };
-const res = await fetch(Astro.request.url.origin + '/api/auth/me', { headers: { cookie: Astro.request.headers.get('cookie') || '' } });
+const origin = new URL(Astro.request.url).origin;
+const res = await fetch(origin + "/api/auth/me", {
+        headers: { cookie: Astro.request.headers.get("cookie") || "" },
+});
 const me = res.ok ? await res.json() : null;
-const role = me?.claims?.role || null;
+
+function normalizeRole(value: any) {
+        if (value === undefined || value === null) return null;
+        if (typeof value === "number") return value === 2 ? "admin" : "usuario";
+        if (typeof value === "string") {
+                const lower = value.toLowerCase();
+                if (lower === "admin" || lower === "2") return "admin";
+                return "usuario";
+        }
+        return null;
+}
+
+const role = normalizeRole(me?.role ?? me?.claims?.role ?? null);
 
 if (!me?.uid) {
-  return Astro.redirect('/login');
+        return Astro.redirect("/login");
 }
-if (requireAdmin && role !== 'admin') {
-  return Astro.redirect('/');
+if (requireAdmin && role !== "admin") {
+        return Astro.redirect("/");
 }
 ---
+
 <slot />

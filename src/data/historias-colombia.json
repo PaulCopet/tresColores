@@ -1,675 +1,675 @@
 {
-    "historias": [
+  "historias": [
+    {
+      "id": "1948-04-09",
+      "fecha": "1948-04-09",
+      "nombre": "El Bogotazo",
+      "descripcion": "El 9 de abril de 1948, a la 1:05 p.m., Jorge Eliécer Gaitán, el líder indiscutible del Partido Liberal y candidato presidencial con mayor favorabilidad para las elecciones de 1950, fue asesinado de tres disparos en el centro de Bogotá cuando se dirigía a almorzar. Juan Roa Sierra, un joven de 24 años, fue identificado como el asesino y fue linchado por la multitud enfurecida minutos después del crimen. La noticia del magnicidio se propagó rápidamente por la ciudad, desatando una ola masiva de violencia, saqueos, incendios y enfrentamientos entre civiles y las fuerzas del orden. Durante los días siguientes, el centro de Bogotá fue devastado por el fuego y la destrucción. Edificios gubernamentales, tranvías, negocios y viviendas fueron incendiados. Se estima que más de 3,000 personas murieron en la capital y miles más en todo el país en las semanas posteriores. El presidente conservador Mariano Ospina Pérez declaró el estado de sitio y utilizó al ejército para reprimir los disturbios. Este acontecimiento traumático marcó el inicio del periodo histórico conocido como 'La Violencia', una guerra civil no declarada entre militantes liberales y conservadores que se extendió por las zonas rurales de Colombia durante más de una década, cobrando la vida de aproximadamente 200,000 personas. El Bogotazo también tuvo repercusiones internacionales, ya que coincidió con la IX Conferencia Panamericana que se celebraba en la ciudad, lo que llevó a algunos sectores a especular sobre posibles conspiraciones internacionales detrás del asesinato de Gaitán.",
+      "integrantes": [
         {
-            "id": "1948-04-09",
-            "fecha": "1948-04-09",
-            "nombre": "El Bogotazo",
-            "descripcion": "El 9 de abril de 1948, a la 1:05 p.m., Jorge Eliécer Gaitán, el líder indiscutible del Partido Liberal y candidato presidencial con mayor favorabilidad para las elecciones de 1950, fue asesinado de tres disparos en el centro de Bogotá cuando se dirigía a almorzar. Juan Roa Sierra, un joven de 24 años, fue identificado como el asesino y fue linchado por la multitud enfurecida minutos después del crimen. La noticia del magnicidio se propagó rápidamente por la ciudad, desatando una ola masiva de violencia, saqueos, incendios y enfrentamientos entre civiles y las fuerzas del orden. Durante los días siguientes, el centro de Bogotá fue devastado por el fuego y la destrucción. Edificios gubernamentales, tranvías, negocios y viviendas fueron incendiados. Se estima que más de 3,000 personas murieron en la capital y miles más en todo el país en las semanas posteriores. El presidente conservador Mariano Ospina Pérez declaró el estado de sitio y utilizó al ejército para reprimir los disturbios. Este acontecimiento traumático marcó el inicio del periodo histórico conocido como 'La Violencia', una guerra civil no declarada entre militantes liberales y conservadores que se extendió por las zonas rurales de Colombia durante más de una década, cobrando la vida de aproximadamente 200,000 personas. El Bogotazo también tuvo repercusiones internacionales, ya que coincidió con la IX Conferencia Panamericana que se celebraba en la ciudad, lo que llevó a algunos sectores a especular sobre posibles conspiraciones internacionales detrás del asesinato de Gaitán.",
-            "integrantes": [
-                {
-                    "nombre": "Jorge Eliécer Gaitán",
-                    "rol": "Líder Liberal Asesinado",
-                    "descripcion": "Político, abogado y líder del partido liberal colombiano, candidato presidencial para las elecciones de 1950."
-                },
-                {
-                    "nombre": "Juan Roa Sierra",
-                    "rol": "Asesino",
-                    "descripcion": "Presunto asesino de Gaitán, fue linchado por la multitud minutos después del magnicidio."
-                },
-                {
-                    "nombre": "Mariano Ospina Pérez",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente conservador en ejercicio durante el Bogotazo."
-                }
-            ],
-            "ubicacion": "Bogotá, Colombia",
-            "consecuencias": [
-                "Inicio del periodo conocido como La Violencia",
-                "Más de 3,000 muertos en los días posteriores al asesinato",
-                "Destrucción del centro de Bogotá",
-                "Radicalización del conflicto bipartidista"
-            ]
+          "nombre": "Jorge Eliécer Gaitán",
+          "rol": "Líder Liberal Asesinado",
+          "descripcion": "Político, abogado y líder del partido liberal colombiano, candidato presidencial para las elecciones de 1950."
         },
         {
-            "id": "1958-12-01",
-            "fecha": "1958-12-01",
-            "nombre": "Frente Nacional",
-            "descripcion": "El 1 de diciembre de 1958, Alberto Lleras Camargo asumió la presidencia de Colombia, inaugurando así el periodo del Frente Nacional, un pacto político sin precedentes entre el Partido Liberal y el Partido Conservador diseñado para poner fin a 'La Violencia', la guerra civil bipartidista que había asolado al país desde 1948 y que había dejado más de 200,000 muertos. El acuerdo fue negociado entre los líderes de ambos partidos: Alberto Lleras Camargo por los liberales y Laureano Gómez por los conservadores, quien estaba exiliado en España. El pacto establecía que durante 16 años (1958-1974), los dos partidos tradicionales se turnarían la presidencia cada cuatro años (cuatro periodos presidenciales alternando liberal-conservador), y que todos los cargos públicos de la rama ejecutiva, legislativa y judicial serían distribuidos en paridad absoluta del 50%-50% entre liberales y conservadores. Las decisiones en el Congreso requerían mayorías calificadas de dos tercios, lo que obligaba a ambos partidos a trabajar conjuntamente. El Frente Nacional fue ratificado mediante un plebiscito nacional el 1 de diciembre de 1957, con el apoyo del 95% de los votantes. Durante el periodo del Frente Nacional gobernaron cuatro presidentes: Alberto Lleras Camargo (Liberal, 1958-1962), Guillermo León Valencia (Conservador, 1962-1966), Carlos Lleras Restrepo (Liberal, 1966-1970) y Misael Pastrana Borrero (Conservador, 1970-1974). Este sistema logró efectivamente pacificar el conflicto bipartidista tradicional, estabilizar las instituciones democráticas y promover un periodo de crecimiento económico moderado. Se modernizó el Estado, se implementaron reformas agrarias limitadas, se fortaleció la educación y se promovió la industrialización. Sin embargo, el Frente Nacional tuvo consecuencias negativas profundas. Al monopolizar el poder político en manos de las élites de los dos partidos tradicionales, excluyó sistemáticamente a terceras fuerzas políticas, movimientos de izquierda, organizaciones sociales y sectores populares de la participación política legítima. Esta exclusión política generó frustración en sectores que no se sentían representados y contribuyó al surgimiento y fortalecimiento de grupos guerrilleros como las FARC (1964), el ELN (1964) y el M-19 (1974), quienes argumentaban que las vías democráticas estaban cerradas. El Frente Nacional también institucionalizó prácticas clientelistas y de corrupción, ya que la distribución burocrática se hacía por cuotas partidistas sin criterios meritocráticos. Además, despolitizó a la ciudadanía al reducir la competencia electoral a una simple alternancia pactada. Aunque formalmente terminó en 1974, muchos de sus mecanismos y prácticas persistieron en la política colombiana durante décadas.",
-            "integrantes": [
-                {
-                    "nombre": "Alberto Lleras Camargo",
-                    "rol": "Primer Presidente del Frente Nacional",
-                    "descripcion": "Político liberal, periodista y diplomático. Fue el primer presidente del Frente Nacional (1958-1962) y uno de los arquitectos del pacto."
-                },
-                {
-                    "nombre": "Laureano Gómez",
-                    "rol": "Líder Conservador",
-                    "descripcion": "Expresidente (1950-1951) y líder del partido Conservador. Negoció el pacto del Frente Nacional desde el exilio en España."
-                },
-                {
-                    "nombre": "Gustavo Rojas Pinilla",
-                    "rol": "Dictador Militar Derrocado",
-                    "descripcion": "General que gobernó Colombia como dictador (1953-1957). Su gobierno autoritario motivó a liberales y conservadores a unirse contra él y pactar el Frente Nacional."
-                }
-            ],
-            "ubicacion": "Colombia",
-            "consecuencias": [
-                "Fin de 'La Violencia' bipartidista clásica.",
-                "Pacificación del conflicto entre liberales y conservadores.",
-                "Exclusión política de terceras fuerzas y movimientos alternativos.",
-                "Surgimiento de grupos guerrilleros como respuesta a la exclusión (FARC, ELN).",
-                "Institucionalización del clientelismo y la corrupción.",
-                "Despolitización de la ciudadanía y reducción de la competencia electoral.",
-                "Estabilidad institucional y crecimiento económico moderado durante 16 años."
-            ]
+          "nombre": "Juan Roa Sierra",
+          "rol": "Asesino",
+          "descripcion": "Presunto asesino de Gaitán, fue linchado por la multitud minutos después del magnicidio."
         },
         {
-            "id": "1985-11-06",
-            "fecha": "1985-11-06",
-            "nombre": "Toma del Palacio de Justicia",
-            "descripcion": "El miércoles 6 de noviembre de 1985, a las 11:40 a.m., un comando de 35 guerrilleros del Movimiento 19 de Abril (M-19) ingresó al Palacio de Justicia de Bogotá, ubicado en el costado norte de la Plaza de Bolívar, portando armas de largo alcance y explosivos. Los guerrilleros, liderados por Luis Otero y Andrés Almarales, tomaron como rehenes a más de 300 personas que se encontraban en el edificio, incluyendo a los 25 magistrados de la Corte Suprema de Justicia, empleados judiciales, abogados y visitantes. El M-19 exigía que el presidente Belisario Betancur compareciera ante la Corte para ser juzgado por no cumplir los acuerdos de paz firmados previamente con la guerrilla. El gobierno respondió con una operación militar masiva que incluyó el uso de tanques del ejército que dispararon contra las fachadas del edificio y un helicóptero que arrojó explosivos sobre el techo. Durante las 27 horas que duró la toma y la retoma, se desató un feroz enfrentamiento entre guerrilleros y militares. El fuego y los combates destruyeron gran parte del edificio y de los archivos judiciales que allí se custodiaban, incluyendo expedientes relacionados con procesos contra narcotraficantes. El saldo final fue devastador: murieron 11 de los 25 magistrados de la Corte Suprema, incluyendo su presidente Alfonso Reyes Echandía, aproximadamente 34 guerrilleros del M-19, 11 militares y civiles, para un total cercano a las 100 víctimas mortales. Además, se documentaron 11 casos de desaparición forzada de personas que estuvieron en el Palacio. La tragedia dejó profundas heridas en la institucionalidad judicial colombiana y generó controversia durante décadas sobre las decisiones tomadas durante la crisis, la responsabilidad del Estado y el posible interés de narcotraficantes en la destrucción de expedientes judiciales.",
-            "integrantes": [
-                {
-                    "nombre": "Luis Otero",
-                    "rol": "Comandante M-19",
-                    "descripcion": "Líder del comando guerrillero que ejecutó la toma del Palacio."
-                },
-                {
-                    "nombre": "Alfonso Reyes Echandía",
-                    "rol": "Presidente Corte Suprema",
-                    "descripcion": "Presidente de la Corte Suprema de Justicia, murió durante la retoma."
-                },
-                {
-                    "nombre": "Belisario Betancur",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente que ordenó la retoma militar del edificio."
-                },
-                {
-                    "nombre": "Andrés Almarales",
-                    "rol": "Guerrillero M-19",
-                    "descripcion": "Uno de los comandantes del asalto, murió durante la retoma."
-                }
-            ],
-            "ubicacion": "Palacio de Justicia, Bogotá",
-            "consecuencias": [
-                "Muerte de aproximadamente 100 personas",
-                "11 magistrados asesinados",
-                "Desaparición forzada de civiles",
-                "Destrucción de procesos judiciales contra narcotraficantes",
-                "Debilitamiento institucional del sistema judicial"
-            ]
-        },
-        {
-            "id": "1985-11-13",
-            "fecha": "1985-11-13",
-            "nombre": "Tragedia de Armero",
-            "descripcion": "El 13 de noviembre de 1985, apenas una semana después de la tragedia del Palacio de Justicia, Colombia sufrió la peor catástrofe natural de su historia. A las 9:09 p.m., el volcán Nevado del Ruiz, ubicado en la Cordillera Central a 140 kilómetros de Bogotá, hizo erupción después de 69 años de inactividad. La columna de ceniza y piroclastos alcanzó 30 kilómetros de altura. El calor de la erupción derritió aproximadamente el 10% del casquete glaciar que cubría el volcán, generando cuatro lahares o avalanchas de lodo, agua, rocas y escombros que descendieron por los flancos del volcán a velocidades de hasta 60 km/h. El lahar del río Lagunilla fue el más devastador: contenía aproximadamente 48 millones de metros cúbicos de material y arrasó completamente la ciudad de Armero, Tolima, sepultándola bajo una capa de lodo de hasta 5 metros de profundidad. La ciudad de 29,000 habitantes fue borrada del mapa en cuestión de minutos. Se estima que murieron entre 23,000 y 25,000 personas, representando más del 75% de la población de Armero. Miles más resultaron heridas. Otras poblaciones como Chinchiná en Caldas también fueron afectadas. La tragedia evidenció graves fallas institucionales: a pesar de que vulcanólogos habían advertido sobre el peligro inminente y se habían detectado señales de actividad volcánica en las semanas previas, no se realizó una evacuación oportuna. La imagen de Omayra Sánchez, una niña de 13 años atrapada en el lodo durante tres días antes de morir, fue documentada por fotógrafos internacionales y se convirtió en un símbolo mundial de la tragedia. Este desastre llevó a la creación del Sistema Nacional para la Prevención y Atención de Desastres y transformó la manera en que Colombia gestiona emergencias.",
-            "integrantes": [
-                {
-                    "nombre": "Omayra Sánchez",
-                    "rol": "Víctima Símbolo",
-                    "descripcion": "Niña de 13 años cuya agonía fue documentada mundialmente, convirtiéndose en un símbolo de la tragedia."
-                },
-                {
-                    "nombre": "Belisario Betancur",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente en funciones, criticado por la gestión de la advertencia y la respuesta a la emergencia."
-                }
-            ],
-            "ubicacion": "Armero, Tolima",
-            "consecuencias": [
-                "Más de 25,000 muertos y la desaparición de la ciudad de Armero.",
-                "Creación del Sistema Nacional para la Prevención y Atención de Desastres en Colombia.",
-                "Mayor monitoreo de la actividad volcánica en el país.",
-                "Debate nacional sobre la responsabilidad del Estado en la prevención de desastres."
-            ]
-        },
-        {
-            "id": "1989-08-18",
-            "fecha": "1989-08-18",
-            "nombre": "Asesinato de Luis Carlos Galán",
-            "descripcion": "El viernes 18 de agosto de 1989, a las 8:30 p.m., Luis Carlos Galán Sarmiento, el candidato presidencial del Partido Liberal con mayor favorabilidad en las encuestas para las elecciones de 1990, fue asesinado durante un mitin político en la plaza principal de Soacha, Cundinamarca. Galán, de 46 años, era un reconocido periodista, político y líder del movimiento Nuevo Liberalismo, caracterizado por su férrea oposición al narcotráfico y su lucha contra la corrupción. Había sido amenazado en múltiples ocasiones por el Cartel de Medellín debido a su postura inflexible sobre la extradición de narcotraficantes a Estados Unidos. Esa noche, mientras subía al estrado para pronunciar su discurso ante miles de seguidores, varios sicarios armados con ametralladoras lo atacaron. Galán recibió varios impactos de bala y murió camino al hospital. El magnicidio fue ordenado por Pablo Escobar Gaviria, líder del Cartel de Medellín, con la complicidad del político Alberto Santofimio Botero, quien posteriormente fue condenado a 24 años de prisión como coautor del crimen. La muerte de Galán conmocionó a Colombia y al mundo entero. El presidente Virgilio Barco declaró el estado de sitio y lanzó una ofensiva sin precedentes contra el narcotráfico, reactiv ando la extradición de colombianos a Estados Unidos. En respuesta, el Cartel de Medellín desató una ola de terrorismo urbano contra el Estado colombiano que incluyó atentados con bombas, asesinatos selectivos y secuestros. La viuda de Galán, Gloria Pachón de Galán, se convirtió en una figura emblemática de la lucha contra la impunidad. Su hijo, Juan Manuel Galán, siguió los pasos políticos de su padre. El asesinato de Galán cambió el rumbo político de Colombia y llevó a César Gaviria, coordinador del debate político de su campaña, a asumir la candidatura y posteriormente ganar las elecciones presidenciales.",
-            "integrantes": [
-                {
-                    "nombre": "Luis Carlos Galán",
-                    "rol": "Candidato Presidencial",
-                    "descripcion": "Político liberal, periodista y opositor del narcotráfico. Líder del Nuevo Liberalismo."
-                },
-                {
-                    "nombre": "Pablo Escobar Gaviria",
-                    "rol": "Narcotraficante",
-                    "descripcion": "Líder del Cartel de Medellín, señalado como autor intelectual del magnicidio."
-                },
-                {
-                    "nombre": "Alberto Santofimio Botero",
-                    "rol": "Político",
-                    "descripcion": "Condenado como coautor del asesinato por instigar a Escobar."
-                },
-                {
-                    "nombre": "Jairo Ortega",
-                    "rol": "Sicario",
-                    "descripcion": "Uno de los asesinos materiales del crimen."
-                }
-            ],
-            "ubicacion": "Soacha, Cundinamarca",
-            "consecuencias": [
-                "Declaración del estado de sitio",
-                "Intensificación de la guerra contra el narcotráfico",
-                "Endurecimiento de la extradición",
-                "Oleada de atentados terroristas del Cartel de Medellín",
-                "Victoria presidencial de César Gaviria"
-            ]
-        },
-        {
-            "id": "1989-11-27",
-            "fecha": "1989-11-27",
-            "nombre": "Atentado al Vuelo 203 de Avianca",
-            "descripcion": "El lunes 27 de noviembre de 1989, a las 7:13 a.m., el vuelo 203 de Avianca, un Boeing 727-21 matrícula HK-1803, explotó en el aire cinco minutos después de despegar del Aeropuerto El Dorado de Bogotá con destino a Cali. La aeronave llevaba 101 pasajeros y seis tripulantes. Una bomba compuesta por tres kilogramos de dinamita, escondida en un maletín y activada por un temporizador, detonó bajo el asiento 15-F cuando el avión volaba a 13,000 pies de altura sobre el municipio de Soacha. La explosión partió el fuselaje en dos, desintegrando la aeronave instantáneamente. Los restos del avión cayeron en zonas rurales de Soacha y Bosa. Las 107 personas a bordo murieron, además de tres personas en tierra que fueron alcanzadas por escombros en llamas. Entre las víctimas se encontraban profesionales, empresarios, madres con sus hijos, estudiantes y dos ciudadanos estadounidenses. El atentado fue ordenado por Pablo Escobar Gaviria, líder del Cartel de Medellín, como parte de su campaña de narcoterrorismo contra el Estado colombiano. El objetivo específico del atentado era asesinar al candidato presidencial César Gaviria Trujillo, quien había asumido la campaña del Partido Liberal tras el asesinato de Luis Carlos Galán tres meses antes. Escobar tenía información de que Gaviria viajaría en ese vuelo. Sin embargo, por decisiones de última hora relacionadas con su agenda de campaña y recomendaciones de su equipo de seguridad, Gaviria canceló su viaje y no abordó el avión. A pesar de saber que Gaviria no estaba a bordo, Escobar ordenó igualmente que se ejecutara el atentado. Este acto de terrorismo indiscriminado representó uno de los momentos más oscuros del narcoterrorismo en Colombia y generó repudio internacional. Dos jóvenes sicarios del cartel, que actuaron como 'mulas humanas' sin saberlo, fueron utilizados para colocar la bomba a bordo: compraron un tiquete de ida, subieron el maletín con la bomba, y se bajaron del avión antes del despegue alegando olvido de documentos. Posteriormente fueron capturados y condenados. En respuesta al atentado, el gobierno del presidente Virgilio Barco intensificó las operaciones contra el Cartel de Medellín, incautó centenares de propiedades de Escobar y fortaleció las alianzas con Estados Unidos. El atentado al vuelo 203 es considerado el ataque terrorista más mortífero en la historia de Colombia y marcó la radicalización total de la guerra entre el Estado y el narcotráfico.",
-            "integrantes": [
-                {
-                    "nombre": "Pablo Escobar Gaviria",
-                    "rol": "Autor Intelectual",
-                    "descripcion": "Líder del Cartel de Medellín, ordenó el atentado con el objetivo de asesinar al candidato presidencial César Gaviria."
-                },
-                {
-                    "nombre": "César Gaviria Trujillo",
-                    "rol": "Objetivo del Atentado",
-                    "descripcion": "Candidato presidencial liberal que era el objetivo del atentado pero canceló su viaje en el último momento."
-                },
-                {
-                    "nombre": "Dandeny Muñoz Mosquera 'La Quica'",
-                    "rol": "Sicario del Cartel",
-                    "descripcion": "Sicario de confianza de Escobar, señalado como uno de los planificadores del atentado. Fue extraditado a Estados Unidos y condenado."
-                }
-            ],
-            "ubicacion": "Cielos de Soacha, Cundinamarca",
-            "consecuencias": [
-                "Muerte de 110 personas (107 a bordo y 3 en tierra).",
-                "Mayor atentado terrorista en la historia de Colombia.",
-                "Repudio nacional e internacional masivo contra Pablo Escobar.",
-                "Intensificación de la guerra del Estado contra el Cartel de Medellín.",
-                "Fortalecimiento de la cooperación con Estados Unidos en la lucha antidrogas.",
-                "Creación de normas más estrictas de seguridad aeroportuaria."
-            ]
-        },
-        {
-            "id": "1991-07-04",
-            "fecha": "1991-07-04",
-            "nombre": "Promulgación de la Constitución de 1991",
-            "descripcion": "El 4 de julio de 1991, Colombia promulgó una nueva Constitución Política que reemplazó a la centenaria Carta de 1886. Este proceso constituyente surgió del movimiento estudiantil conocido como la 'Séptima Papeleta', que durante las elecciones de 1990 convocó a los ciudadanos a incluir una papeleta extra pidiendo la convocatoria de una Asamblea Nacional Constituyente. Más de dos millones de colombianos apoyaron la iniciativa. El presidente César Gaviria, electo en 1990, formalizó la convocatoria mediante el Decreto de Estado de Sitio 1926. La Asamblea Nacional Constituyente estuvo conformada por 70 delegatarios elegidos democráticamente, incluyendo representantes de partidos tradicionales (Liberal y Conservador), movimientos de izquierda, desmovilizados de grupos guerrilleros como el M-19 (representado por Antonio Navarro Wolff y Carlos Pizarro, quien fue asesinado antes de posesionarse), comunidades indígenas, movimientos cristianos y otros sectores de la sociedad civil. La nueva Constitución transformó radicalmente la estructura del Estado colombiano. Declaró a Colombia como un Estado Social de Derecho, organizado como república unitaria, descentralizada, con autonomía de sus entidades territoriales, democrática, participativa y pluralista. Reconoció la diversidad étnica y cultural de la nación. Creó instituciones fundamentales como la Corte Constitucional, la Fiscalía General de la Nación, la Defensoría del Pueblo y fortaleció la Procuraduría. Introdujo mecanismos de participación ciudadana como el referendo, el plebiscito, la consulta popular, el cabildo abierto, la iniciativa legislativa y la revocatoria del mandato. Estableció la Acción de Tutela como mecanismo expedito para la protección de derechos fundamentales. Amplió el catálogo de derechos humanos, incluyendo derechos económicos, sociales, culturales, colectivos y del ambiente. Creó la figura de la circunscripción nacional electoral y estableció nuevas reglas para la elección del Congreso y los gobernadores. Esta Constitución es conocida como 'la Constitución de los Derechos Humanos' y significó una apertura democrática sin precedentes en la historia del país, aunque su implementación ha enfrentado múltiples desafíos.",
-            "integrantes": [
-                {
-                    "nombre": "César Gaviria Trujillo",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente que convocó la Asamblea Nacional Constituyente."
-                },
-                {
-                    "nombre": "Horacio Serpa Uribe",
-                    "rol": "Co-presidente Asamblea",
-                    "descripcion": "Representante del Partido Liberal."
-                },
-                {
-                    "nombre": "Álvaro Gómez Hurtado",
-                    "rol": "Co-presidente Asamblea",
-                    "descripcion": "Representante del Movimiento de Salvación Nacional (Conservador)."
-                },
-                {
-                    "nombre": "Antonio Navarro Wolff",
-                    "rol": "Co-presidente Asamblea",
-                    "descripcion": "Representante de la Alianza Democrática M-19 (ex-guerrilla)."
-                }
-            ],
-            "ubicacion": "Bogotá, Colombia",
-            "consecuencias": [
-                "Creación de la Corte Constitucional y la Fiscalía General de la Nación.",
-                "Instauración de la Acción de Tutela para proteger derechos fundamentales.",
-                "Reconocimiento de Colombia como un estado social de derecho, pluriétnico y multicultural.",
-                "Fin del bipartidismo y apertura a nuevas fuerzas políticas."
-            ]
-        },
-        {
-            "id": "1993-12-02",
-            "fecha": "1993-12-02",
-            "nombre": "Muerte de Pablo Escobar",
-            "descripcion": "El 2 de diciembre de 1993, a las 3:15 p.m., Pablo Emilio Escobar Gaviria, el narcotraficante más buscado del mundo, fue abatido por el Bloque de Búsqueda de la Policía Nacional de Colombia en un operativo realizado en el barrio Los Olivos de Medellín. Escobar, de 44 años, había escapado 16 meses antes de la cárcel de La Catedral, una prisión de máxima seguridad que él mismo había mandado a construir. Durante ese tiempo, la persecución contra él se intensificó con la participación del gobierno colombiano, la DEA estadounidense, el grupo paramilitar Los Pepes (Perseguidos por Pablo Escobar) liderado por los hermanos Castaño, y el Cartel de Cali, enemigos de Escobar. El Bloque de Búsqueda, comandado por el coronel Hugo Martínez, había rastreado una llamada telefónica que Escobar realizó a su familia. Cuando los agentes rodearon la casa donde se escondía, Escobar intentó huir por los tejados junto a su guardaespaldas 'Limón', pero ambos fueron alcanzados por disparos. Escobar recibió impactos en la pierna, el torso y uno mortal detrás de la oreja. Su cuerpo fue exhibido en la azotea de la casa ante las cámaras de televisión del mundo entero. Miles de personas asistieron a su funeral en Medellín, en una manifestación que reflejaba la compleja relación que el capo había construido con sectores populares a través de programas sociales en comunas marginales. La muerte de Escobar marcó el fin del Cartel de Medellín, la organización criminal que en su momento controló el 80% del mercado mundial de cocaína y que había sumido a Colombia en una ola de terrorismo que incluyó el asesinato de tres candidatos presidenciales, cientos de policías, jueces, periodistas y civiles, así como atentados con bombas en aviones, centros comerciales y edificios gubernamentales. Su muerte permitió que el Cartel de Cali tomara el control del narcotráfico en Colombia y marcó un cambio en el panorama de seguridad del país, aunque no significó el fin del narcotráfico ni de la violencia.",
-            "integrantes": [
-                {
-                    "nombre": "Pablo Escobar Gaviria",
-                    "rol": "Narcotraficante",
-                    "descripcion": "Fundador y líder del Cartel de Medellín, considerado uno de los criminales más ricos de la historia."
-                },
-                {
-                    "nombre": "Hugo Aguilar",
-                    "rol": "Comandante Bloque de Búsqueda",
-                    "descripcion": "Oficial de policía que lideró el operativo final contra Escobar."
-                },
-                {
-                    "nombre": "César Gaviria",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente durante la captura y muerte de Escobar."
-                },
-                {
-                    "nombre": "Carlos Castaño",
-                    "rol": "Líder Paramilitar",
-                    "descripcion": "Líder de Los Pepes (Perseguidos por Pablo Escobar), grupo que colaboró en su persecución."
-                }
-            ],
-            "ubicacion": "Barrio Los Olivos, Medellín",
-            "consecuencias": [
-                "Desmantelamiento del Cartel de Medellín",
-                "Ascenso del Cartel de Cali",
-                "Reducción significativa de atentados terroristas",
-                "Recuperación de la imagen de Colombia",
-                "Consolidación de estructuras paramilitares"
-            ]
-        },
-        {
-            "id": "1994-06-19",
-            "fecha": "1994-06-19",
-            "nombre": "Proceso 8000",
-            "descripcion": "El Proceso 8000 fue el mayor escándalo político de corrupción en la historia moderna de Colombia. El 19 de junio de 1994, Ernesto Samper Pizano asumió la presidencia tras derrotar por estrecho margen a Andrés Pastrana en la segunda vuelta electoral. Sin embargo, apenas dos meses después de su posesión, en agosto de 1994, el periodista Alberto Giraldo reveló la existencia de unas grabaciones de audio conocidas como 'los narcocasetes', en las que se escuchaban conversaciones entre miembros del Cartel de Cali y dirigentes de la campaña de Samper discutiendo el ingreso de dineros del narcotráfico para financiar la campaña presidencial. Los hermanos Gilberto y Miguel Rodríguez Orejuela, cabezas del Cartel de Cali, habrían aportado aproximadamente 6 millones de dólares (equivalente a 6,000 millones de pesos de la época) para la campaña de Samper. La Fiscalía General de la Nación abrió una investigación penal identificada con el radicado 8000, de donde proviene el nombre del escándalo. El proceso judicial involucró a altos funcionarios de la campaña y del gobierno. Fernando Botero Zea, quien había sido ministro de Defensa y director de la campaña de Samper, fue condenado a cinco años y medio de prisión. Santiago Medina, tesorero de la campaña, colaboró con la justicia y reveló detalles comprometedores. El Congreso inició un proceso de investigación contra el presidente Samper, quien negó sistemáticamente tener conocimiento de la procedencia ilícita de los fondos de campaña, arguyendo que si hubo infiltración, ocurrió 'a sus espaldas'. En junio de 1996, la Cámara de Representantes absolvió a Samper de los cargos, en una votación que muchos criticaron por presiones políticas y posible corrupción. El escándalo tuvo consecuencias devastadoras para Colombia. Estados Unidos descertificó al país en su lucha contra las drogas, canceló la visa del presidente Samper y redujo la cooperación bilateral. El gobierno enfrentó una crisis de gobernabilidad sin precedentes, con manifestaciones ciudadanas exigiendo la renuncia del presidente. El periodo presidencial de Samper (1994-1998) quedó marcado por la deslegitimación institucional y la evidencia de la profunda infiltración del narcotráfico en las esferas más altas del poder político colombiano. Varios políticos y funcionarios fueron condenados a prisión, y el sistema político colombiano sufrió un daño reputacional del que tardó años en recuperarse.",
-            "integrantes": [
-                {
-                    "nombre": "Ernesto Samper Pizano",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente electo, principal implicado en el escándalo."
-                },
-                {
-                    "nombre": "Andrés Pastrana Arango",
-                    "rol": "Candidato Derrotado",
-                    "descripcion": "Contendor de Samper, quien reveló los 'narco-casetes' que iniciaron el escándalo."
-                },
-                {
-                    "nombre": "Fernando Botero Zea",
-                    "rol": "Ministro de Defensa",
-                    "descripcion": "Director de la campaña de Samper, fue encarcelado por su participación."
-                },
-                {
-                    "nombre": "Gilberto y Miguel Rodríguez Orejuela",
-                    "rol": "Líderes del Cartel de Cali",
-                    "descripcion": "Capos del narcotráfico que financiaron la campaña."
-                }
-            ],
-            "ubicacion": "Bogotá, Colombia",
-            "consecuencias": [
-                "Grave crisis de gobernabilidad y legitimidad del gobierno Samper.",
-                "Descertificación de Colombia por parte de Estados Unidos en la lucha antidrogas.",
-                "Encarcelamiento de varios políticos y miembros de la campaña.",
-                "Evidencia de la profunda penetración del narcotráfico en las instituciones del Estado."
-            ]
-        },
-        {
-            "id": "1995-07-06",
-            "fecha": "1995-07-06",
-            "nombre": "Caída del Cartel de Cali",
-            "descripcion": "Entre junio y agosto de 1995, el gobierno colombiano logró desmantelar el Cartel de Cali, la organización narcotraficante más poderosa del mundo en ese momento. Tras la muerte de Pablo Escobar en 1993, los hermanos Gilberto y Miguel Rodríguez Orejuela consolidaron el dominio del Cartel de Cali sobre el narcotráfico internacional, controlando aproximadamente el 80% del mercado mundial de cocaína y generando ganancias anuales estimadas en 7,000 millones de dólares. A diferencia del Cartel de Medellín, que utilizaba el terrorismo y la violencia indiscriminada, el Cartel de Cali optó por una estrategia más sofisticada basada en la corrupción sistemática de instituciones estatales, el lavado de activos a través de empresas legítimas, y el mantenimiento de un perfil bajo. Los Rodriguez Orejuela eran empresarios legítimos en apariencia, propietarios de la cadena de farmacias Drogas La Rebaja y con inversiones en numerosos negocios. El 9 de junio de 1995, Gilberto Rodríguez Orejuela, conocido como 'El Ajedrecista' por su habilidad estratégica, fue capturado en su apartamento de Cali tras un operativo de la Policía Nacional dirigido por el general Rosso José Serrano. El 6 de agosto del mismo año, su hermano Miguel, apodado 'El Señor', fue capturado también en Cali en circunstancias similares. Las capturas fueron resultado de una intensa labor de inteligencia que contó con apoyo tecnológico y logístico de la DEA estadounidense. Posteriormente fueron capturados otros líderes del cartel como José Santacruz Londoño (quien escapó y fue abatido en 1996) y Hélmer 'Pacho' Herrera. Los hermanos Rodríguez Orejuela fueron condenados inicialmente a penas relativamente bajas en Colombia (aproximadamente 15 años), pero en 2004 y 2005 fueron extraditados a Estados Unidos, donde recibieron condenas de 30 años de prisión. La caída del Cartel de Cali no terminó con el narcotráfico en Colombia; por el contrario, provocó una fragmentación del negocio en múltiples carteles más pequeños y discretos, conocidos como 'cartelitos', que operan con menor visibilidad pero con gran eficiencia. También permitió el fortalecimiento de grupos armados ilegales como las FARC y las AUC, quienes se involucraron más profundamente en el narcotráfico para financiar sus operaciones.",
-            "integrantes": [
-                {
-                    "nombre": "Gilberto Rodríguez Orejuela",
-                    "rol": "Líder del Cartel de Cali",
-                    "descripcion": "Conocido como 'El Ajedrecista', cerebro financiero y estratégico del cartel. Capturado en junio de 1995."
-                },
-                {
-                    "nombre": "Miguel Rodríguez Orejuela",
-                    "rol": "Líder del Cartel de Cali",
-                    "descripcion": "Conocido como 'El Señor', encargado de la operación y seguridad. Capturado en agosto de 1995."
-                },
-                {
-                    "nombre": "Ernesto Samper Pizano",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente durante la ofensiva final contra el Cartel de Cali."
-                },
-                {
-                    "nombre": "General Rosso José Serrano",
-                    "rol": "Director de la Policía Nacional",
-                    "descripcion": "Lideró la estrategia policial que culminó con la captura de los capos."
-                }
-            ],
-            "ubicacion": "Cali, Colombia",
-            "consecuencias": [
-                "Desmantelamiento de la mayor organización de narcotráfico de la época.",
-                "Fragmentación del negocio del narcotráfico en carteles más pequeños y discretos.",
-                "Extradición de los hermanos Rodríguez Orejuela a Estados Unidos en 2004 y 2005.",
-                "Fin de la era de los grandes carteles monolíticos en Colombia."
-            ]
-        },
-        {
-            "id": "1999-01-07",
-            "fecha": "1999-01-07",
-            "nombre": "Creación de la Zona de Distensión",
-            "descripcion": "El 7 de enero de 1999, el presidente Andrés Pastrana Arango ordenó la desmilitarización de una zona de 42,000 kilómetros cuadrados (aproximadamente el tamaño de Suiza) en cinco municipios del sur de Colombia: San Vicente del Caguán, La Macarena, Mesetas, La Uribe y Vista Hermosa, ubicados entre los departamentos de Meta y Caquetá. Esta medida sin precedentes buscaba generar condiciones de confianza para iniciar negociaciones de paz con las Fuerzas Armadas Revolucionarias de Colombia (FARC), la guerrilla más antigua y poderosa del continente. El proceso se inició después de que Pastrana, siendo candidato presidencial, se reunió secretamente con Manuel Marulanda Vélez, alias 'Tirofijo', máximo comandante de las FARC, en julio de 1998. Las negociaciones se inauguraron oficialmente el 7 de enero de 1999 en San Vicente del Caguán, pero el acto estuvo marcado por la ausencia de Marulanda, quien dejó una silla vacía que se convirtió en un símbolo de la desconfianza mutua. Durante los 1,184 días que duró la zona de distensión (del 7 de enero de 1999 al 20 de febrero de 2002), las FARC disfrutaron de control territorial absoluto sin presencia de la Fuerza Pública. Sin embargo, en lugar de avanzar hacia la paz, las FARC utilizaron el territorio para fortalecer militarmente su organización, entrenar combatientes, cultivar y procesar coca, realizar secuestros y construir infraestructura logística. La zona se convirtió en un 'laboratorio de paz' fracasado. Durante este periodo, las FARC cometieron graves violaciones a los derechos humanos, incluyendo más de 300 secuestros, reclutamiento forzado de menores y ataques a poblaciones civiles. Las negociaciones fueron intermitentes y poco productivas. La gota que rebalsó la copa fue el secuestro del avión de Aires con el senador Jorge Gechem Turbay el 20 de febrero de 2002. Ese mismo día, el presidente Pastrana declaró rota la negociación y ordenó la retoma militar de la zona. El fracaso de este proceso de paz generó un profundo escepticismo en la población colombiana sobre la viabilidad de negociar con las guerrillas y abrió el camino para la elección de Álvaro Uribe y su política de 'Seguridad Democrática', basada en la confrontación militar contra los grupos armados ilegales.",
-            "integrantes": [
-                {
-                    "nombre": "Andrés Pastrana Arango",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente que creó la zona de distensión para negociar con las FARC."
-                },
-                {
-                    "nombre": "Manuel Marulanda Vélez (Tirofijo)",
-                    "rol": "Comandante FARC",
-                    "descripcion": "Líder máximo de las FARC, famoso por no asistir al inicio de las negociaciones."
-                },
-                {
-                    "nombre": "Víctor G. Ricardo",
-                    "rol": "Alto Comisionado para la Paz",
-                    "descripcion": "Encargado de las negociaciones por parte del gobierno."
-                },
-                {
-                    "nombre": "Raúl Reyes",
-                    "rol": "Vocero FARC",
-                    "descripcion": "Representante de las FARC en las negociaciones."
-                }
-            ],
-            "ubicacion": "Municipios de San Vicente del Caguán, La Macarena, Mesetas, La Uribe y Vista Hermosa",
-            "consecuencias": [
-                "Fortalecimiento militar de las FARC",
-                "Aumento de secuestros",
-                "Pérdida de confianza en procesos de paz",
-                "Ruptura de negociaciones en 2002",
-                "Inicio de la política de Seguridad Democrática de Álvaro Uribe"
-            ]
-        },
-        {
-            "id": "2002-02-20",
-            "fecha": "2002-02-20",
-            "nombre": "Secuestro de Íngrid Betancourt",
-            "descripcion": "El 20 de febrero de 2002, Íngrid Betancourt Pulecio, candidata presidencial por el partido político Verde Oxígeno, fue secuestrada por las FARC cuando intentaba llegar por tierra a San Vicente del Caguán, capital de la fallida zona de distensión. A pesar de las advertencias de seguridad y de que el presidente Andrés Pastrana había dado por terminadas las negociaciones con las FARC ese mismo día, Betancourt insistió en viajar para llevar su mensaje de campaña a la población del Caguán. Viajaba acompañada de Clara Rojas, su gerente de campaña, y escoltada por policías. En un retén guerrillero cerca de San Vicente del Caguán, las FARC detuvieron el vehículo y se llevaron a Betancourt y Rojas a la selva. Así comenzó un cautiverio que duraría 2,321 días, es decir, 6 años y 4 meses. Durante su secuestro, Betancourt fue mantenida en condiciones inhumanas en campamentos guerrilleros en medio de la selva amazónica, soportando enfermedades tropicales, desnutrición, aislamiento y maltrato psicológico. Fue encadenada al cuello durante largos periodos y sometida a marchas forzadas. Su caso se convirtió en un símbolo internacional del drama del secuestro en Colombia, particularmente porque Betancourt poseía doble nacionalidad colombo-francesa, lo que movilizó al gobierno francés y a organizaciones internacionales a exigir su liberación. Su esposo, Juan Carlos Lecompte, y sus hijos, Melanie y Lorenzo, lideraron campañas mundiales por su liberación. Durante el cautiverio, Clara Rojas dio a luz a un niño, producto de una relación con un guerrillero, lo que añadió mayor dramatismo al caso. El 2 de julio de 2008, en una operación de inteligencia militar llamada 'Operación Jaque', Íngrid Betancourt fue rescatada junto con 14 secuestrados más (incluyendo tres contratistas estadounidenses y 11 militares y policías colombianos) sin disparar un solo tiro. La operación engañó a los guerrilleros haciéndoles creer que trasladarían a los secuestrados en un helicóptero de una organización humanitaria internacional. El rescate fue un golpe devastador para las FARC y un triunfo para la inteligencia militar colombiana. Tras su liberación, Betancourt escribió varios libros narrando su experiencia en cautiverio.",
-            "integrantes": [
-                {
-                    "nombre": "Íngrid Betancourt",
-                    "rol": "Secuestrada",
-                    "descripcion": "Política y candidata presidencial por el partido Verde Oxígeno, senadora de la república."
-                },
-                {
-                    "nombre": "Clara Rojas",
-                    "rol": "Secuestrada",
-                    "descripcion": "Gerente de campaña de Betancourt, secuestrada junto a ella."
-                },
-                {
-                    "nombre": "Manuel Marulanda Vélez",
-                    "rol": "Líder FARC",
-                    "descripcion": "Máximo comandante de las FARC en el momento del secuestro."
-                },
-                {
-                    "nombre": "Raúl Reyes",
-                    "rol": "Comandante FARC",
-                    "descripcion": "Vocero internacional de las FARC durante el secuestro."
-                }
-            ],
-            "ubicacion": "San Vicente del Caguán, Caquetá",
-            "consecuencias": [
-                "Mayor visibilidad internacional del conflicto armado",
-                "Presión internacional sobre las FARC",
-                "Exitosa Operación Jaque en 2008",
-                "Liberación de 15 secuestrados incluyendo tres estadounidenses",
-                "Símbolo de la lucha contra el secuestro en Colombia"
-            ]
-        },
-        {
-            "id": "2008-07-02",
-            "fecha": "2008-07-02",
-            "nombre": "Operación Jaque",
-            "descripcion": "El 2 de julio de 2008, las Fuerzas Militares de Colombia ejecutaron la 'Operación Jaque', considerada una de las operaciones de inteligencia militar más exitosas y audaces de la historia moderna. La operación rescató a 15 secuestrados de alto perfil que permanecían en cautiverio de las FARC, incluyendo a Íngrid Betancourt (6 años secuestrada), tres contratistas estadounidenses (Keith Stansell, Thomas Howes y Marc Gonsalves, 5 años secuestrados), y 11 militares y policías colombianos, algunos con más de 10 años en cautiverio. La operación se basó en una sofisticada estrategia de engaño. Durante meses, la inteligencia militar infiltró las comunicaciones de las FARC e hizo creer a los comandantes guerrilleros Gerardo Aguilar Ramírez 'César' y Alexander Farfán 'Gafas', custodios de los secuestrados, que una organización humanitaria internacional trasladaría a los rehenes en helicóptero hacia un campamento donde supuestamente se encontraría Alfonso Cano, máximo líder de las FARC. La operación fue liderada por el entonces ministro de Defensa Juan Manuel Santos y ejecutada por las Fuerzas Especiales del Ejército. El equipo de rescate se disfrazó de miembros de una ONG internacional y de camarógrafos de prensa, incluso crearon una identidad falsa de un periodista árabe llamado 'Sombra'. Los helicópteros militares fueron pintados con logos de organizaciones humanitarias ficticias. El 2 de julio, los helicópteros aterrizaron en la selva del Guaviare. Los guerrilleros subieron a los 15 secuestrados esposados y amordazados. Una vez en el aire, cuando los comandantes guerrilleros 'César' y 'Gafas' también estaban a bordo, los agentes encubiertos los redujeron en cuestión de segundos sin disparar un solo tiro. Los secuestrados, que inicialmente pensaron que los trasladaban a otro campamento, tardaron varios minutos en comprender que estaban siendo rescatados. Cuando un soldado les gritó '¡Somos el Ejército Nacional, ustedes están libres!', estalló la emoción y la incredulidad. Íngrid Betancourt abrazó a sus rescatadores llorando. Las imágenes del rescate dieron la vuelta al mundo. La operación fue un golpe devastador para las FARC, demostrando la efectividad de la inteligencia militar colombiana y la vulnerabilidad de la guerrilla. También fortaleció enormemente la imagen del gobierno de Álvaro Uribe y de las Fuerzas Militares. Juan Manuel Santos, artífice de la operación desde el Ministerio de Defensa, capitalizaría este éxito en su posterior carrera política que lo llevaría a la presidencia.",
-            "integrantes": [
-                {
-                    "nombre": "Juan Manuel Santos",
-                    "rol": "Ministro de Defensa",
-                    "descripcion": "Ministro que planeó y autorizó la Operación Jaque. Posteriormente sería presidente de Colombia."
-                },
-                {
-                    "nombre": "Íngrid Betancourt",
-                    "rol": "Rehén Liberada",
-                    "descripcion": "Excandidata presidencial, la rehén más conocida de las FARC, rescatada tras 6 años y 4 meses de cautiverio."
-                },
-                {
-                    "nombre": "General Mario Montoya",
-                    "rol": "Comandante del Ejército",
-                    "descripcion": "Comandante del Ejército Nacional durante la operación."
-                },
-                {
-                    "nombre": "General Freddy Padilla",
-                    "rol": "Comandante Fuerzas Militares",
-                    "descripcion": "Comandante General de las Fuerzas Militares de Colombia."
-                }
-            ],
-            "ubicacion": "Selvas del Guaviare, Colombia",
-            "consecuencias": [
-                "Liberación exitosa de 15 secuestrados sin disparar un solo tiro.",
-                "Golpe estratégico y moral devastador para las FARC.",
-                "Reconocimiento internacional para la inteligencia militar colombiana.",
-                "Aumento significativo de la popularidad del gobierno de Álvaro Uribe.",
-                "Demostración de la efectividad de la infiltración de inteligencia.",
-                "Captura de dos comandantes guerrilleros ('César' y 'Gafas').",
-                "Impulso a la carrera política de Juan Manuel Santos."
-            ]
-        },
-        {
-            "id": "2003-02-07",
-            "fecha": "2003-02-07",
-            "nombre": "Atentado al Club El Nogal",
-            "descripcion": "El viernes 7 de febrero de 2003, a las 8:05 p.m., un carro bomba cargado con aproximadamente 200 kilogramos de explosivos de alto poder (pentolita) detonó en el sótano del estacionamiento del Club El Nogal, un exclusivo club social ubicado en la calle 79 con carrera 7 en el norte de Bogotá. La explosión fue tan potente que destruyó nueve pisos del edificio de 11 plantas, dejando la estructura al borde del colapso. El Club El Nogal era frecuentado por empresarios, políticos, militares de alto rango y familias adineradas de la capital. Al momento del atentado, había cientos de personas en sus instalaciones participando en clases de natación, gimnasio, restaurantes y eventos sociales. El saldo del atentado fue devastador: 36 personas murieron (incluyendo seis niños que tomaban clases de natación), más de 200 resultaron heridas, y el club quedó completamente destruido. Entre las víctimas fatales se encontraba Paola Gómez García, esposa del periodista Julio Sánchez Cristo, y varios miembros de familias tradicionales de Bogotá. Las FARC fueron señaladas como autores del atentado, específicamente la Columna Móvil Teófilo Forero. Sin embargo, la guerrilla nunca reconoció abiertamente su responsabilidad. La hipótesis más aceptada es que el atentado buscaba asesinar al entonces ministro de Defensa Marta Lucía Ramírez o al general Jorge Enrique Mora, comandante de las Fuerzas Militares, quienes frecuentaban el club, pero ninguno de los dos se encontraba allí esa noche. El atentado ocurrió apenas siete meses después de que Álvaro Uribe asumiera la presidencia con su política de 'Seguridad Democrática', orientada a la confrontación militar contra las FARC. El ataque generó indignación nacional e internacional y fortaleció el apoyo ciudadano a la política de mano dura del gobierno Uribe contra la guerrilla. Después del atentado, el Club El Nogal fue reconstruido y reabierto, convirtiéndose en un símbolo de resiliencia ante el terrorismo.",
-            "integrantes": [
-                {
-                    "nombre": "Álvaro Uribe Vélez",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente en su primer año de mandato, quien lideró una fuerte ofensiva contra las FARC tras el atentado."
-                },
-                {
-                    "nombre": "Comando de las FARC",
-                    "rol": "Autores Materiales",
-                    "descripcion": "La Columna Móvil Teófilo Forero de las FARC fue señalada como la responsable del ataque."
-                }
-            ],
-            "ubicacion": "Club El Nogal, Bogotá",
-            "consecuencias": [
-                "36 personas muertas y más de 200 heridas.",
-                "Rechazo unánime de la sociedad colombiana e internacional.",
-                "Endurecimiento de la política de Seguridad Democrática del presidente Uribe.",
-                "Aumento de la percepción de inseguridad en las grandes ciudades."
-            ]
-        },
-        {
-            "id": "2006-11-16",
-            "fecha": "2006-11-16",
-            "nombre": "Escándalo de la Parapolítica",
-            "descripcion": "El escándalo de la Parapolítica es el nombre con el que se conoce el conjunto de investigaciones judiciales y periodísticas que revelaron los vínculos sistemáticos entre políticos colombianos y grupos paramilitares de las Autodefensas Unidas de Colombia (AUC). El escándalo estalló públicamente en noviembre de 2006, cuando la revista Semana publicó el contenido del computador portátil del paramilitar alias 'Jorge 40', en el cual se encontraban documentos comprometedores. Sin embargo, el origen de las investigaciones se remonta a 2005 con la captura del 'Pacto de Ralito', un acuerdo firmado en 2001 entre políticos y comandantes paramilitares en la Cárcel de Ralito, Córdoba. En este pacto, firmantes de ambos lados se comprometieron a 'refundar la patria' y acordaron apoyo mutuo: los paramilitares se comprometían a garantizar votos mediante intimidación, desplazamiento forzado y asesinatos selectivos, mientras que los políticos se comprometían a favorecer los intereses de las AUC desde el Congreso y las administraciones locales. La Corte Suprema de Justicia, bajo el liderazgo del magistrado Yesid Ramírez, inició una de las investigaciones más ambiciosas de la historia judicial colombiana. El proceso de Justicia y Paz, mediante el cual se desmovilizaron las AUC, permitió que comandantes paramilitares como Salvatore Mancuso, Rodrigo Tovar Pupo 'Jorge 40', Iván Roberto Duque 'Ernesto Báez' y otros confesaran sus crímenes y revelaran detalles de sus alianzas políticas. Las confesiones fueron devastadoras: más de 60 congresistas, 30 diputados, 5 gobernadores, numerosos alcaldes, y varios funcionarios de alto nivel del gobierno fueron investigados. Entre los políticos condenados se encontraban figuras como Mario Uribe Escobar (primo del presidente Álvaro Uribe), Álvaro Araújo Castro (hermano de la excanciller María Consuelo Araújo), Jorge Noguera Cotes (exdirector del DAS), y muchos otros pertenecientes principalmente a los departamentos de la Costa Caribe (Cesar, Sucre, Magdalena, Córdoba), Santander y Antioquia. El escándalo evidenció la captura del Estado por parte de grupos armados ilegales y generó una crisis de legitimidad en el sistema político colombiano. Se creó la figura de la 'silla vacía', mediante la cual los partidos políticos pierden las curules de congresistas condenados por parapolítica. Muchos analistas consideran que la parapolítica fue una de las formas más sofisticadas de cooptación del Estado en la historia de Colombia.",
-            "integrantes": [
-                {
-                    "nombre": "Salvatore Mancuso",
-                    "rol": "Líder Paramilitar",
-                    "descripcion": "Excomandante de las AUC, sus confesiones en el proceso de Justicia y Paz fueron clave para destapar el escándalo."
-                },
-                {
-                    "nombre": "Jorge Noguera Cotes",
-                    "rol": "Director del DAS",
-                    "descripcion": "Director del Departamento Administrativo de Seguridad, condenado por colaborar con paramilitares."
-                },
-                {
-                    "nombre": "Álvaro Uribe Vélez",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "El escándalo se desarrolló durante su segundo mandato, afectando a muchos de sus aliados políticos."
-                }
-            ],
-            "ubicacion": "Colombia (principalmente Costa Atlántica y otras regiones de influencia paramilitar)",
-            "consecuencias": [
-                "Encarcelamiento de más de un tercio del Congreso de la República.",
-                "Crisis de legitimidad del sistema político colombiano.",
-                "Evidencia de la cooptación del Estado por parte de grupos armados ilegales.",
-                "Creación de la 'silla vacía', una figura para que los partidos pierdan los escaños de congresistas condenados por estos delitos."
-            ]
-        },
-        {
-            "id": "2016-11-24",
-            "fecha": "2016-11-24",
-            "nombre": "Acuerdo de Paz con las FARC",
-            "descripcion": "El 24 de noviembre de 2016, en el Teatro Colón de Bogotá, el presidente Juan Manuel Santos y Rodrigo Londoño Echeverri, alias 'Timochenko', máximo comandante de las Fuerzas Armadas Revolucionarias de Colombia (FARC), firmaron el Acuerdo Final para la Terminación del Conflicto y la Construcción de una Paz Estable y Duradera. Este acontecimiento histórico puso fin oficialmente a más de 52 años de conflicto armado interno, el más prolongado del hemisferio occidental, que dejó un saldo estimado de 260,000 muertos, 80,000 desaparecidos, 7 millones de desplazados internos y miles de víctimas de secuestro, minas antipersona y violencia sexual. Las negociaciones se llevaron a cabo en La Habana, Cuba, entre noviembre de 2012 y agosto de 2016, con Cuba y Noruega como países garantes, y Venezuela y Chile como países acompañantes. El proceso contó con el respaldo de Naciones Unidas, Estados Unidos y la comunidad internacional. Los diálogos se estructuraron en torno a seis puntos fundamentales: 1) Reforma Rural Integral, 2) Participación Política, 3) Fin del Conflicto (dejación de armas, reintegración), 4) Solución al Problema de las Drogas Ilícitas, 5) Víctimas (verdad, justicia, reparación, no repetición), y 6) Implementación y Verificación. Un primer acuerdo fue rechazado en un plebiscito ciudadano el 2 de octubre de 2016, por un estrecho margen (50.2% por el NO vs 49.8% por el SÍ), en una votación marcada por la abstención del 63%. El expresidente Álvaro Uribe lideró la campaña del NO. Tras renegociar algunos puntos y incorporar propuestas de los opositores, se firmó el acuerdo definitivo el 24 de noviembre, que fue refrendado por el Congreso de la República. El acuerdo estableció la creación de la Jurisdicción Especial para la Paz (JEP), un sistema de justicia transicional diseñado para investigar los crímenes del conflicto. También creó la Comisión de la Verdad y la Unidad de Búsqueda de Personas Desaparecidas. Las FARC se comprometieron a entregar todas sus armas ante la ONU, proceso que se completó en 2017 cuando más de 7,000 guerrilleros se desmovilizaron y entregaron 8,994 armas. La guerrilla se transformó en el partido político Fuerza Alternativa Revolucionaria del Común (luego llamado Comunes), aunque con escaso éxito electoral. Por sus esfuerzos en lograr la paz, Juan Manuel Santos recibió el Premio Nobel de la Paz 2016. Sin embargo, la implementación del acuerdo ha enfrentado múltiples obstáculos: incumplimientos presupuestales, oposición política, retrasos en reformas clave y el surgimiento de disidencias de las FARC que retomaron las armas. A pesar de las dificultades, el acuerdo representa el esfuerzo más serio en la historia de Colombia por terminar el conflicto armado mediante el diálogo político.",
-            "integrantes": [
-                {
-                    "nombre": "Juan Manuel Santos",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente que lideró las negociaciones de paz, Premio Nobel de la Paz 2016."
-                },
-                {
-                    "nombre": "Rodrigo Londoño (Timochenko)",
-                    "rol": "Comandante FARC",
-                    "descripcion": "Máximo líder de las FARC durante las negociaciones y firma del acuerdo."
-                },
-                {
-                    "nombre": "Humberto de la Calle",
-                    "rol": "Jefe Negociador Gobierno",
-                    "descripcion": "Jefe del equipo negociador del gobierno colombiano."
-                },
-                {
-                    "nombre": "Iván Márquez",
-                    "rol": "Jefe Negociador FARC",
-                    "descripcion": "Líder del equipo negociador de las FARC."
-                },
-                {
-                    "nombre": "Sergio Jaramillo",
-                    "rol": "Alto Comisionado para la Paz",
-                    "descripcion": "Arquitecto del marco jurídico del proceso de paz."
-                }
-            ],
-            "ubicacion": "La Habana, Cuba (negociaciones) / Bogotá, Colombia (firma)",
-            "consecuencias": [
-                "Desarme de más de 7,000 guerrilleros",
-                "Creación de la Jurisdicción Especial para la Paz (JEP)",
-                "Transformación de las FARC en partido político",
-                "Reconocimiento de víctimas del conflicto",
-                "Premio Nobel de la Paz para Juan Manuel Santos",
-                "Polarización política en Colombia"
-            ]
-        },
-        {
-            "id": "1989-12-06",
-            "fecha": "1989-12-06",
-            "nombre": "Atentado al DAS",
-            "descripcion": "El 6 de diciembre de 1989, apenas nueve días después del atentado al Vuelo 203 de Avianca, el Cartel de Medellín ejecutó otro devastador ataque terrorista. A las 7:30 a.m., un camión bomba cargado con 500 kilogramos de dinamita explotó frente a la sede del Departamento Administrativo de Seguridad (DAS) en Bogotá, ubicada en la calle 59 con carrera 13 en pleno centro de la ciudad. La explosión, equivalente a 1,200 libras de TNT, fue tan potente que se sintió en toda la capital y causó un cráter de varios metros de profundidad. El edificio del DAS quedó parcialmente destruido, y decenas de construcciones en un radio de varias cuadras sufrieron daños severos. Ventanas de edificios se quebraron hasta 15 cuadras a la redonda. El balance fue de 70 muertos y más de 600 heridos. Entre las víctimas hubo funcionarios del DAS, transeúntes, vendedores ambulantes, estudiantes y trabajadores de edificios aledaños. El objetivo del atentado era asesinar al general Miguel Maza Márquez, director del DAS y enemigo declarado de Pablo Escobar, quien había liderado operaciones exitosas contra el Cartel de Medellín. Sin embargo, Maza Márquez sobrevivió porque su oficina estaba reforzada y porque llegó tarde ese día. El atentado fue ordenado por Pablo Escobar como parte de su guerra total contra el Estado colombiano, en respuesta a las políticas de extradición y a las operaciones militares y policiales contra su organización. El sicario que condujo el camión bomba murió en la explosión. Este atentado, junto con el del vuelo de Avianca, el ataque al edificio del periódico El Espectador y numerosos atentados menores, sumergieron a Colombia en un clima de terror que alcanzó su punto máximo a finales de 1989 y principios de 1990. El país vivió bajo la amenaza constante de los 'Extraditables', como se autodenominaba el grupo terrorista del Cartel de Medellín. Estos ataques llevaron al gobierno a negociar una salida política que resultó en la prohibición constitucional de la extradición en la Constitución de 1991, aunque Escobar continuó su campaña de terror hasta su captura en 1991 y su posterior fuga y muerte en 1993.",
-            "integrantes": [
-                {
-                    "nombre": "Pablo Escobar Gaviria",
-                    "rol": "Autor Intelectual",
-                    "descripcion": "Líder del Cartel de Medellín que ordenó el atentado para asesinar al director del DAS."
-                },
-                {
-                    "nombre": "General Miguel Maza Márquez",
-                    "rol": "Director del DAS (Objetivo)",
-                    "descripcion": "Director del DAS, principal objetivo del atentado. Sobrevivió porque su oficina estaba blindada y llegó tarde."
-                },
-                {
-                    "nombre": "Virgilio Barco Vargas",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente durante el atentado, quien mantuvo una política dura contra el narcotráfico."
-                }
-            ],
-            "ubicacion": "Sede del DAS, Bogotá",
-            "consecuencias": [
-                "70 personas muertas y más de 600 heridas.",
-                "Destrucción parcial de la sede del DAS y daños en decenas de edificios.",
-                "Incremento del clima de terror en la sociedad colombiana.",
-                "Fortalecimiento de la determinación del Estado contra el narcoterrorismo.",
-                "Presión nacional e internacional sobre el Cartel de Medellín.",
-                "Punto culminante de la campaña de terror de los 'Extraditables'."
-            ]
-        },
-        {
-            "id": "2002-05-02",
-            "fecha": "2002-05-02",
-            "nombre": "Masacre de Bojayá",
-            "descripcion": "El 2 de mayo de 2002, en medio del conflicto armado colombiano, ocurrió una de las masacres más dolorosas y emblemáticas de la guerra: la Masacre de Bojayá. En el marco de un enfrentamiento entre las FARC y los paramilitares de las AUC por el control territorial del Atrato chocoano, las FARC lanzaron un cilindro bomba (pipeta de gas cargada con metralla y explosivos) que impactó la iglesia de San Pablo Apóstol en el corregimiento de Bellavista, municipio de Bojayá, departamento del Chocó. En ese momento, aproximadamente 300 habitantes civiles, en su mayoría población afrodescendiente e indígena, se habían refugiado en la iglesia huyendo de los combates que se desarrollaban en el pueblo. La explosión fue devastadora. El cilindro destruyó gran parte de la iglesia y mató instantáneamente a 79 personas, de las cuales 48 eran niños y adolescentes. Decenas más resultaron heridas. Los cuerpos quedaron destrozados de tal manera que fue difícil identificarlos. Los sobrevivientes relataron escenas dantescas de desmembramiento y destrucción. Las FARC, específicamente el Frente 57, fueron señaladas como responsables del ataque, aunque la guerrilla argumentó que el cilindro había desviado su trayectoria involuntariamente. Sin embargo, el uso de armas no convencionales (cilindros bomba) contra población civil fue ampliamente condenado como crimen de guerra. La comunidad de Bojayá vivió el drama del desplazamiento forzado y la estigmatización. Durante años, exigieron verdad, justicia y reparación. El caso se convirtió en un símbolo del sufrimiento de las comunidades afrocolombianas e indígenas en el conflicto armado. En el marco del proceso de paz con las FARC, la guerrilla pidió perdón públicamente por la masacre en 2015 y 2016. En mayo de 2019, los restos de las víctimas, que habían sido exhumados años antes, fueron devueltos a sus familias en una conmovedora ceremonia conocida como 'El Regreso' o 'El Gran Levantamiento', donde la comunidad realizó rituales ancestrales de sanación. El Cristo mutilado de Bojayá, una imagen religiosa destruida por la explosión, se conserva como símbolo del dolor y la esperanza de reconciliación. Bojayá representa el dolor de las poblaciones étnicas y rurales atrapadas en medio del fuego cruzado del conflicto armado colombiano.",
-            "integrantes": [
-                {
-                    "nombre": "Frente 57 de las FARC",
-                    "rol": "Autores del Atentado",
-                    "descripcion": "Unidad guerrillera de las FARC responsable del lanzamiento del cilindro bomba que impactó la iglesia."
-                },
-                {
-                    "nombre": "Pastor Alape",
-                    "rol": "Comandante FARC",
-                    "descripcion": "Comandante de la región, posteriormente pidió perdón en nombre de las FARC durante el proceso de paz."
-                },
-                {
-                    "nombre": "Andrés Pastrana",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente durante la masacre, en el contexto del fracaso de las negociaciones de la zona de distensión."
-                }
-            ],
-            "ubicacion": "Bellavista, Bojayá, Chocó",
-            "consecuencias": [
-                "79 personas muertas, incluyendo 48 niños y adolescentes.",
-                "Destrucción de la iglesia de San Pablo Apóstol.",
-                "Desplazamiento masivo de la población de Bojayá.",
-                "Símbolo del sufrimiento de comunidades afrodescendientes e indígenas en el conflicto.",
-                "Condena nacional e internacional por crimen de guerra.",
-                "Solicitud de perdón de las FARC en el proceso de paz.",
-                "Ceremonia de 'El Regreso' en 2019 con los restos de las víctimas."
-            ]
-        },
-        {
-            "id": "2019-11-21",
-            "fecha": "2019-11-21",
-            "nombre": "Paro Nacional de 2019",
-            "descripcion": "El 21 de noviembre de 2019, Colombia vivió una de las movilizaciones sociales más grandes de su historia reciente. Decenas de miles de ciudadanos salieron a las calles en todo el país en lo que se denominó el 'Paro Nacional', una jornada de protesta convocada inicialmente por sindicatos, organizaciones estudiantiles, indígenas, campesinas y sectores sociales diversos. El paro se extendió durante varias semanas con marchas masivas, particularmente los días 21 de noviembre y 4 de diciembre. Las manifestaciones respondían a múltiples demandas acumuladas: rechazo a propuestas de reformas laborales y pensionales del gobierno de Iván Duque que se percibían como perjudiciales para los trabajadores; protesta contra el asesinato sistemático de líderes sociales y excombatientes de las FARC tras el Acuerdo de Paz; rechazo al manejo de la implementación del Acuerdo de Paz; demandas por educación pública de calidad; oposición a la corrupción y al modelo económico neoliberal. Las protestas fueron mayoritariamente pacíficas, caracterizadas por cacerolazos, conciertos callejeros, performances artísticas y una atmósfera festiva en muchas ciudades. Sin embargo, también hubo episodios de violencia, vandalismo de infraestructura pública, saqueos y enfrentamientos entre manifestantes radicalizados ('Primera Línea') y la fuerza pública. El gobierno del presidente Iván Duque implementó el Escuadrón Móvil Antidisturbios (ESMAD) para controlar las protestas, lo que generó denuncias de abuso policial, uso excesivo de la fuerza y violaciones a los derechos humanos. Se registraron varios casos de jóvenes gravemente heridos por impactos de proyectiles del ESMAD, incluyendo a Dilan Cruz, un joven de 18 años que murió el 24 de noviembre tras ser impactado por un proyectil en la cabeza. Su muerte se convirtió en un símbolo de la protesta y generó indignación nacional. El paro de 2019 marcó un punto de inflexión en la movilización social colombiana y evidenció el descontento acumulado de amplios sectores de la población, particularmente jóvenes urbanos. Las protestas se reactivarían con mayor intensidad en abril y mayo de 2021.",
-            "integrantes": [
-                {
-                    "nombre": "Iván Duque Márquez",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente durante el paro, su gobierno fue el blanco principal de las protestas."
-                },
-                {
-                    "nombre": "Dilan Cruz",
-                    "rol": "Víctima Símbolo",
-                    "descripcion": "Joven de 18 años que murió tras ser impactado por un proyectil del ESMAD. Su muerte se convirtió en símbolo de la protesta."
-                },
-                {
-                    "nombre": "Central Unitaria de Trabajadores (CUT)",
-                    "rol": "Convocante",
-                    "descripcion": "Principal central obrera que convocó el paro junto con otras organizaciones sociales."
-                }
-            ],
-            "ubicacion": "Todo el territorio colombiano, principalmente Bogotá, Cali, Medellín",
-            "consecuencias": [
-                "Movilizaciones masivas de cientos de miles de personas en todo el país.",
-                "Muerte de Dilan Cruz y varios manifestantes más.",
-                "Denuncias de abuso policial y violaciones a derechos humanos.",
-                "Inicio de un 'Gran Diálogo Nacional' convocado por el gobierno.",
-                "Visibilización de demandas sociales acumuladas.",
-                "Fortalecimiento de movimientos sociales y juveniles.",
-                "Antecedente directo del Paro Nacional de 2021."
-            ]
-        },
-        {
-            "id": "2021-04-28",
-            "fecha": "2021-04-28",
-            "nombre": "Paro Nacional de 2021",
-            "descripcion": "El 28 de abril de 2021, Colombia vivió el estallido social más grande y prolongado de su historia reciente. El 'Paro Nacional de 2021' se extendió por más de dos meses, paralizando parcialmente al país y generando una crisis política, social y de derechos humanos sin precedentes. Las protestas iniciaron como respuesta a una reforma tributaria propuesta por el gobierno de Iván Duque que aumentaba impuestos y gravaba productos de la canasta básica en medio de la crisis económica causada por la pandemia de COVID-19. Aunque la reforma fue retirada pocos días después, las manifestaciones continuaron y se ampliaron las demandas: retiro de una reforma a la salud, mejores condiciones laborales, implementación del Acuerdo de Paz, fin del asesinato de líderes sociales, reforma de la Policía Nacional, y rechazo generalizado al gobierno de Duque. Las protestas se caracterizaron por bloqueos de vías en todo el país, que afectaron el transporte de alimentos y medicamentos, generando desabastecimiento en algunas regiones. Se establecieron 'puntos de resistencia' en ciudades como Cali, Bogotá, Medellín, Popayán, Buenaventura y muchas otras. En Cali, el conflicto alcanzó niveles dramáticos con enfrentamientos diarios entre manifestantes y la fuerza pública. La respuesta del Estado fue fuertemente criticada por organismos internacionales de derechos humanos. La Policía Nacional y el ESMAD utilizaron fuerza letal, armas de fuego y gases lacrimógenos de manera indiscriminada. Se documentaron casos de desapariciones forzadas, tortura, violencia sexual por parte de agentes del Estado, y ejecuciones extrajudiciales. Según la ONG Temblores, al menos 83 personas murieron en contexto de protesta, más de 3,000 fueron heridas, y se reportaron 87 casos de violencia sexual, 1,617 detenciones arbitrarias y 28 víctimas de violencia ocular. También hubo actos de vandalismo, ataques a la infraestructura pública (estaciones de Transmilenio, CAI de policía) y agresiones a civiles por parte de grupos radicalizados. El gobierno implementó asistencia militar en varias ciudades, lo que incrementó la tensión. Figuras internacionales y organismos como la CIDH, Human Rights Watch y la ONU expresaron preocupación por la situación. El paro evidenció la profunda fractura social de Colombia, la desconfianza hacia el gobierno y las instituciones, y el malestar acumulado de sectores históricamente excluidos. El gobierno de Duque no logró establecer una mesa de diálogo efectiva con los manifestantes, y las protestas disminuyeron gradualmente por agotamiento, represión y falta de articulación política. Las consecuencias del paro de 2021 aún resuenan en la sociedad colombiana y fueron un factor determinante en las elecciones presidenciales de 2022.",
-            "integrantes": [
-                {
-                    "nombre": "Iván Duque Márquez",
-                    "rol": "Presidente de Colombia",
-                    "descripcion": "Presidente durante el paro. Su gobierno fue fuertemente cuestionado por la represión."
-                },
-                {
-                    "nombre": "Comité Nacional del Paro",
-                    "rol": "Liderazgo del Paro",
-                    "descripcion": "Coalición de organizaciones sociales, sindicatos e indígenas que convocaron y lideraron las protestas."
-                },
-                {
-                    "nombre": "Francisco Maltés",
-                    "rol": "Líder Sindical",
-                    "descripcion": "Presidente de la CUT y uno de los voceros principales del Comité Nacional del Paro."
-                }
-            ],
-            "ubicacion": "Todo el territorio nacional, principalmente Cali, Bogotá, Medellín, Popayán",
-            "consecuencias": [
-                "Al menos 83 muertos y más de 3,000 heridos según organizaciones de DDHH.",
-                "Retiro de la reforma tributaria y renuncia del ministro de Hacienda.",
-                "Documentación de graves violaciones a derechos humanos por parte de la fuerza pública.",
-                "Crisis política y de gobernabilidad del gobierno Duque.",
-                "Visibilización de la 'Primera Línea' como movimiento de resistencia juvenil.",
-                "Bloqueos y desabastecimiento que afectaron la economía nacional.",
-                "Impacto en las elecciones presidenciales de 2022 con el triunfo de Gustavo Petro."
-            ]
+          "nombre": "Mariano Ospina Pérez",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente conservador en ejercicio durante el Bogotazo."
         }
-    ]
+      ],
+      "ubicacion": "Bogotá, Colombia",
+      "consecuencias": [
+        "Inicio del periodo conocido como La Violencia",
+        "Más de 3,000 muertos en los días posteriores al asesinato",
+        "Destrucción del centro de Bogotá",
+        "Radicalización del conflicto bipartidista"
+      ]
+    },
+    {
+      "id": "1958-12-01",
+      "fecha": "1958-12-01",
+      "nombre": "Frente Nacional",
+      "descripcion": "El 1 de diciembre de 1958, Alberto Lleras Camargo asumió la presidencia de Colombia, inaugurando así el periodo del Frente Nacional, un pacto político sin precedentes entre el Partido Liberal y el Partido Conservador diseñado para poner fin a 'La Violencia', la guerra civil bipartidista que había asolado al país desde 1948 y que había dejado más de 200,000 muertos. El acuerdo fue negociado entre los líderes de ambos partidos: Alberto Lleras Camargo por los liberales y Laureano Gómez por los conservadores, quien estaba exiliado en España. El pacto establecía que durante 16 años (1958-1974), los dos partidos tradicionales se turnarían la presidencia cada cuatro años (cuatro periodos presidenciales alternando liberal-conservador), y que todos los cargos públicos de la rama ejecutiva, legislativa y judicial serían distribuidos en paridad absoluta del 50%-50% entre liberales y conservadores. Las decisiones en el Congreso requerían mayorías calificadas de dos tercios, lo que obligaba a ambos partidos a trabajar conjuntamente. El Frente Nacional fue ratificado mediante un plebiscito nacional el 1 de diciembre de 1957, con el apoyo del 95% de los votantes. Durante el periodo del Frente Nacional gobernaron cuatro presidentes: Alberto Lleras Camargo (Liberal, 1958-1962), Guillermo León Valencia (Conservador, 1962-1966), Carlos Lleras Restrepo (Liberal, 1966-1970) y Misael Pastrana Borrero (Conservador, 1970-1974). Este sistema logró efectivamente pacificar el conflicto bipartidista tradicional, estabilizar las instituciones democráticas y promover un periodo de crecimiento económico moderado. Se modernizó el Estado, se implementaron reformas agrarias limitadas, se fortaleció la educación y se promovió la industrialización. Sin embargo, el Frente Nacional tuvo consecuencias negativas profundas. Al monopolizar el poder político en manos de las élites de los dos partidos tradicionales, excluyó sistemáticamente a terceras fuerzas políticas, movimientos de izquierda, organizaciones sociales y sectores populares de la participación política legítima. Esta exclusión política generó frustración en sectores que no se sentían representados y contribuyó al surgimiento y fortalecimiento de grupos guerrilleros como las FARC (1964), el ELN (1964) y el M-19 (1974), quienes argumentaban que las vías democráticas estaban cerradas. El Frente Nacional también institucionalizó prácticas clientelistas y de corrupción, ya que la distribución burocrática se hacía por cuotas partidistas sin criterios meritocráticos. Además, despolitizó a la ciudadanía al reducir la competencia electoral a una simple alternancia pactada. Aunque formalmente terminó en 1974, muchos de sus mecanismos y prácticas persistieron en la política colombiana durante décadas.",
+      "integrantes": [
+        {
+          "nombre": "Alberto Lleras Camargo",
+          "rol": "Primer Presidente del Frente Nacional",
+          "descripcion": "Político liberal, periodista y diplomático. Fue el primer presidente del Frente Nacional (1958-1962) y uno de los arquitectos del pacto."
+        },
+        {
+          "nombre": "Laureano Gómez",
+          "rol": "Líder Conservador",
+          "descripcion": "Expresidente (1950-1951) y líder del partido Conservador. Negoció el pacto del Frente Nacional desde el exilio en España."
+        },
+        {
+          "nombre": "Gustavo Rojas Pinilla",
+          "rol": "Dictador Militar Derrocado",
+          "descripcion": "General que gobernó Colombia como dictador (1953-1957). Su gobierno autoritario motivó a liberales y conservadores a unirse contra él y pactar el Frente Nacional."
+        }
+      ],
+      "ubicacion": "Colombia",
+      "consecuencias": [
+        "Fin de 'La Violencia' bipartidista clásica.",
+        "Pacificación del conflicto entre liberales y conservadores.",
+        "Exclusión política de terceras fuerzas y movimientos alternativos.",
+        "Surgimiento de grupos guerrilleros como respuesta a la exclusión (FARC, ELN).",
+        "Institucionalización del clientelismo y la corrupción.",
+        "Despolitización de la ciudadanía y reducción de la competencia electoral.",
+        "Estabilidad institucional y crecimiento económico moderado durante 16 años."
+      ]
+    },
+    {
+      "id": "1985-11-06",
+      "fecha": "1985-11-06",
+      "nombre": "Toma del Palacio de Justicia",
+      "descripcion": "El miércoles 6 de noviembre de 1985, a las 11:40 a.m., un comando de 35 guerrilleros del Movimiento 19 de Abril (M-19) ingresó al Palacio de Justicia de Bogotá, ubicado en el costado norte de la Plaza de Bolívar, portando armas de largo alcance y explosivos. Los guerrilleros, liderados por Luis Otero y Andrés Almarales, tomaron como rehenes a más de 300 personas que se encontraban en el edificio, incluyendo a los 25 magistrados de la Corte Suprema de Justicia, empleados judiciales, abogados y visitantes. El M-19 exigía que el presidente Belisario Betancur compareciera ante la Corte para ser juzgado por no cumplir los acuerdos de paz firmados previamente con la guerrilla. El gobierno respondió con una operación militar masiva que incluyó el uso de tanques del ejército que dispararon contra las fachadas del edificio y un helicóptero que arrojó explosivos sobre el techo. Durante las 27 horas que duró la toma y la retoma, se desató un feroz enfrentamiento entre guerrilleros y militares. El fuego y los combates destruyeron gran parte del edificio y de los archivos judiciales que allí se custodiaban, incluyendo expedientes relacionados con procesos contra narcotraficantes. El saldo final fue devastador: murieron 11 de los 25 magistrados de la Corte Suprema, incluyendo su presidente Alfonso Reyes Echandía, aproximadamente 34 guerrilleros del M-19, 11 militares y civiles, para un total cercano a las 100 víctimas mortales. Además, se documentaron 11 casos de desaparición forzada de personas que estuvieron en el Palacio. La tragedia dejó profundas heridas en la institucionalidad judicial colombiana y generó controversia durante décadas sobre las decisiones tomadas durante la crisis, la responsabilidad del Estado y el posible interés de narcotraficantes en la destrucción de expedientes judiciales.",
+      "integrantes": [
+        {
+          "nombre": "Luis Otero",
+          "rol": "Comandante M-19",
+          "descripcion": "Líder del comando guerrillero que ejecutó la toma del Palacio."
+        },
+        {
+          "nombre": "Alfonso Reyes Echandía",
+          "rol": "Presidente Corte Suprema",
+          "descripcion": "Presidente de la Corte Suprema de Justicia, murió durante la retoma."
+        },
+        {
+          "nombre": "Belisario Betancur",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente que ordenó la retoma militar del edificio."
+        },
+        {
+          "nombre": "Andrés Almarales",
+          "rol": "Guerrillero M-19",
+          "descripcion": "Uno de los comandantes del asalto, murió durante la retoma."
+        }
+      ],
+      "ubicacion": "Palacio de Justicia, Bogotá",
+      "consecuencias": [
+        "Muerte de aproximadamente 100 personas",
+        "11 magistrados asesinados",
+        "Desaparición forzada de civiles",
+        "Destrucción de procesos judiciales contra narcotraficantes",
+        "Debilitamiento institucional del sistema judicial"
+      ]
+    },
+    {
+      "id": "1985-11-13",
+      "fecha": "1985-11-13",
+      "nombre": "Tragedia de Armero",
+      "descripcion": "El 13 de noviembre de 1985, apenas una semana después de la tragedia del Palacio de Justicia, Colombia sufrió la peor catástrofe natural de su historia. A las 9:09 p.m., el volcán Nevado del Ruiz, ubicado en la Cordillera Central a 140 kilómetros de Bogotá, hizo erupción después de 69 años de inactividad. La columna de ceniza y piroclastos alcanzó 30 kilómetros de altura. El calor de la erupción derritió aproximadamente el 10% del casquete glaciar que cubría el volcán, generando cuatro lahares o avalanchas de lodo, agua, rocas y escombros que descendieron por los flancos del volcán a velocidades de hasta 60 km/h. El lahar del río Lagunilla fue el más devastador: contenía aproximadamente 48 millones de metros cúbicos de material y arrasó completamente la ciudad de Armero, Tolima, sepultándola bajo una capa de lodo de hasta 5 metros de profundidad. La ciudad de 29,000 habitantes fue borrada del mapa en cuestión de minutos. Se estima que murieron entre 23,000 y 25,000 personas, representando más del 75% de la población de Armero. Miles más resultaron heridas. Otras poblaciones como Chinchiná en Caldas también fueron afectadas. La tragedia evidenció graves fallas institucionales: a pesar de que vulcanólogos habían advertido sobre el peligro inminente y se habían detectado señales de actividad volcánica en las semanas previas, no se realizó una evacuación oportuna. La imagen de Omayra Sánchez, una niña de 13 años atrapada en el lodo durante tres días antes de morir, fue documentada por fotógrafos internacionales y se convirtió en un símbolo mundial de la tragedia. Este desastre llevó a la creación del Sistema Nacional para la Prevención y Atención de Desastres y transformó la manera en que Colombia gestiona emergencias.",
+      "integrantes": [
+        {
+          "nombre": "Omayra Sánchez",
+          "rol": "Víctima Símbolo",
+          "descripcion": "Niña de 13 años cuya agonía fue documentada mundialmente, convirtiéndose en un símbolo de la tragedia."
+        },
+        {
+          "nombre": "Belisario Betancur",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente en funciones, criticado por la gestión de la advertencia y la respuesta a la emergencia."
+        }
+      ],
+      "ubicacion": "Armero, Tolima",
+      "consecuencias": [
+        "Más de 25,000 muertos y la desaparición de la ciudad de Armero.",
+        "Creación del Sistema Nacional para la Prevención y Atención de Desastres en Colombia.",
+        "Mayor monitoreo de la actividad volcánica en el país.",
+        "Debate nacional sobre la responsabilidad del Estado en la prevención de desastres."
+      ]
+    },
+    {
+      "id": "1989-08-18",
+      "fecha": "1989-08-18",
+      "nombre": "Asesinato de Luis Carlos Galán",
+      "descripcion": "El viernes 18 de agosto de 1989, a las 8:30 p.m., Luis Carlos Galán Sarmiento, el candidato presidencial del Partido Liberal con mayor favorabilidad en las encuestas para las elecciones de 1990, fue asesinado durante un mitin político en la plaza principal de Soacha, Cundinamarca. Galán, de 46 años, era un reconocido periodista, político y líder del movimiento Nuevo Liberalismo, caracterizado por su férrea oposición al narcotráfico y su lucha contra la corrupción. Había sido amenazado en múltiples ocasiones por el Cartel de Medellín debido a su postura inflexible sobre la extradición de narcotraficantes a Estados Unidos. Esa noche, mientras subía al estrado para pronunciar su discurso ante miles de seguidores, varios sicarios armados con ametralladoras lo atacaron. Galán recibió varios impactos de bala y murió camino al hospital. El magnicidio fue ordenado por Pablo Escobar Gaviria, líder del Cartel de Medellín, con la complicidad del político Alberto Santofimio Botero, quien posteriormente fue condenado a 24 años de prisión como coautor del crimen. La muerte de Galán conmocionó a Colombia y al mundo entero. El presidente Virgilio Barco declaró el estado de sitio y lanzó una ofensiva sin precedentes contra el narcotráfico, reactiv ando la extradición de colombianos a Estados Unidos. En respuesta, el Cartel de Medellín desató una ola de terrorismo urbano contra el Estado colombiano que incluyó atentados con bombas, asesinatos selectivos y secuestros. La viuda de Galán, Gloria Pachón de Galán, se convirtió en una figura emblemática de la lucha contra la impunidad. Su hijo, Juan Manuel Galán, siguió los pasos políticos de su padre. El asesinato de Galán cambió el rumbo político de Colombia y llevó a César Gaviria, coordinador del debate político de su campaña, a asumir la candidatura y posteriormente ganar las elecciones presidenciales.",
+      "integrantes": [
+        {
+          "nombre": "Luis Carlos Galán",
+          "rol": "Candidato Presidencial",
+          "descripcion": "Político liberal, periodista y opositor del narcotráfico. Líder del Nuevo Liberalismo."
+        },
+        {
+          "nombre": "Pablo Escobar Gaviria",
+          "rol": "Narcotraficante",
+          "descripcion": "Líder del Cartel de Medellín, señalado como autor intelectual del magnicidio."
+        },
+        {
+          "nombre": "Alberto Santofimio Botero",
+          "rol": "Político",
+          "descripcion": "Condenado como coautor del asesinato por instigar a Escobar."
+        },
+        {
+          "nombre": "Jairo Ortega",
+          "rol": "Sicario",
+          "descripcion": "Uno de los asesinos materiales del crimen."
+        }
+      ],
+      "ubicacion": "Soacha, Cundinamarca",
+      "consecuencias": [
+        "Declaración del estado de sitio",
+        "Intensificación de la guerra contra el narcotráfico",
+        "Endurecimiento de la extradición",
+        "Oleada de atentados terroristas del Cartel de Medellín",
+        "Victoria presidencial de César Gaviria"
+      ]
+    },
+    {
+      "id": "1989-11-27",
+      "fecha": "1989-11-27",
+      "nombre": "Atentado al Vuelo 203 de Avianca",
+      "descripcion": "El lunes 27 de noviembre de 1989, a las 7:13 a.m., el vuelo 203 de Avianca, un Boeing 727-21 matrícula HK-1803, explotó en el aire cinco minutos después de despegar del Aeropuerto El Dorado de Bogotá con destino a Cali. La aeronave llevaba 101 pasajeros y seis tripulantes. Una bomba compuesta por tres kilogramos de dinamita, escondida en un maletín y activada por un temporizador, detonó bajo el asiento 15-F cuando el avión volaba a 13,000 pies de altura sobre el municipio de Soacha. La explosión partió el fuselaje en dos, desintegrando la aeronave instantáneamente. Los restos del avión cayeron en zonas rurales de Soacha y Bosa. Las 107 personas a bordo murieron, además de tres personas en tierra que fueron alcanzadas por escombros en llamas. Entre las víctimas se encontraban profesionales, empresarios, madres con sus hijos, estudiantes y dos ciudadanos estadounidenses. El atentado fue ordenado por Pablo Escobar Gaviria, líder del Cartel de Medellín, como parte de su campaña de narcoterrorismo contra el Estado colombiano. El objetivo específico del atentado era asesinar al candidato presidencial César Gaviria Trujillo, quien había asumido la campaña del Partido Liberal tras el asesinato de Luis Carlos Galán tres meses antes. Escobar tenía información de que Gaviria viajaría en ese vuelo. Sin embargo, por decisiones de última hora relacionadas con su agenda de campaña y recomendaciones de su equipo de seguridad, Gaviria canceló su viaje y no abordó el avión. A pesar de saber que Gaviria no estaba a bordo, Escobar ordenó igualmente que se ejecutara el atentado. Este acto de terrorismo indiscriminado representó uno de los momentos más oscuros del narcoterrorismo en Colombia y generó repudio internacional. Dos jóvenes sicarios del cartel, que actuaron como 'mulas humanas' sin saberlo, fueron utilizados para colocar la bomba a bordo: compraron un tiquete de ida, subieron el maletín con la bomba, y se bajaron del avión antes del despegue alegando olvido de documentos. Posteriormente fueron capturados y condenados. En respuesta al atentado, el gobierno del presidente Virgilio Barco intensificó las operaciones contra el Cartel de Medellín, incautó centenares de propiedades de Escobar y fortaleció las alianzas con Estados Unidos. El atentado al vuelo 203 es considerado el ataque terrorista más mortífero en la historia de Colombia y marcó la radicalización total de la guerra entre el Estado y el narcotráfico.",
+      "integrantes": [
+        {
+          "nombre": "Pablo Escobar Gaviria",
+          "rol": "Autor Intelectual",
+          "descripcion": "Líder del Cartel de Medellín, ordenó el atentado con el objetivo de asesinar al candidato presidencial César Gaviria."
+        },
+        {
+          "nombre": "César Gaviria Trujillo",
+          "rol": "Objetivo del Atentado",
+          "descripcion": "Candidato presidencial liberal que era el objetivo del atentado pero canceló su viaje en el último momento."
+        },
+        {
+          "nombre": "Dandeny Muñoz Mosquera 'La Quica'",
+          "rol": "Sicario del Cartel",
+          "descripcion": "Sicario de confianza de Escobar, señalado como uno de los planificadores del atentado. Fue extraditado a Estados Unidos y condenado."
+        }
+      ],
+      "ubicacion": "Cielos de Soacha, Cundinamarca",
+      "consecuencias": [
+        "Muerte de 110 personas (107 a bordo y 3 en tierra).",
+        "Mayor atentado terrorista en la historia de Colombia.",
+        "Repudio nacional e internacional masivo contra Pablo Escobar.",
+        "Intensificación de la guerra del Estado contra el Cartel de Medellín.",
+        "Fortalecimiento de la cooperación con Estados Unidos en la lucha antidrogas.",
+        "Creación de normas más estrictas de seguridad aeroportuaria."
+      ]
+    },
+    {
+      "id": "1991-07-04",
+      "fecha": "1991-07-04",
+      "nombre": "Promulgación de la Constitución de 1991",
+      "descripcion": "El 4 de julio de 1991, Colombia promulgó una nueva Constitución Política que reemplazó a la centenaria Carta de 1886. Este proceso constituyente surgió del movimiento estudiantil conocido como la 'Séptima Papeleta', que durante las elecciones de 1990 convocó a los ciudadanos a incluir una papeleta extra pidiendo la convocatoria de una Asamblea Nacional Constituyente. Más de dos millones de colombianos apoyaron la iniciativa. El presidente César Gaviria, electo en 1990, formalizó la convocatoria mediante el Decreto de Estado de Sitio 1926. La Asamblea Nacional Constituyente estuvo conformada por 70 delegatarios elegidos democráticamente, incluyendo representantes de partidos tradicionales (Liberal y Conservador), movimientos de izquierda, desmovilizados de grupos guerrilleros como el M-19 (representado por Antonio Navarro Wolff y Carlos Pizarro, quien fue asesinado antes de posesionarse), comunidades indígenas, movimientos cristianos y otros sectores de la sociedad civil. La nueva Constitución transformó radicalmente la estructura del Estado colombiano. Declaró a Colombia como un Estado Social de Derecho, organizado como república unitaria, descentralizada, con autonomía de sus entidades territoriales, democrática, participativa y pluralista. Reconoció la diversidad étnica y cultural de la nación. Creó instituciones fundamentales como la Corte Constitucional, la Fiscalía General de la Nación, la Defensoría del Pueblo y fortaleció la Procuraduría. Introdujo mecanismos de participación ciudadana como el referendo, el plebiscito, la consulta popular, el cabildo abierto, la iniciativa legislativa y la revocatoria del mandato. Estableció la Acción de Tutela como mecanismo expedito para la protección de derechos fundamentales. Amplió el catálogo de derechos humanos, incluyendo derechos económicos, sociales, culturales, colectivos y del ambiente. Creó la figura de la circunscripción nacional electoral y estableció nuevas reglas para la elección del Congreso y los gobernadores. Esta Constitución es conocida como 'la Constitución de los Derechos Humanos' y significó una apertura democrática sin precedentes en la historia del país, aunque su implementación ha enfrentado múltiples desafíos.",
+      "integrantes": [
+        {
+          "nombre": "César Gaviria Trujillo",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente que convocó la Asamblea Nacional Constituyente."
+        },
+        {
+          "nombre": "Horacio Serpa Uribe",
+          "rol": "Co-presidente Asamblea",
+          "descripcion": "Representante del Partido Liberal."
+        },
+        {
+          "nombre": "Álvaro Gómez Hurtado",
+          "rol": "Co-presidente Asamblea",
+          "descripcion": "Representante del Movimiento de Salvación Nacional (Conservador)."
+        },
+        {
+          "nombre": "Antonio Navarro Wolff",
+          "rol": "Co-presidente Asamblea",
+          "descripcion": "Representante de la Alianza Democrática M-19 (ex-guerrilla)."
+        }
+      ],
+      "ubicacion": "Bogotá, Colombia",
+      "consecuencias": [
+        "Creación de la Corte Constitucional y la Fiscalía General de la Nación.",
+        "Instauración de la Acción de Tutela para proteger derechos fundamentales.",
+        "Reconocimiento de Colombia como un estado social de derecho, pluriétnico y multicultural.",
+        "Fin del bipartidismo y apertura a nuevas fuerzas políticas."
+      ]
+    },
+    {
+      "id": "1993-12-02",
+      "fecha": "1993-12-02",
+      "nombre": "Muerte de Pablo Escobar",
+      "descripcion": "El 2 de diciembre de 1993, a las 3:15 p.m., Pablo Emilio Escobar Gaviria, el narcotraficante más buscado del mundo, fue abatido por el Bloque de Búsqueda de la Policía Nacional de Colombia en un operativo realizado en el barrio Los Olivos de Medellín. Escobar, de 44 años, había escapado 16 meses antes de la cárcel de La Catedral, una prisión de máxima seguridad que él mismo había mandado a construir. Durante ese tiempo, la persecución contra él se intensificó con la participación del gobierno colombiano, la DEA estadounidense, el grupo paramilitar Los Pepes (Perseguidos por Pablo Escobar) liderado por los hermanos Castaño, y el Cartel de Cali, enemigos de Escobar. El Bloque de Búsqueda, comandado por el coronel Hugo Martínez, había rastreado una llamada telefónica que Escobar realizó a su familia. Cuando los agentes rodearon la casa donde se escondía, Escobar intentó huir por los tejados junto a su guardaespaldas 'Limón', pero ambos fueron alcanzados por disparos. Escobar recibió impactos en la pierna, el torso y uno mortal detrás de la oreja. Su cuerpo fue exhibido en la azotea de la casa ante las cámaras de televisión del mundo entero. Miles de personas asistieron a su funeral en Medellín, en una manifestación que reflejaba la compleja relación que el capo había construido con sectores populares a través de programas sociales en comunas marginales. La muerte de Escobar marcó el fin del Cartel de Medellín, la organización criminal que en su momento controló el 80% del mercado mundial de cocaína y que había sumido a Colombia en una ola de terrorismo que incluyó el asesinato de tres candidatos presidenciales, cientos de policías, jueces, periodistas y civiles, así como atentados con bombas en aviones, centros comerciales y edificios gubernamentales. Su muerte permitió que el Cartel de Cali tomara el control del narcotráfico en Colombia y marcó un cambio en el panorama de seguridad del país, aunque no significó el fin del narcotráfico ni de la violencia.",
+      "integrantes": [
+        {
+          "nombre": "Pablo Escobar Gaviria",
+          "rol": "Narcotraficante",
+          "descripcion": "Fundador y líder del Cartel de Medellín, considerado uno de los criminales más ricos de la historia."
+        },
+        {
+          "nombre": "Hugo Aguilar",
+          "rol": "Comandante Bloque de Búsqueda",
+          "descripcion": "Oficial de policía que lideró el operativo final contra Escobar."
+        },
+        {
+          "nombre": "César Gaviria",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente durante la captura y muerte de Escobar."
+        },
+        {
+          "nombre": "Carlos Castaño",
+          "rol": "Líder Paramilitar",
+          "descripcion": "Líder de Los Pepes (Perseguidos por Pablo Escobar), grupo que colaboró en su persecución."
+        }
+      ],
+      "ubicacion": "Barrio Los Olivos, Medellín",
+      "consecuencias": [
+        "Desmantelamiento del Cartel de Medellín",
+        "Ascenso del Cartel de Cali",
+        "Reducción significativa de atentados terroristas",
+        "Recuperación de la imagen de Colombia",
+        "Consolidación de estructuras paramilitares"
+      ]
+    },
+    {
+      "id": "1994-06-19",
+      "fecha": "1994-06-19",
+      "nombre": "Proceso 8000",
+      "descripcion": "El Proceso 8000 fue el mayor escándalo político de corrupción en la historia moderna de Colombia. El 19 de junio de 1994, Ernesto Samper Pizano asumió la presidencia tras derrotar por estrecho margen a Andrés Pastrana en la segunda vuelta electoral. Sin embargo, apenas dos meses después de su posesión, en agosto de 1994, el periodista Alberto Giraldo reveló la existencia de unas grabaciones de audio conocidas como 'los narcocasetes', en las que se escuchaban conversaciones entre miembros del Cartel de Cali y dirigentes de la campaña de Samper discutiendo el ingreso de dineros del narcotráfico para financiar la campaña presidencial. Los hermanos Gilberto y Miguel Rodríguez Orejuela, cabezas del Cartel de Cali, habrían aportado aproximadamente 6 millones de dólares (equivalente a 6,000 millones de pesos de la época) para la campaña de Samper. La Fiscalía General de la Nación abrió una investigación penal identificada con el radicado 8000, de donde proviene el nombre del escándalo. El proceso judicial involucró a altos funcionarios de la campaña y del gobierno. Fernando Botero Zea, quien había sido ministro de Defensa y director de la campaña de Samper, fue condenado a cinco años y medio de prisión. Santiago Medina, tesorero de la campaña, colaboró con la justicia y reveló detalles comprometedores. El Congreso inició un proceso de investigación contra el presidente Samper, quien negó sistemáticamente tener conocimiento de la procedencia ilícita de los fondos de campaña, arguyendo que si hubo infiltración, ocurrió 'a sus espaldas'. En junio de 1996, la Cámara de Representantes absolvió a Samper de los cargos, en una votación que muchos criticaron por presiones políticas y posible corrupción. El escándalo tuvo consecuencias devastadoras para Colombia. Estados Unidos descertificó al país en su lucha contra las drogas, canceló la visa del presidente Samper y redujo la cooperación bilateral. El gobierno enfrentó una crisis de gobernabilidad sin precedentes, con manifestaciones ciudadanas exigiendo la renuncia del presidente. El periodo presidencial de Samper (1994-1998) quedó marcado por la deslegitimación institucional y la evidencia de la profunda infiltración del narcotráfico en las esferas más altas del poder político colombiano. Varios políticos y funcionarios fueron condenados a prisión, y el sistema político colombiano sufrió un daño reputacional del que tardó años en recuperarse.",
+      "integrantes": [
+        {
+          "nombre": "Ernesto Samper Pizano",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente electo, principal implicado en el escándalo."
+        },
+        {
+          "nombre": "Andrés Pastrana Arango",
+          "rol": "Candidato Derrotado",
+          "descripcion": "Contendor de Samper, quien reveló los 'narco-casetes' que iniciaron el escándalo."
+        },
+        {
+          "nombre": "Fernando Botero Zea",
+          "rol": "Ministro de Defensa",
+          "descripcion": "Director de la campaña de Samper, fue encarcelado por su participación."
+        },
+        {
+          "nombre": "Gilberto y Miguel Rodríguez Orejuela",
+          "rol": "Líderes del Cartel de Cali",
+          "descripcion": "Capos del narcotráfico que financiaron la campaña."
+        }
+      ],
+      "ubicacion": "Bogotá, Colombia",
+      "consecuencias": [
+        "Grave crisis de gobernabilidad y legitimidad del gobierno Samper.",
+        "Descertificación de Colombia por parte de Estados Unidos en la lucha antidrogas.",
+        "Encarcelamiento de varios políticos y miembros de la campaña.",
+        "Evidencia de la profunda penetración del narcotráfico en las instituciones del Estado."
+      ]
+    },
+    {
+      "id": "1995-07-06",
+      "fecha": "1995-07-06",
+      "nombre": "Caída del Cartel de Cali",
+      "descripcion": "Entre junio y agosto de 1995, el gobierno colombiano logró desmantelar el Cartel de Cali, la organización narcotraficante más poderosa del mundo en ese momento. Tras la muerte de Pablo Escobar en 1993, los hermanos Gilberto y Miguel Rodríguez Orejuela consolidaron el dominio del Cartel de Cali sobre el narcotráfico internacional, controlando aproximadamente el 80% del mercado mundial de cocaína y generando ganancias anuales estimadas en 7,000 millones de dólares. A diferencia del Cartel de Medellín, que utilizaba el terrorismo y la violencia indiscriminada, el Cartel de Cali optó por una estrategia más sofisticada basada en la corrupción sistemática de instituciones estatales, el lavado de activos a través de empresas legítimas, y el mantenimiento de un perfil bajo. Los Rodriguez Orejuela eran empresarios legítimos en apariencia, propietarios de la cadena de farmacias Drogas La Rebaja y con inversiones en numerosos negocios. El 9 de junio de 1995, Gilberto Rodríguez Orejuela, conocido como 'El Ajedrecista' por su habilidad estratégica, fue capturado en su apartamento de Cali tras un operativo de la Policía Nacional dirigido por el general Rosso José Serrano. El 6 de agosto del mismo año, su hermano Miguel, apodado 'El Señor', fue capturado también en Cali en circunstancias similares. Las capturas fueron resultado de una intensa labor de inteligencia que contó con apoyo tecnológico y logístico de la DEA estadounidense. Posteriormente fueron capturados otros líderes del cartel como José Santacruz Londoño (quien escapó y fue abatido en 1996) y Hélmer 'Pacho' Herrera. Los hermanos Rodríguez Orejuela fueron condenados inicialmente a penas relativamente bajas en Colombia (aproximadamente 15 años), pero en 2004 y 2005 fueron extraditados a Estados Unidos, donde recibieron condenas de 30 años de prisión. La caída del Cartel de Cali no terminó con el narcotráfico en Colombia; por el contrario, provocó una fragmentación del negocio en múltiples carteles más pequeños y discretos, conocidos como 'cartelitos', que operan con menor visibilidad pero con gran eficiencia. También permitió el fortalecimiento de grupos armados ilegales como las FARC y las AUC, quienes se involucraron más profundamente en el narcotráfico para financiar sus operaciones.",
+      "integrantes": [
+        {
+          "nombre": "Gilberto Rodríguez Orejuela",
+          "rol": "Líder del Cartel de Cali",
+          "descripcion": "Conocido como 'El Ajedrecista', cerebro financiero y estratégico del cartel. Capturado en junio de 1995."
+        },
+        {
+          "nombre": "Miguel Rodríguez Orejuela",
+          "rol": "Líder del Cartel de Cali",
+          "descripcion": "Conocido como 'El Señor', encargado de la operación y seguridad. Capturado en agosto de 1995."
+        },
+        {
+          "nombre": "Ernesto Samper Pizano",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente durante la ofensiva final contra el Cartel de Cali."
+        },
+        {
+          "nombre": "General Rosso José Serrano",
+          "rol": "Director de la Policía Nacional",
+          "descripcion": "Lideró la estrategia policial que culminó con la captura de los capos."
+        }
+      ],
+      "ubicacion": "Cali, Colombia",
+      "consecuencias": [
+        "Desmantelamiento de la mayor organización de narcotráfico de la época.",
+        "Fragmentación del negocio del narcotráfico en carteles más pequeños y discretos.",
+        "Extradición de los hermanos Rodríguez Orejuela a Estados Unidos en 2004 y 2005.",
+        "Fin de la era de los grandes carteles monolíticos en Colombia."
+      ]
+    },
+    {
+      "id": "1999-01-07",
+      "fecha": "1999-01-07",
+      "nombre": "Creación de la Zona de Distensión",
+      "descripcion": "El 7 de enero de 1999, el presidente Andrés Pastrana Arango ordenó la desmilitarización de una zona de 42,000 kilómetros cuadrados (aproximadamente el tamaño de Suiza) en cinco municipios del sur de Colombia: San Vicente del Caguán, La Macarena, Mesetas, La Uribe y Vista Hermosa, ubicados entre los departamentos de Meta y Caquetá. Esta medida sin precedentes buscaba generar condiciones de confianza para iniciar negociaciones de paz con las Fuerzas Armadas Revolucionarias de Colombia (FARC), la guerrilla más antigua y poderosa del continente. El proceso se inició después de que Pastrana, siendo candidato presidencial, se reunió secretamente con Manuel Marulanda Vélez, alias 'Tirofijo', máximo comandante de las FARC, en julio de 1998. Las negociaciones se inauguraron oficialmente el 7 de enero de 1999 en San Vicente del Caguán, pero el acto estuvo marcado por la ausencia de Marulanda, quien dejó una silla vacía que se convirtió en un símbolo de la desconfianza mutua. Durante los 1,184 días que duró la zona de distensión (del 7 de enero de 1999 al 20 de febrero de 2002), las FARC disfrutaron de control territorial absoluto sin presencia de la Fuerza Pública. Sin embargo, en lugar de avanzar hacia la paz, las FARC utilizaron el territorio para fortalecer militarmente su organización, entrenar combatientes, cultivar y procesar coca, realizar secuestros y construir infraestructura logística. La zona se convirtió en un 'laboratorio de paz' fracasado. Durante este periodo, las FARC cometieron graves violaciones a los derechos humanos, incluyendo más de 300 secuestros, reclutamiento forzado de menores y ataques a poblaciones civiles. Las negociaciones fueron intermitentes y poco productivas. La gota que rebalsó la copa fue el secuestro del avión de Aires con el senador Jorge Gechem Turbay el 20 de febrero de 2002. Ese mismo día, el presidente Pastrana declaró rota la negociación y ordenó la retoma militar de la zona. El fracaso de este proceso de paz generó un profundo escepticismo en la población colombiana sobre la viabilidad de negociar con las guerrillas y abrió el camino para la elección de Álvaro Uribe y su política de 'Seguridad Democrática', basada en la confrontación militar contra los grupos armados ilegales.",
+      "integrantes": [
+        {
+          "nombre": "Andrés Pastrana Arango",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente que creó la zona de distensión para negociar con las FARC."
+        },
+        {
+          "nombre": "Manuel Marulanda Vélez (Tirofijo)",
+          "rol": "Comandante FARC",
+          "descripcion": "Líder máximo de las FARC, famoso por no asistir al inicio de las negociaciones."
+        },
+        {
+          "nombre": "Víctor G. Ricardo",
+          "rol": "Alto Comisionado para la Paz",
+          "descripcion": "Encargado de las negociaciones por parte del gobierno."
+        },
+        {
+          "nombre": "Raúl Reyes",
+          "rol": "Vocero FARC",
+          "descripcion": "Representante de las FARC en las negociaciones."
+        }
+      ],
+      "ubicacion": "Municipios de San Vicente del Caguán, La Macarena, Mesetas, La Uribe y Vista Hermosa",
+      "consecuencias": [
+        "Fortalecimiento militar de las FARC",
+        "Aumento de secuestros",
+        "Pérdida de confianza en procesos de paz",
+        "Ruptura de negociaciones en 2002",
+        "Inicio de la política de Seguridad Democrática de Álvaro Uribe"
+      ]
+    },
+    {
+      "id": "2002-02-20",
+      "fecha": "2002-02-20",
+      "nombre": "Secuestro de Íngrid Betancourt",
+      "descripcion": "El 20 de febrero de 2002, Íngrid Betancourt Pulecio, candidata presidencial por el partido político Verde Oxígeno, fue secuestrada por las FARC cuando intentaba llegar por tierra a San Vicente del Caguán, capital de la fallida zona de distensión. A pesar de las advertencias de seguridad y de que el presidente Andrés Pastrana había dado por terminadas las negociaciones con las FARC ese mismo día, Betancourt insistió en viajar para llevar su mensaje de campaña a la población del Caguán. Viajaba acompañada de Clara Rojas, su gerente de campaña, y escoltada por policías. En un retén guerrillero cerca de San Vicente del Caguán, las FARC detuvieron el vehículo y se llevaron a Betancourt y Rojas a la selva. Así comenzó un cautiverio que duraría 2,321 días, es decir, 6 años y 4 meses. Durante su secuestro, Betancourt fue mantenida en condiciones inhumanas en campamentos guerrilleros en medio de la selva amazónica, soportando enfermedades tropicales, desnutrición, aislamiento y maltrato psicológico. Fue encadenada al cuello durante largos periodos y sometida a marchas forzadas. Su caso se convirtió en un símbolo internacional del drama del secuestro en Colombia, particularmente porque Betancourt poseía doble nacionalidad colombo-francesa, lo que movilizó al gobierno francés y a organizaciones internacionales a exigir su liberación. Su esposo, Juan Carlos Lecompte, y sus hijos, Melanie y Lorenzo, lideraron campañas mundiales por su liberación. Durante el cautiverio, Clara Rojas dio a luz a un niño, producto de una relación con un guerrillero, lo que añadió mayor dramatismo al caso. El 2 de julio de 2008, en una operación de inteligencia militar llamada 'Operación Jaque', Íngrid Betancourt fue rescatada junto con 14 secuestrados más (incluyendo tres contratistas estadounidenses y 11 militares y policías colombianos) sin disparar un solo tiro. La operación engañó a los guerrilleros haciéndoles creer que trasladarían a los secuestrados en un helicóptero de una organización humanitaria internacional. El rescate fue un golpe devastador para las FARC y un triunfo para la inteligencia militar colombiana. Tras su liberación, Betancourt escribió varios libros narrando su experiencia en cautiverio.",
+      "integrantes": [
+        {
+          "nombre": "Íngrid Betancourt",
+          "rol": "Secuestrada",
+          "descripcion": "Política y candidata presidencial por el partido Verde Oxígeno, senadora de la república."
+        },
+        {
+          "nombre": "Clara Rojas",
+          "rol": "Secuestrada",
+          "descripcion": "Gerente de campaña de Betancourt, secuestrada junto a ella."
+        },
+        {
+          "nombre": "Manuel Marulanda Vélez",
+          "rol": "Líder FARC",
+          "descripcion": "Máximo comandante de las FARC en el momento del secuestro."
+        },
+        {
+          "nombre": "Raúl Reyes",
+          "rol": "Comandante FARC",
+          "descripcion": "Vocero internacional de las FARC durante el secuestro."
+        }
+      ],
+      "ubicacion": "San Vicente del Caguán, Caquetá",
+      "consecuencias": [
+        "Mayor visibilidad internacional del conflicto armado",
+        "Presión internacional sobre las FARC",
+        "Exitosa Operación Jaque en 2008",
+        "Liberación de 15 secuestrados incluyendo tres estadounidenses",
+        "Símbolo de la lucha contra el secuestro en Colombia"
+      ]
+    },
+    {
+      "id": "2008-07-02",
+      "fecha": "2008-07-02",
+      "nombre": "Operación Jaque",
+      "descripcion": "El 2 de julio de 2008, las Fuerzas Militares de Colombia ejecutaron la 'Operación Jaque', considerada una de las operaciones de inteligencia militar más exitosas y audaces de la historia moderna. La operación rescató a 15 secuestrados de alto perfil que permanecían en cautiverio de las FARC, incluyendo a Íngrid Betancourt (6 años secuestrada), tres contratistas estadounidenses (Keith Stansell, Thomas Howes y Marc Gonsalves, 5 años secuestrados), y 11 militares y policías colombianos, algunos con más de 10 años en cautiverio. La operación se basó en una sofisticada estrategia de engaño. Durante meses, la inteligencia militar infiltró las comunicaciones de las FARC e hizo creer a los comandantes guerrilleros Gerardo Aguilar Ramírez 'César' y Alexander Farfán 'Gafas', custodios de los secuestrados, que una organización humanitaria internacional trasladaría a los rehenes en helicóptero hacia un campamento donde supuestamente se encontraría Alfonso Cano, máximo líder de las FARC. La operación fue liderada por el entonces ministro de Defensa Juan Manuel Santos y ejecutada por las Fuerzas Especiales del Ejército. El equipo de rescate se disfrazó de miembros de una ONG internacional y de camarógrafos de prensa, incluso crearon una identidad falsa de un periodista árabe llamado 'Sombra'. Los helicópteros militares fueron pintados con logos de organizaciones humanitarias ficticias. El 2 de julio, los helicópteros aterrizaron en la selva del Guaviare. Los guerrilleros subieron a los 15 secuestrados esposados y amordazados. Una vez en el aire, cuando los comandantes guerrilleros 'César' y 'Gafas' también estaban a bordo, los agentes encubiertos los redujeron en cuestión de segundos sin disparar un solo tiro. Los secuestrados, que inicialmente pensaron que los trasladaban a otro campamento, tardaron varios minutos en comprender que estaban siendo rescatados. Cuando un soldado les gritó '¡Somos el Ejército Nacional, ustedes están libres!', estalló la emoción y la incredulidad. Íngrid Betancourt abrazó a sus rescatadores llorando. Las imágenes del rescate dieron la vuelta al mundo. La operación fue un golpe devastador para las FARC, demostrando la efectividad de la inteligencia militar colombiana y la vulnerabilidad de la guerrilla. También fortaleció enormemente la imagen del gobierno de Álvaro Uribe y de las Fuerzas Militares. Juan Manuel Santos, artífice de la operación desde el Ministerio de Defensa, capitalizaría este éxito en su posterior carrera política que lo llevaría a la presidencia.",
+      "integrantes": [
+        {
+          "nombre": "Juan Manuel Santos",
+          "rol": "Ministro de Defensa",
+          "descripcion": "Ministro que planeó y autorizó la Operación Jaque. Posteriormente sería presidente de Colombia."
+        },
+        {
+          "nombre": "Íngrid Betancourt",
+          "rol": "Rehén Liberada",
+          "descripcion": "Excandidata presidencial, la rehén más conocida de las FARC, rescatada tras 6 años y 4 meses de cautiverio."
+        },
+        {
+          "nombre": "General Mario Montoya",
+          "rol": "Comandante del Ejército",
+          "descripcion": "Comandante del Ejército Nacional durante la operación."
+        },
+        {
+          "nombre": "General Freddy Padilla",
+          "rol": "Comandante Fuerzas Militares",
+          "descripcion": "Comandante General de las Fuerzas Militares de Colombia."
+        }
+      ],
+      "ubicacion": "Selvas del Guaviare, Colombia",
+      "consecuencias": [
+        "Liberación exitosa de 15 secuestrados sin disparar un solo tiro.",
+        "Golpe estratégico y moral devastador para las FARC.",
+        "Reconocimiento internacional para la inteligencia militar colombiana.",
+        "Aumento significativo de la popularidad del gobierno de Álvaro Uribe.",
+        "Demostración de la efectividad de la infiltración de inteligencia.",
+        "Captura de dos comandantes guerrilleros ('César' y 'Gafas').",
+        "Impulso a la carrera política de Juan Manuel Santos."
+      ]
+    },
+    {
+      "id": "2003-02-07",
+      "fecha": "2003-02-07",
+      "nombre": "Atentado al Club El Nogal",
+      "descripcion": "El viernes 7 de febrero de 2003, a las 8:05 p.m., un carro bomba cargado con aproximadamente 200 kilogramos de explosivos de alto poder (pentolita) detonó en el sótano del estacionamiento del Club El Nogal, un exclusivo club social ubicado en la calle 79 con carrera 7 en el norte de Bogotá. La explosión fue tan potente que destruyó nueve pisos del edificio de 11 plantas, dejando la estructura al borde del colapso. El Club El Nogal era frecuentado por empresarios, políticos, militares de alto rango y familias adineradas de la capital. Al momento del atentado, había cientos de personas en sus instalaciones participando en clases de natación, gimnasio, restaurantes y eventos sociales. El saldo del atentado fue devastador: 36 personas murieron (incluyendo seis niños que tomaban clases de natación), más de 200 resultaron heridas, y el club quedó completamente destruido. Entre las víctimas fatales se encontraba Paola Gómez García, esposa del periodista Julio Sánchez Cristo, y varios miembros de familias tradicionales de Bogotá. Las FARC fueron señaladas como autores del atentado, específicamente la Columna Móvil Teófilo Forero. Sin embargo, la guerrilla nunca reconoció abiertamente su responsabilidad. La hipótesis más aceptada es que el atentado buscaba asesinar al entonces ministro de Defensa Marta Lucía Ramírez o al general Jorge Enrique Mora, comandante de las Fuerzas Militares, quienes frecuentaban el club, pero ninguno de los dos se encontraba allí esa noche. El atentado ocurrió apenas siete meses después de que Álvaro Uribe asumiera la presidencia con su política de 'Seguridad Democrática', orientada a la confrontación militar contra las FARC. El ataque generó indignación nacional e internacional y fortaleció el apoyo ciudadano a la política de mano dura del gobierno Uribe contra la guerrilla. Después del atentado, el Club El Nogal fue reconstruido y reabierto, convirtiéndose en un símbolo de resiliencia ante el terrorismo.",
+      "integrantes": [
+        {
+          "nombre": "Álvaro Uribe Vélez",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente en su primer año de mandato, quien lideró una fuerte ofensiva contra las FARC tras el atentado."
+        },
+        {
+          "nombre": "Comando de las FARC",
+          "rol": "Autores Materiales",
+          "descripcion": "La Columna Móvil Teófilo Forero de las FARC fue señalada como la responsable del ataque."
+        }
+      ],
+      "ubicacion": "Club El Nogal, Bogotá",
+      "consecuencias": [
+        "36 personas muertas y más de 200 heridas.",
+        "Rechazo unánime de la sociedad colombiana e internacional.",
+        "Endurecimiento de la política de Seguridad Democrática del presidente Uribe.",
+        "Aumento de la percepción de inseguridad en las grandes ciudades."
+      ]
+    },
+    {
+      "id": "2006-11-16",
+      "fecha": "2006-11-16",
+      "nombre": "Escándalo de la Parapolítica",
+      "descripcion": "El escándalo de la Parapolítica es el nombre con el que se conoce el conjunto de investigaciones judiciales y periodísticas que revelaron los vínculos sistemáticos entre políticos colombianos y grupos paramilitares de las Autodefensas Unidas de Colombia (AUC). El escándalo estalló públicamente en noviembre de 2006, cuando la revista Semana publicó el contenido del computador portátil del paramilitar alias 'Jorge 40', en el cual se encontraban documentos comprometedores. Sin embargo, el origen de las investigaciones se remonta a 2005 con la captura del 'Pacto de Ralito', un acuerdo firmado en 2001 entre políticos y comandantes paramilitares en la Cárcel de Ralito, Córdoba. En este pacto, firmantes de ambos lados se comprometieron a 'refundar la patria' y acordaron apoyo mutuo: los paramilitares se comprometían a garantizar votos mediante intimidación, desplazamiento forzado y asesinatos selectivos, mientras que los políticos se comprometían a favorecer los intereses de las AUC desde el Congreso y las administraciones locales. La Corte Suprema de Justicia, bajo el liderazgo del magistrado Yesid Ramírez, inició una de las investigaciones más ambiciosas de la historia judicial colombiana. El proceso de Justicia y Paz, mediante el cual se desmovilizaron las AUC, permitió que comandantes paramilitares como Salvatore Mancuso, Rodrigo Tovar Pupo 'Jorge 40', Iván Roberto Duque 'Ernesto Báez' y otros confesaran sus crímenes y revelaran detalles de sus alianzas políticas. Las confesiones fueron devastadoras: más de 60 congresistas, 30 diputados, 5 gobernadores, numerosos alcaldes, y varios funcionarios de alto nivel del gobierno fueron investigados. Entre los políticos condenados se encontraban figuras como Mario Uribe Escobar (primo del presidente Álvaro Uribe), Álvaro Araújo Castro (hermano de la excanciller María Consuelo Araújo), Jorge Noguera Cotes (exdirector del DAS), y muchos otros pertenecientes principalmente a los departamentos de la Costa Caribe (Cesar, Sucre, Magdalena, Córdoba), Santander y Antioquia. El escándalo evidenció la captura del Estado por parte de grupos armados ilegales y generó una crisis de legitimidad en el sistema político colombiano. Se creó la figura de la 'silla vacía', mediante la cual los partidos políticos pierden las curules de congresistas condenados por parapolítica. Muchos analistas consideran que la parapolítica fue una de las formas más sofisticadas de cooptación del Estado en la historia de Colombia.",
+      "integrantes": [
+        {
+          "nombre": "Salvatore Mancuso",
+          "rol": "Líder Paramilitar",
+          "descripcion": "Excomandante de las AUC, sus confesiones en el proceso de Justicia y Paz fueron clave para destapar el escándalo."
+        },
+        {
+          "nombre": "Jorge Noguera Cotes",
+          "rol": "Director del DAS",
+          "descripcion": "Director del Departamento Administrativo de Seguridad, condenado por colaborar con paramilitares."
+        },
+        {
+          "nombre": "Álvaro Uribe Vélez",
+          "rol": "Presidente de Colombia",
+          "descripcion": "El escándalo se desarrolló durante su segundo mandato, afectando a muchos de sus aliados políticos."
+        }
+      ],
+      "ubicacion": "Colombia (principalmente Costa Atlántica y otras regiones de influencia paramilitar)",
+      "consecuencias": [
+        "Encarcelamiento de más de un tercio del Congreso de la República.",
+        "Crisis de legitimidad del sistema político colombiano.",
+        "Evidencia de la cooptación del Estado por parte de grupos armados ilegales.",
+        "Creación de la 'silla vacía', una figura para que los partidos pierdan los escaños de congresistas condenados por estos delitos."
+      ]
+    },
+    {
+      "id": "2016-11-24",
+      "fecha": "2016-11-24",
+      "nombre": "Acuerdo de Paz con las FARC",
+      "descripcion": "El 24 de noviembre de 2016, en el Teatro Colón de Bogotá, el presidente Juan Manuel Santos y Rodrigo Londoño Echeverri, alias 'Timochenko', máximo comandante de las Fuerzas Armadas Revolucionarias de Colombia (FARC), firmaron el Acuerdo Final para la Terminación del Conflicto y la Construcción de una Paz Estable y Duradera. Este acontecimiento histórico puso fin oficialmente a más de 52 años de conflicto armado interno, el más prolongado del hemisferio occidental, que dejó un saldo estimado de 260,000 muertos, 80,000 desaparecidos, 7 millones de desplazados internos y miles de víctimas de secuestro, minas antipersona y violencia sexual. Las negociaciones se llevaron a cabo en La Habana, Cuba, entre noviembre de 2012 y agosto de 2016, con Cuba y Noruega como países garantes, y Venezuela y Chile como países acompañantes. El proceso contó con el respaldo de Naciones Unidas, Estados Unidos y la comunidad internacional. Los diálogos se estructuraron en torno a seis puntos fundamentales: 1) Reforma Rural Integral, 2) Participación Política, 3) Fin del Conflicto (dejación de armas, reintegración), 4) Solución al Problema de las Drogas Ilícitas, 5) Víctimas (verdad, justicia, reparación, no repetición), y 6) Implementación y Verificación. Un primer acuerdo fue rechazado en un plebiscito ciudadano el 2 de octubre de 2016, por un estrecho margen (50.2% por el NO vs 49.8% por el SÍ), en una votación marcada por la abstención del 63%. El expresidente Álvaro Uribe lideró la campaña del NO. Tras renegociar algunos puntos y incorporar propuestas de los opositores, se firmó el acuerdo definitivo el 24 de noviembre, que fue refrendado por el Congreso de la República. El acuerdo estableció la creación de la Jurisdicción Especial para la Paz (JEP), un sistema de justicia transicional diseñado para investigar los crímenes del conflicto. También creó la Comisión de la Verdad y la Unidad de Búsqueda de Personas Desaparecidas. Las FARC se comprometieron a entregar todas sus armas ante la ONU, proceso que se completó en 2017 cuando más de 7,000 guerrilleros se desmovilizaron y entregaron 8,994 armas. La guerrilla se transformó en el partido político Fuerza Alternativa Revolucionaria del Común (luego llamado Comunes), aunque con escaso éxito electoral. Por sus esfuerzos en lograr la paz, Juan Manuel Santos recibió el Premio Nobel de la Paz 2016. Sin embargo, la implementación del acuerdo ha enfrentado múltiples obstáculos: incumplimientos presupuestales, oposición política, retrasos en reformas clave y el surgimiento de disidencias de las FARC que retomaron las armas. A pesar de las dificultades, el acuerdo representa el esfuerzo más serio en la historia de Colombia por terminar el conflicto armado mediante el diálogo político.",
+      "integrantes": [
+        {
+          "nombre": "Juan Manuel Santos",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente que lideró las negociaciones de paz, Premio Nobel de la Paz 2016."
+        },
+        {
+          "nombre": "Rodrigo Londoño (Timochenko)",
+          "rol": "Comandante FARC",
+          "descripcion": "Máximo líder de las FARC durante las negociaciones y firma del acuerdo."
+        },
+        {
+          "nombre": "Humberto de la Calle",
+          "rol": "Jefe Negociador Gobierno",
+          "descripcion": "Jefe del equipo negociador del gobierno colombiano."
+        },
+        {
+          "nombre": "Iván Márquez",
+          "rol": "Jefe Negociador FARC",
+          "descripcion": "Líder del equipo negociador de las FARC."
+        },
+        {
+          "nombre": "Sergio Jaramillo",
+          "rol": "Alto Comisionado para la Paz",
+          "descripcion": "Arquitecto del marco jurídico del proceso de paz."
+        }
+      ],
+      "ubicacion": "La Habana, Cuba (negociaciones) / Bogotá, Colombia (firma)",
+      "consecuencias": [
+        "Desarme de más de 7,000 guerrilleros",
+        "Creación de la Jurisdicción Especial para la Paz (JEP)",
+        "Transformación de las FARC en partido político",
+        "Reconocimiento de víctimas del conflicto",
+        "Premio Nobel de la Paz para Juan Manuel Santos",
+        "Polarización política en Colombia"
+      ]
+    },
+    {
+      "id": "1989-12-06",
+      "fecha": "1989-12-06",
+      "nombre": "Atentado al DAS",
+      "descripcion": "El 6 de diciembre de 1989, apenas nueve días después del atentado al Vuelo 203 de Avianca, el Cartel de Medellín ejecutó otro devastador ataque terrorista. A las 7:30 a.m., un camión bomba cargado con 500 kilogramos de dinamita explotó frente a la sede del Departamento Administrativo de Seguridad (DAS) en Bogotá, ubicada en la calle 59 con carrera 13 en pleno centro de la ciudad. La explosión, equivalente a 1,200 libras de TNT, fue tan potente que se sintió en toda la capital y causó un cráter de varios metros de profundidad. El edificio del DAS quedó parcialmente destruido, y decenas de construcciones en un radio de varias cuadras sufrieron daños severos. Ventanas de edificios se quebraron hasta 15 cuadras a la redonda. El balance fue de 70 muertos y más de 600 heridos. Entre las víctimas hubo funcionarios del DAS, transeúntes, vendedores ambulantes, estudiantes y trabajadores de edificios aledaños. El objetivo del atentado era asesinar al general Miguel Maza Márquez, director del DAS y enemigo declarado de Pablo Escobar, quien había liderado operaciones exitosas contra el Cartel de Medellín. Sin embargo, Maza Márquez sobrevivió porque su oficina estaba reforzada y porque llegó tarde ese día. El atentado fue ordenado por Pablo Escobar como parte de su guerra total contra el Estado colombiano, en respuesta a las políticas de extradición y a las operaciones militares y policiales contra su organización. El sicario que condujo el camión bomba murió en la explosión. Este atentado, junto con el del vuelo de Avianca, el ataque al edificio del periódico El Espectador y numerosos atentados menores, sumergieron a Colombia en un clima de terror que alcanzó su punto máximo a finales de 1989 y principios de 1990. El país vivió bajo la amenaza constante de los 'Extraditables', como se autodenominaba el grupo terrorista del Cartel de Medellín. Estos ataques llevaron al gobierno a negociar una salida política que resultó en la prohibición constitucional de la extradición en la Constitución de 1991, aunque Escobar continuó su campaña de terror hasta su captura en 1991 y su posterior fuga y muerte en 1993.",
+      "integrantes": [
+        {
+          "nombre": "Pablo Escobar Gaviria",
+          "rol": "Autor Intelectual",
+          "descripcion": "Líder del Cartel de Medellín que ordenó el atentado para asesinar al director del DAS."
+        },
+        {
+          "nombre": "General Miguel Maza Márquez",
+          "rol": "Director del DAS (Objetivo)",
+          "descripcion": "Director del DAS, principal objetivo del atentado. Sobrevivió porque su oficina estaba blindada y llegó tarde."
+        },
+        {
+          "nombre": "Virgilio Barco Vargas",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente durante el atentado, quien mantuvo una política dura contra el narcotráfico."
+        }
+      ],
+      "ubicacion": "Sede del DAS, Bogotá",
+      "consecuencias": [
+        "70 personas muertas y más de 600 heridas.",
+        "Destrucción parcial de la sede del DAS y daños en decenas de edificios.",
+        "Incremento del clima de terror en la sociedad colombiana.",
+        "Fortalecimiento de la determinación del Estado contra el narcoterrorismo.",
+        "Presión nacional e internacional sobre el Cartel de Medellín.",
+        "Punto culminante de la campaña de terror de los 'Extraditables'."
+      ]
+    },
+    {
+      "id": "2002-05-02",
+      "fecha": "2002-05-02",
+      "nombre": "Masacre de Bojayá",
+      "descripcion": "El 2 de mayo de 2002, en medio del conflicto armado colombiano, ocurrió una de las masacres más dolorosas y emblemáticas de la guerra: la Masacre de Bojayá. En el marco de un enfrentamiento entre las FARC y los paramilitares de las AUC por el control territorial del Atrato chocoano, las FARC lanzaron un cilindro bomba (pipeta de gas cargada con metralla y explosivos) que impactó la iglesia de San Pablo Apóstol en el corregimiento de Bellavista, municipio de Bojayá, departamento del Chocó. En ese momento, aproximadamente 300 habitantes civiles, en su mayoría población afrodescendiente e indígena, se habían refugiado en la iglesia huyendo de los combates que se desarrollaban en el pueblo. La explosión fue devastadora. El cilindro destruyó gran parte de la iglesia y mató instantáneamente a 79 personas, de las cuales 48 eran niños y adolescentes. Decenas más resultaron heridas. Los cuerpos quedaron destrozados de tal manera que fue difícil identificarlos. Los sobrevivientes relataron escenas dantescas de desmembramiento y destrucción. Las FARC, específicamente el Frente 57, fueron señaladas como responsables del ataque, aunque la guerrilla argumentó que el cilindro había desviado su trayectoria involuntariamente. Sin embargo, el uso de armas no convencionales (cilindros bomba) contra población civil fue ampliamente condenado como crimen de guerra. La comunidad de Bojayá vivió el drama del desplazamiento forzado y la estigmatización. Durante años, exigieron verdad, justicia y reparación. El caso se convirtió en un símbolo del sufrimiento de las comunidades afrocolombianas e indígenas en el conflicto armado. En el marco del proceso de paz con las FARC, la guerrilla pidió perdón públicamente por la masacre en 2015 y 2016. En mayo de 2019, los restos de las víctimas, que habían sido exhumados años antes, fueron devueltos a sus familias en una conmovedora ceremonia conocida como 'El Regreso' o 'El Gran Levantamiento', donde la comunidad realizó rituales ancestrales de sanación. El Cristo mutilado de Bojayá, una imagen religiosa destruida por la explosión, se conserva como símbolo del dolor y la esperanza de reconciliación. Bojayá representa el dolor de las poblaciones étnicas y rurales atrapadas en medio del fuego cruzado del conflicto armado colombiano.",
+      "integrantes": [
+        {
+          "nombre": "Frente 57 de las FARC",
+          "rol": "Autores del Atentado",
+          "descripcion": "Unidad guerrillera de las FARC responsable del lanzamiento del cilindro bomba que impactó la iglesia."
+        },
+        {
+          "nombre": "Pastor Alape",
+          "rol": "Comandante FARC",
+          "descripcion": "Comandante de la región, posteriormente pidió perdón en nombre de las FARC durante el proceso de paz."
+        },
+        {
+          "nombre": "Andrés Pastrana",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente durante la masacre, en el contexto del fracaso de las negociaciones de la zona de distensión."
+        }
+      ],
+      "ubicacion": "Bellavista, Bojayá, Chocó",
+      "consecuencias": [
+        "79 personas muertas, incluyendo 48 niños y adolescentes.",
+        "Destrucción de la iglesia de San Pablo Apóstol.",
+        "Desplazamiento masivo de la población de Bojayá.",
+        "Símbolo del sufrimiento de comunidades afrodescendientes e indígenas en el conflicto.",
+        "Condena nacional e internacional por crimen de guerra.",
+        "Solicitud de perdón de las FARC en el proceso de paz.",
+        "Ceremonia de 'El Regreso' en 2019 con los restos de las víctimas."
+      ]
+    },
+    {
+      "id": "2019-11-21",
+      "fecha": "2019-11-21",
+      "nombre": "Paro Nacional de 2019",
+      "descripcion": "El 21 de noviembre de 2019, Colombia vivió una de las movilizaciones sociales más grandes de su historia reciente. Decenas de miles de ciudadanos salieron a las calles en todo el país en lo que se denominó el 'Paro Nacional', una jornada de protesta convocada inicialmente por sindicatos, organizaciones estudiantiles, indígenas, campesinas y sectores sociales diversos. El paro se extendió durante varias semanas con marchas masivas, particularmente los días 21 de noviembre y 4 de diciembre. Las manifestaciones respondían a múltiples demandas acumuladas: rechazo a propuestas de reformas laborales y pensionales del gobierno de Iván Duque que se percibían como perjudiciales para los trabajadores; protesta contra el asesinato sistemático de líderes sociales y excombatientes de las FARC tras el Acuerdo de Paz; rechazo al manejo de la implementación del Acuerdo de Paz; demandas por educación pública de calidad; oposición a la corrupción y al modelo económico neoliberal. Las protestas fueron mayoritariamente pacíficas, caracterizadas por cacerolazos, conciertos callejeros, performances artísticas y una atmósfera festiva en muchas ciudades. Sin embargo, también hubo episodios de violencia, vandalismo de infraestructura pública, saqueos y enfrentamientos entre manifestantes radicalizados ('Primera Línea') y la fuerza pública. El gobierno del presidente Iván Duque implementó el Escuadrón Móvil Antidisturbios (ESMAD) para controlar las protestas, lo que generó denuncias de abuso policial, uso excesivo de la fuerza y violaciones a los derechos humanos. Se registraron varios casos de jóvenes gravemente heridos por impactos de proyectiles del ESMAD, incluyendo a Dilan Cruz, un joven de 18 años que murió el 24 de noviembre tras ser impactado por un proyectil en la cabeza. Su muerte se convirtió en un símbolo de la protesta y generó indignación nacional. El paro de 2019 marcó un punto de inflexión en la movilización social colombiana y evidenció el descontento acumulado de amplios sectores de la población, particularmente jóvenes urbanos. Las protestas se reactivarían con mayor intensidad en abril y mayo de 2021.",
+      "integrantes": [
+        {
+          "nombre": "Iván Duque Márquez",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente durante el paro, su gobierno fue el blanco principal de las protestas."
+        },
+        {
+          "nombre": "Dilan Cruz",
+          "rol": "Víctima Símbolo",
+          "descripcion": "Joven de 18 años que murió tras ser impactado por un proyectil del ESMAD. Su muerte se convirtió en símbolo de la protesta."
+        },
+        {
+          "nombre": "Central Unitaria de Trabajadores (CUT)",
+          "rol": "Convocante",
+          "descripcion": "Principal central obrera que convocó el paro junto con otras organizaciones sociales."
+        }
+      ],
+      "ubicacion": "Todo el territorio colombiano, principalmente Bogotá, Cali, Medellín",
+      "consecuencias": [
+        "Movilizaciones masivas de cientos de miles de personas en todo el país.",
+        "Muerte de Dilan Cruz y varios manifestantes más.",
+        "Denuncias de abuso policial y violaciones a derechos humanos.",
+        "Inicio de un 'Gran Diálogo Nacional' convocado por el gobierno.",
+        "Visibilización de demandas sociales acumuladas.",
+        "Fortalecimiento de movimientos sociales y juveniles.",
+        "Antecedente directo del Paro Nacional de 2021."
+      ]
+    },
+    {
+      "id": "2021-04-28",
+      "fecha": "2021-04-28",
+      "nombre": "Paro Nacional de 2021",
+      "descripcion": "El 28 de abril de 2021, Colombia vivió el estallido social más grande y prolongado de su historia reciente. El 'Paro Nacional de 2021' se extendió por más de dos meses, paralizando parcialmente al país y generando una crisis política, social y de derechos humanos sin precedentes. Las protestas iniciaron como respuesta a una reforma tributaria propuesta por el gobierno de Iván Duque que aumentaba impuestos y gravaba productos de la canasta básica en medio de la crisis económica causada por la pandemia de COVID-19. Aunque la reforma fue retirada pocos días después, las manifestaciones continuaron y se ampliaron las demandas: retiro de una reforma a la salud, mejores condiciones laborales, implementación del Acuerdo de Paz, fin del asesinato de líderes sociales, reforma de la Policía Nacional, y rechazo generalizado al gobierno de Duque. Las protestas se caracterizaron por bloqueos de vías en todo el país, que afectaron el transporte de alimentos y medicamentos, generando desabastecimiento en algunas regiones. Se establecieron 'puntos de resistencia' en ciudades como Cali, Bogotá, Medellín, Popayán, Buenaventura y muchas otras. En Cali, el conflicto alcanzó niveles dramáticos con enfrentamientos diarios entre manifestantes y la fuerza pública. La respuesta del Estado fue fuertemente criticada por organismos internacionales de derechos humanos. La Policía Nacional y el ESMAD utilizaron fuerza letal, armas de fuego y gases lacrimógenos de manera indiscriminada. Se documentaron casos de desapariciones forzadas, tortura, violencia sexual por parte de agentes del Estado, y ejecuciones extrajudiciales. Según la ONG Temblores, al menos 83 personas murieron en contexto de protesta, más de 3,000 fueron heridas, y se reportaron 87 casos de violencia sexual, 1,617 detenciones arbitrarias y 28 víctimas de violencia ocular. También hubo actos de vandalismo, ataques a la infraestructura pública (estaciones de Transmilenio, CAI de policía) y agresiones a civiles por parte de grupos radicalizados. El gobierno implementó asistencia militar en varias ciudades, lo que incrementó la tensión. Figuras internacionales y organismos como la CIDH, Human Rights Watch y la ONU expresaron preocupación por la situación. El paro evidenció la profunda fractura social de Colombia, la desconfianza hacia el gobierno y las instituciones, y el malestar acumulado de sectores históricamente excluidos. El gobierno de Duque no logró establecer una mesa de diálogo efectiva con los manifestantes, y las protestas disminuyeron gradualmente por agotamiento, represión y falta de articulación política. Las consecuencias del paro de 2021 aún resuenan en la sociedad colombiana y fueron un factor determinante en las elecciones presidenciales de 2022.",
+      "integrantes": [
+        {
+          "nombre": "Iván Duque Márquez",
+          "rol": "Presidente de Colombia",
+          "descripcion": "Presidente durante el paro. Su gobierno fue fuertemente cuestionado por la represión."
+        },
+        {
+          "nombre": "Comité Nacional del Paro",
+          "rol": "Liderazgo del Paro",
+          "descripcion": "Coalición de organizaciones sociales, sindicatos e indígenas que convocaron y lideraron las protestas."
+        },
+        {
+          "nombre": "Francisco Maltés",
+          "rol": "Líder Sindical",
+          "descripcion": "Presidente de la CUT y uno de los voceros principales del Comité Nacional del Paro."
+        }
+      ],
+      "ubicacion": "Todo el territorio nacional, principalmente Cali, Bogotá, Medellín, Popayán",
+      "consecuencias": [
+        "Al menos 83 muertos y más de 3,000 heridos según organizaciones de DDHH.",
+        "Retiro de la reforma tributaria y renuncia del ministro de Hacienda.",
+        "Documentación de graves violaciones a derechos humanos por parte de la fuerza pública.",
+        "Crisis política y de gobernabilidad del gobierno Duque.",
+        "Visibilización de la 'Primera Línea' como movimiento de resistencia juvenil.",
+        "Bloqueos y desabastecimiento que afectaron la economía nacional.",
+        "Impacto en las elecciones presidenciales de 2022 con el triunfo de Gustavo Petro."
+      ]
+    }
+  ]
 }

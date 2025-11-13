@@ -1,16 +1,46 @@
 // Service Proxy: client-side helper to call API endpoints
-console.log('Frontend: ServiceProxy cargado');
 
-export async function apiGet<T = unknown>(path: string, token?: string): Promise<T> {
-    console.log('Frontend: ServiceProxy realizando peticion HTTP a:', path);
-    console.log('Frontend: ServiceProxy conectando con API Gateway del Backend');
-    const res = await fetch(path, {
-        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-    });
+async function apiRequest<T>(path: string, options: RequestInit = {}): Promise<T> {
+    const defaultHeaders = {
+        'Content-Type': 'application/json',
+    };
+
+    const config: RequestInit = {
+        ...options,
+        headers: {
+            ...defaultHeaders,
+            ...options.headers,
+        },
+    };
+
+    const res = await fetch(path, config);
     if (!res.ok) {
-        console.log('Frontend: ServiceProxy - Error en peticion HTTP:', res.status);
-        throw new Error(`HTTP ${res.status}`);
+        const errorText = await res.text();
+        console.error(`HTTP Error: ${res.status} ${res.statusText}`, errorText);
+        throw new Error(`HTTP ${res.status}: ${errorText}`);
     }
-    console.log('Frontend: ServiceProxy - Respuesta recibida correctamente del Backend');
-    return (await res.json()) as T;
+
+    // Si la respuesta no tiene contenido, devolvemos un objeto vacío
+    const contentType = res.headers.get("content-type");
+    if (contentType && contentType.indexOf("application/json") !== -1) {
+        return res.json() as Promise<T>;
+    } else {
+        return {} as Promise<T>;
+    }
+}
+
+export class ServiceProxy {
+    static async updateProfile(uid: string, updates: { displayName?: string; avatarNumber?: number }): Promise<void> {
+        await apiRequest<void>('/api/usuario/update-profile', {
+            method: 'POST',
+            body: JSON.stringify({ uid, ...updates }),
+        });
+    }
+
+    static async updatePassword(uid: string, newPassword: string): Promise<void> {
+        await apiRequest<void>('/api/usuario/update-password', {
+            method: 'POST',
+            body: JSON.stringify({ uid, newPassword }),
+        });
+    }
 }

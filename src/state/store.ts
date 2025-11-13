@@ -1,20 +1,31 @@
-// Minimal state management placeholder without external deps
-type User = { uid: string; email?: string } | null;
-type State = { user: User };
+import { atom } from 'nanostores';
+import type { User as FirebaseUser } from 'firebase/auth';
 
-const state: State = { user: null };
-const listeners = new Set<(s: State) => void>();
+// Extiende el tipo User para incluir displayName y photoURL
+export type User = {
+    uid: string;
+    email: string | null;
+    displayName?: string | null;
+    photoURL?: string | null;
+    role?: 'admin' | 'user';
+} | null;
 
-export function getState() {
-    return state;
+
+export const isUserLoading = atom<boolean>(true);
+export const user = atom<User>(null);
+
+export function setUser(firebaseUser: FirebaseUser | null) {
+    if (firebaseUser) {
+        // Aquí asumimos que el rol vendrá de los custom claims más adelante
+        user.set({
+            uid: firebaseUser.uid,
+            email: firebaseUser.email,
+            displayName: firebaseUser.displayName,
+            photoURL: firebaseUser.photoURL,
+        });
+    } else {
+        user.set(null);
+    }
+    isUserLoading.set(false);
 }
 
-export function setUser(user: User) {
-    state.user = user;
-    listeners.forEach((l) => l(state));
-}
-
-export function subscribe(fn: (s: State) => void) {
-    listeners.add(fn);
-    return () => listeners.delete(fn);
-}

@@ -1,15 +1,41 @@
 import React, { useEffect, useMemo, useState } from "react";
 import type { EventModel } from "../backend/logic/models";
+import type { UsuarioSesion } from "../shared/authTypes";
 import AdminPanel from "./AdminPanel";
+import EventFormModal from "./EventFormModal";
 import EventModal from "./EventModal";
+import CommentsModeration from "./CommentsModeration";
 
 const AdminDashboard: React.FC = () => {
     const [historias, setHistorias] = useState<EventModel[]>([]);
     const [isPanelOpen, setIsPanelOpen] = useState(false);
+    const [isEventFormOpen, setIsEventFormOpen] = useState(false);
     const [editingEvento, setEditingEvento] = useState<EventModel | null>(null);
     const [selectedEvento, setSelectedEvento] = useState<EventModel | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [highlightedId, setHighlightedId] = useState<string | null>(null);
+    
+    // Siempre inicializar con "comentarios" para evitar hydration mismatch
+    const [activeTab, setActiveTab] = useState<"historias" | "comentarios">("comentarios");
+    
+    const [usuario, setUsuario] = useState<UsuarioSesion | null>(null);
+
+    // Recuperar el tab guardado después del primer render (solo en el cliente)
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const savedTab = sessionStorage.getItem("adminActiveTab");
+            if (savedTab === "historias" || savedTab === "comentarios") {
+                setActiveTab(savedTab);
+            }
+        }
+    }, []);
+
+    // Guardar el tab activo en sessionStorage cada vez que cambie
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            sessionStorage.setItem("adminActiveTab", activeTab);
+        }
+    }, [activeTab]);
 
     const fetchHistorias = async () => {
         try {
@@ -25,6 +51,17 @@ const AdminDashboard: React.FC = () => {
 
     useEffect(() => {
         fetchHistorias();
+
+        // Cargar usuario de la sesión
+        const sesion = localStorage.getItem("usuario");
+        if (sesion) {
+            try {
+                const user = JSON.parse(sesion) as UsuarioSesion;
+                setUsuario(user);
+            } catch {
+                localStorage.removeItem("usuario");
+            }
+        }
     }, []);
 
     const handleDelete = async (id: string) => {
@@ -50,6 +87,13 @@ const AdminDashboard: React.FC = () => {
         }
     };
 
+    const handleViewEventFromComment = (eventoId: string) => {
+        const evento = historias.find((h) => h.id === eventoId);
+        if (evento) {
+            setSelectedEvento(evento);
+        }
+    };
+
     const filteredHistorias = useMemo(() => {
         const base = searchTerm
             ? historias.filter(
@@ -65,12 +109,12 @@ const AdminDashboard: React.FC = () => {
 
     const openCreatePanel = () => {
         setEditingEvento(null);
-        setIsPanelOpen(true);
+        setIsEventFormOpen(true);
     };
 
     const openEditPanel = (evento: EventModel) => {
         setEditingEvento(evento);
-        setIsPanelOpen(true);
+        setIsEventFormOpen(true);
     };
 
     return (
@@ -101,139 +145,181 @@ const AdminDashboard: React.FC = () => {
                             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                             </svg>
-                            Nueva historia
+                            Crear Evento
                         </button>
                     </div>
                 </header>
 
                 <section className="rounded-2xl border border-slate-200 bg-white shadow-sm">
-                    <div className="flex flex-wrap items-center gap-4 border-b border-slate-200 px-6 py-5">
-                        <div>
-                            <h2 className="text-lg font-semibold text-slate-900">Historias registradas</h2>
-                            <p className="text-sm text-slate-500">{filteredHistorias.length} resultado(s)</p>
+                    {/* Header con pestañas */}
+                    <div className="border-b border-slate-200 px-6 py-5">
+                        <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+                            <div>
+                                <h2 className="text-lg font-semibold text-slate-900">
+                                    {activeTab === "comentarios" ? "Comentarios" : "Historias registradas"}
+                                </h2>
+                                <p className="text-sm text-slate-500">
+                                    {activeTab === "comentarios"
+                                        ? "Gestiona los comentarios de los usuarios"
+                                        : `${filteredHistorias.length} resultado(s)`}
+                                </p>
+                            </div>
+                            {activeTab === "historias" && (
+                                <div className="relative w-full max-w-xs">
+                                    <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-300">
+                                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                    </span>
+                                    <input
+                                        type="text"
+                                        className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-sm text-slate-700 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                                        placeholder="Buscar por nombre, descripción o ubicación"
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                    />
+                                </div>
+                            )}
                         </div>
-                        <div className="relative ml-auto w-full max-w-xs">
-                            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-300">
-                                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </span>
-                            <input
-                                type="text"
-                                className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-sm text-slate-700 placeholder:text-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100"
-                                placeholder="Buscar por nombre, descripción o ubicación"
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                        </div>
-                    </div>
 
-                    <div className="overflow-x-auto">
-                        <table className="min-w-full divide-y divide-slate-200 text-sm">
-                            <thead className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
-                                <tr>
-                                    <th className="px-6 py-3">Historia</th>
-                                    <th className="px-6 py-3">Fecha</th>
-                                    <th className="px-6 py-3">Ubicación</th>
-                                    <th className="px-6 py-3">Etiquetas</th>
-                                    <th className="px-6 py-3 text-right">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-slate-100">
-                                {filteredHistorias.map((evento) => (
-                                    <tr
-                                        key={evento.id}
-                                        className={`transition-colors ${highlightedId === evento.id ? "bg-slate-50" : "hover:bg-slate-50"
-                                            }`}
-                                        onMouseEnter={() => setHighlightedId(evento.id)}
-                                        onMouseLeave={() => setHighlightedId((prev) => (prev === evento.id ? null : prev))}
-                                    >
-                                        <td className="px-6 py-4">
-                                            <div className="flex flex-col gap-1">
-                                                <span className="font-semibold text-slate-900">{evento.nombre}</span>
-                                                <span className="text-sm text-slate-500 line-clamp-1">{evento.descripcion}</span>
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-4 text-slate-600">
-                                            {new Date(evento.fecha + "T00:00:00").toLocaleDateString("es-ES", {
-                                                day: "2-digit",
-                                                month: "short",
-                                                year: "numeric",
-                                            })}
-                                        </td>
-                                        <td className="px-6 py-4 text-slate-600">
-                                            <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
-                                                {evento.ubicacion}
-                                            </span>
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            <div className="flex flex-wrap items-center gap-2">
-                                                <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-600">
-                                                    {evento.integrantes.length} integrante{evento.integrantes.length !== 1 ? "s" : ""}
-                                                </span>
-                                                {evento.consecuencias.length > 0 && (
-                                                    <span className="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-600">
-                                                        {evento.consecuencias.length} consecuencia{evento.consecuencias.length !== 1 ? "s" : ""}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            <div className="flex items-center justify-end gap-2">
-                                                <button
-                                                    onClick={() => setSelectedEvento(evento)}
-                                                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-blue-300 hover:text-blue-600"
-                                                    title="Ver detalles"
-                                                >
-                                                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                                    </svg>
-                                                </button>
-                                                <button
-                                                    onClick={() => openEditPanel(evento)}
-                                                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-blue-300 hover:text-blue-600"
-                                                    title="Editar historia"
-                                                >
-                                                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L13 14l-4 1 1-4 8.5-8.5z" />
-                                                    </svg>
-                                                </button>
-                                                <button
-                                                    onClick={() => handleDelete(evento.id)}
-                                                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-rose-300 hover:text-rose-600"
-                                                    title="Eliminar historia"
-                                                >
-                                                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-
-                    {filteredHistorias.length === 0 && (
-                        <div className="flex flex-col items-center justify-center gap-3 px-6 py-12 text-center text-slate-500">
-                            <svg className="h-14 w-14 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6M5 6h14M5 6a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2" />
-                            </svg>
-                            <p className="text-sm font-medium">
-                                {searchTerm ? "No se encontraron historias con los criterios de búsqueda." : "Aún no hay historias registradas."}
-                            </p>
-                            {!searchTerm && (
-                                <button
-                                    onClick={openCreatePanel}
-                                    className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700"
-                                >
-                                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        {/* Tabs */}
+                        <div className="flex items-center gap-2 border-b border-slate-200 -mb-5 pb-5">
+                            <button
+                                onClick={() => setActiveTab("comentarios")}
+                                className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors border-b-2 ${activeTab === "comentarios"
+                                    ? "border-blue-600 text-blue-600 bg-blue-50"
+                                    : "border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                                    }`}
+                            >
+                                <div className="flex items-center gap-2">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                     </svg>
-                                    Registrar la primera historia
-                                </button>
+                                    Comentarios
+                                </div>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab("historias")}
+                                className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors border-b-2 ${activeTab === "historias"
+                                    ? "border-blue-600 text-blue-600 bg-blue-50"
+                                    : "border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                                    }`}
+                            >
+                                <div className="flex items-center gap-2">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Historias
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Contenido de Comentarios */}
+                    {activeTab === "comentarios" && (
+                        <CommentsModeration
+                            historias={historias}
+                            onViewEvent={handleViewEventFromComment}
+                            moderadorId={usuario?.correo || "admin"}
+                        />
+                    )}
+
+                    {/* Contenido de Historias */}
+                    {activeTab === "historias" && (
+                        <div className="overflow-x-auto">
+                            <table className="min-w-full divide-y divide-slate-200 text-sm">
+                                <thead className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                                    <tr>
+                                        <th className="px-6 py-3">Historia</th>
+                                        <th className="px-6 py-3">Fecha</th>
+                                        <th className="px-6 py-3">Ubicación</th>
+                                        <th className="px-6 py-3 text-right">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-100">
+                                    {filteredHistorias.map((evento) => (
+                                        <tr
+                                            key={evento.id}
+                                            className={`transition-colors ${highlightedId === evento.id ? "bg-slate-50" : "hover:bg-slate-50"
+                                                }`}
+                                            onMouseEnter={() => setHighlightedId(evento.id)}
+                                            onMouseLeave={() => setHighlightedId((prev) => (prev === evento.id ? null : prev))}
+                                        >
+                                            <td className="px-6 py-4">
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="font-semibold text-slate-900">{evento.nombre}</span>
+                                                    <span className="text-sm text-slate-500 line-clamp-1">{evento.descripcion}</span>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4 text-slate-600">
+                                                {new Date(evento.fecha + "T00:00:00").toLocaleDateString("es-ES", {
+                                                    day: "2-digit",
+                                                    month: "short",
+                                                    year: "numeric",
+                                                })}
+                                            </td>
+                                            <td className="px-6 py-4 text-slate-600">
+                                                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+                                                    {evento.ubicacion}
+                                                </span>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-center justify-end gap-2">
+                                                    <button
+                                                        onClick={() => setSelectedEvento(evento)}
+                                                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-blue-300 hover:text-blue-600"
+                                                        title="Ver detalles"
+                                                    >
+                                                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button
+                                                        onClick={() => openEditPanel(evento)}
+                                                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-blue-300 hover:text-blue-600"
+                                                        title="Editar historia"
+                                                    >
+                                                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L13 14l-4 1 1-4 8.5-8.5z" />
+                                                        </svg>
+                                                    </button>
+                                                    <button
+                                                        onClick={() => handleDelete(evento.id)}
+                                                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-rose-300 hover:text-rose-600"
+                                                        title="Eliminar historia"
+                                                    >
+                                                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+
+                            {filteredHistorias.length === 0 && (
+                                <div className="flex flex-col items-center justify-center gap-3 px-6 py-12 text-center text-slate-500">
+                                    <svg className="h-14 w-14 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6M5 6h14M5 6a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2" />
+                                    </svg>
+                                    <p className="text-sm font-medium">
+                                        {searchTerm ? "No se encontraron historias con los criterios de búsqueda." : "Aún no hay historias registradas."}
+                                    </p>
+                                    {!searchTerm && (
+                                        <button
+                                            onClick={openCreatePanel}
+                                            className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700"
+                                        >
+                                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                            </svg>
+                                            Crear el primer evento
+                                        </button>
+                                    )}
+                                </div>
                             )}
                         </div>
                     )}
@@ -241,9 +327,25 @@ const AdminDashboard: React.FC = () => {
             </div>
 
             {selectedEvento && (
-                <EventModal evento={selectedEvento} onClose={() => setSelectedEvento(null)} />
+                <EventModal evento={selectedEvento} usuario={usuario} onClose={() => setSelectedEvento(null)} />
             )}
 
+            {/* Nuevo Modal de Formulario de Eventos con diseño espectacular */}
+            <EventFormModal
+                isOpen={isEventFormOpen}
+                onClose={() => {
+                    setIsEventFormOpen(false);
+                    setEditingEvento(null);
+                }}
+                onSuccess={() => {
+                    fetchHistorias();
+                    setIsEventFormOpen(false);
+                    setEditingEvento(null);
+                }}
+                editingEvent={editingEvento}
+            />
+
+            {/* Mantenemos el AdminPanel original por compatibilidad si es necesario */}
             <AdminPanel
                 isOpen={isPanelOpen}
                 editingEvent={editingEvento}

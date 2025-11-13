@@ -4,11 +4,28 @@ import "react-calendar/dist/Calendar.css";
 import { gsap } from "gsap";
 import type { EventModel } from "../backend/logic/models";
 import EventModal from "./EventModal";
-import LoginModal from "./LoginModal";
-// import RegisterModal from "./RegisterModal";
+import AuthModal from "./auth/AuthModals";
 import AdminPanel from "./AdminPanel";
+import UserComments from "./UserComments";
 import { createPortal } from "react-dom";
 import type { AuthTokens, UsuarioSesion } from "../shared/authTypes";
+
+// Lista de avatares disponibles
+const avatares = [
+  '/avatars/avatar1.webp',
+  '/avatars/avatar2.webp',
+  '/avatars/avatar3.webp',
+  '/avatars/avatar4.webp',
+  '/avatars/avatar5.webp',
+];
+
+// Función helper para obtener la URL del avatar según el número
+const getAvatarUrl = (avatarNumber?: number | null): string => {
+  if (!avatarNumber || avatarNumber < 1 || avatarNumber > 5) {
+    return avatares[0]; // Avatar 1 por defecto
+  }
+  return avatares[avatarNumber - 1]; // Convertir número de usuario (1-5) a índice (0-4)
+};
 
 const CalendarView: React.FC = () => {
   // ====== Estado general ======
@@ -34,14 +51,17 @@ const CalendarView: React.FC = () => {
   // ====== Auth y modales ======
   const [usuario, setUsuario] = useState<UsuarioSesion | null>(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  // const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
+  const [isUserCommentsOpen, setIsUserCommentsOpen] = useState(false);
 
   // ====== Popover avatar (portal fijo) ======
   const anchorRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuPos, setMenuPos] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
+  const [isHydrated, setIsHydrated] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const positionMenu = () => {
     if (!anchorRef.current) return;
@@ -95,8 +115,16 @@ const CalendarView: React.FC = () => {
     };
   }, [menuOpen]);
 
-  // Animaciones con GSAP
+  // Marcar como montado (solo cliente)
   useEffect(() => {
+    setIsMounted(true);
+    setIsHydrated(true);
+  }, []);
+
+  // Animaciones con GSAP (solo después de hidratación)
+  useEffect(() => {
+    if (!isHydrated) return; // No animar en la hidratación inicial
+
     if (viewMode === "calendar") {
       // Animar buscador
       gsap.fromTo(
@@ -132,7 +160,7 @@ const CalendarView: React.FC = () => {
         { opacity: 1, y: 0, duration: 0.3, delay: 0.1, ease: "power2.out" }
       );
     }
-  }, [viewMode, historias, date]);
+  }, [viewMode, historias, date, isHydrated]);
 
   // ====== Funciones para recargar datos ======
   const fetchHistorias = async () => {
@@ -243,11 +271,45 @@ const CalendarView: React.FC = () => {
     setIsSearching(!!q);
     if (q) {
       setSearchResults(
-        historias.filter(
-          (h) =>
-            h.nombre.toLowerCase().includes(q) ||
-            h.integrantes.some((i) => i.nombre.toLowerCase().includes(q))
-        )
+        historias.filter((h) => {
+          // Búsqueda por título
+          if (h.nombre.toLowerCase().includes(q)) return true;
+
+          // Búsqueda por integrantes
+          if (h.integrantes.some((i) => i.nombre.toLowerCase().includes(q))) return true;
+
+          // Búsqueda por ubicación
+          if (h.ubicacion.toLowerCase().includes(q)) return true;
+
+          // Búsqueda por descripción
+          if (h.descripcion.toLowerCase().includes(q)) return true;
+
+          // Búsqueda por fecha en diferentes formatos
+          const fecha = h.fecha;
+          if (fecha.includes(q)) return true;
+
+          // Convertir fecha a formato legible y buscar
+          try {
+            const fechaObj = new Date(fecha + 'T00:00:00');
+            const fechaLegible = fechaObj.toLocaleDateString('es-ES', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            }).toLowerCase();
+            if (fechaLegible.includes(q)) return true;
+
+            // Buscar por año, mes o día por separado
+            const año = fechaObj.getFullYear().toString();
+            const mes = fechaObj.toLocaleDateString('es-ES', { month: 'long' }).toLowerCase();
+            const día = fechaObj.getDate().toString();
+
+            if (año.includes(q) || mes.includes(q) || día.includes(q)) return true;
+          } catch (error) {
+            // Si hay error parseando fecha, continuar con otras búsquedas
+          }
+
+          return false;
+        })
       );
     } else {
       setSearchResults([]);
@@ -273,17 +335,17 @@ const CalendarView: React.FC = () => {
   //   setIsLoginOpen(false);
   //   setIsRegisterOpen(true);
   // };
-  const handleAuthSuccess = (u: UsuarioSesion) => {
-    setUsuario(u);
-    const { tokens, ...usuarioPlano } = u;
-    localStorage.setItem("usuario", JSON.stringify(usuarioPlano));
-    if (tokens) {
-      localStorage.setItem("authTokens", JSON.stringify(tokens));
-    } else {
-      localStorage.removeItem("authTokens");
-    }
+  const handleAuthSuccess = (u: { uid: string; nombre: string; correo: string; rol: string; avatarNumber?: number }) => {
+    const usuario: UsuarioSesion = {
+      uid: u.uid,
+      nombre: u.nombre,
+      correo: u.correo,
+      rol: u.rol,
+      avatarNumber: u.avatarNumber,
+    };
+    setUsuario(usuario);
+    localStorage.setItem("usuario", JSON.stringify(usuario));
     setIsLoginOpen(false);
-    // setIsRegisterOpen(false);
   };
   const handleLogout = () => {
     setMenuOpen(false);
@@ -295,176 +357,238 @@ const CalendarView: React.FC = () => {
   return (
     <div ref={calendarRootRef}>
       {/* NAV superior */}
-      <div className="mb-6">
+      <nav className="mb-4 sticky top-0 z-40 ">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between gap-4">
-            {/* Buscador */}
+          <div className="flex items-center justify-between gap-4 py-4">
+
+
+            {/* Buscador - centrado y flexible para mantener estética */}
             <div
-              className="relative grow max-w-2xl"
+              className="relative flex-1"
               data-search
             >
               <input
                 type="text"
-                placeholder="Buscar eventos históricos de Colombia..."
-                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-3xl bg-white 
-                            transition-all duration-300 focus:border-blue-500 focus:ring-2
-                          focus:ring-blue-200 focus:outline-none text-base"
+                placeholder="Buscar por evento, fecha, protagonista, ubicación..."
+                className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-full bg-white 
+                            transition-all duration-200 focus:border-blue-500 focus:ring-2
+                            focus:ring-blue-200 focus:outline-none text-sm"
                 value={searchTerm}
                 onChange={handleSearch}
               />
-              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
 
-            {/* Toggle vista */}
-            <div className="flex items-center bg-gray-100 rounded-full p-1 relative shrink-0">
-              <button
-                onClick={() => setViewMode("calendar")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${viewMode === "calendar" ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:text-gray-900"
-                  }`}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span className="font-medium hidden sm:inline">Calendario</span>
-              </button>
+            {/* Controles derecha */}
+            <div className="flex items-center gap-3 shrink-0">
+              {/* Toggle vista */}
+              <div className="flex items-center bg-slate-100 rounded-full p-1">
+                <button
+                  onClick={() => setViewMode("calendar")}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${viewMode === "calendar" ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:text-gray-900"
+                    }`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span className="font-medium hidden sm:inline">Calendario</span>
+                </button>
 
-              <button
-                onClick={() => setViewMode("list")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${viewMode === "list" ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:text-gray-900"
-                  }`}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                <span className="font-medium hidden sm:inline">Lista</span>
-              </button>
-            </div>
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${viewMode === "list" ? "bg-blue-600 text-white shadow-md" : "text-gray-600 hover:text-gray-900"
+                    }`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span className="font-medium hidden sm:inline">Lista</span>
+                </button>
+              </div>
 
-            {/* Acciones de usuario */}
-            <div className="shrink-0 flex items-center gap-3">
-              {usuario ? (
-                <>
-                  <button
-                    ref={anchorRef}
-                    onClick={toggleMenu}
-                    className="w-12 h-12 rounded-full bg-blue-600
-                              flex items-center justify-center text-white font-bold text-sm
-                              shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
-                    aria-haspopup="true"
-                    aria-expanded={menuOpen}
-                    title={`${usuario.nombre} (${usuario.rol})`}
-                  >
-                    {usuario.nombre
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")
-                      .toUpperCase()
-                      .slice(0, 2)}
-                  </button>
-
-                  {/* Portal del menú para garantizar z-index y no recorte */}
-                  {menuOpen &&
-                    createPortal(
-                      <div
-                        ref={menuRef}
-                        className="fixed z-50 w-[200px] rounded-xl bg-slate-900 text-white p-3 shadow-2xl popover-menu"
-                        style={{ top: `${menuPos.top}px`, left: `${menuPos.left}px` }}
-                      >
-                        <p className="font-semibold leading-5 truncate">{usuario.nombre || "—"}</p>
-                        <p className="text-xs text-slate-300 capitalize">{usuario.rol || "usuario"}</p>
-
-                        {/* Botones de panel admin solo para administradores */}
-                        {usuario.rol === 'admin' && (
-                          <>
-                            <a
-                              href="/admin/dashboard"
-                              className="mt-3 w-full text-sm bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors flex items-center justify-center gap-2"
-                            >
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                              </svg>
-                              Panel Admin
-                            </a>
-
-                          </>
-                        )}
-
-                        <button onClick={handleLogout} className="mt-2 text-sm text-red-400 hover:text-red-300">
-                          Cerrar sesión
-                        </button>
-                      </div>,
-                      document.body
-                    )}
-                </>
-              ) : (
-                <>
-                  <button
-                    onClick={() => setIsLoginOpen(true)}
-                    className="px-3.5 py-1.5 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"
-                  >
-                    Ingresar
-                  </button>
-                  {/* <button
-                    onClick={() => setIsRegisterOpen(true)}
-                    className="px-3.5 py-1.5 rounded-full bg-gray-100 text-gray-800 text-sm font-medium hover:bg-gray-200 transition"
-                  >
-                    Registrarse
-                  </button> */}
-                </>
+              {/* Botón condicional según el rol del usuario */}
+              {usuario && (
+                <div>
+                  {usuario.rol === 'admin' ? (
+                    <a
+                      href="/admin/dashboard"
+                      className="inline-flex items-center gap-2 p-3 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition shadow-sm"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Panel Admin
+                    </a>
+                  ) : (
+                    <button
+                      onClick={() => setIsUserCommentsOpen(true)}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition shadow-sm"
+                      title="Ver mis comentarios"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                      Mis Comentarios
+                    </button>
+                  )}
+                </div>
               )}
+
+              {/* Acciones de usuario */}
+              <div className="shrink-0 flex items-center gap-3">
+                {usuario ? (
+                  <>
+                    <button
+                      ref={anchorRef}
+                      onClick={toggleMenu}
+                      className="w-10 h-10 rounded-full overflow-hidden
+                              shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105
+                              ring-2 ring-white"
+                      aria-haspopup="true"
+                      aria-expanded={menuOpen}
+                      title={`${usuario.nombre} (${usuario.rol})`}
+                    >
+                      <img
+                        src={getAvatarUrl(usuario.avatarNumber)}
+                        alt={usuario.nombre}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+
+                    {/* Portal del menú para garantizar z-index y no recorte */}
+                    {menuOpen &&
+                      createPortal(
+                        <div
+                          ref={menuRef}
+                          className="fixed z-50 w-[200px] rounded-xl bg-white text-slate-900 p-3 shadow-lg popover-menu"
+                          style={{ top: `${menuPos.top}px`, left: `${menuPos.left}px` }}
+                        >
+                          <p className="font-semibold leading-5 truncate text-gray-800">{usuario.nombre || "—"}</p>
+                          <p className="text-xs text-gray-500 capitalize">{usuario.rol || "usuario"}</p>
+
+                          <a
+                            href="/usuario/configuracion"
+                            className="mt-3 block w-full text-sm text-blue-600 hover:text-blue-500 text-left"
+                          >
+                            Configuración
+                          </a>
+
+                          <button
+                            onClick={handleLogout}
+                            className="mt-3 w-full text-sm text-red-500 hover:text-red-400 text-left"
+                          >
+                            Cerrar sesión
+                          </button>
+                        </div>,
+                        document.body
+                      )}
+                  </>
+                ) : (
+                  <>
+                    {/* Temporalmente ocultado - botón registrarse */}
+                    {/* 
+                    <button
+                      onClick={() => {
+                        setAuthMode('register');
+                        setIsLoginOpen(true);
+                      }}
+                      className="px-4 py-2.5 rounded-full bg-white text-blue-600 text-sm font-medium hover:bg-blue-50 transition shadow-sm border border-blue-200"
+                    >
+                      Registrarse
+                    </button>
+                    */}
+                    <button
+                      onClick={() => {
+                        setAuthMode('login');
+                        setIsLoginOpen(true);
+                      }}
+                      className="px-4 py-2.5 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition shadow-sm"
+                    >
+                      Ingresar
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
+        </div>
 
+        {/* Resultados de búsqueda - diseño minimalista */}
+        <div className="container mx-auto px-4">
           {/* Resultados de búsqueda */}
           {isSearching && searchResults.length > 0 && (
-            <div className="absolute left-0 mt-1 w-xl bg-white rounded-xl shadow-xl border border-blue-100 overflow-y-auto max-h-[80vh] z-40">
-              {searchResults.map((evento) => (
-                <div
-                  key={evento.id}
-                  className="p-4 hover:bg-blue-50 cursor-pointer border-b border-blue-100 last:border-b-0 transition-colors duration-200"
-                  onClick={() => handleEventoClick(evento)}
-                >
-                  <h4 className="font-semibold text-lg text-gray-800 truncate">{evento.nombre}</h4>
-                  <div className="flex items-center gap-2 mt-2">
-                    <span className="text-sm text-gray-500">
-                      {new Date(evento.fecha + "T00:00:00").toLocaleDateString("es-ES", {
-                        day: "2-digit",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </span>
-                    <span className="text-sm text-gray-500 truncate">{evento.ubicacion}</span>
-                  </div>
+            <div className="relative pb-2">
+              <div className="absolute left-0 right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 max-h-80 overflow-y-auto">
+                <div className="py-1">
+                  {searchResults.map((evento, index) => (
+                    <div
+                      key={evento.id}
+                      className="px-4 py-2 hover:bg-gray-50 cursor-pointer transition-colors duration-150 border-b border-gray-100 last:border-b-0"
+                      onClick={() => handleEventoClick(evento)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-gray-900 truncate">{evento.nombre}</p>
+                          <div className="flex items-center gap-3 mt-1">
+                            <span className="text-xs text-gray-500">
+                              {new Date(evento.fecha + "T00:00:00").toLocaleDateString("es-ES", {
+                                day: "numeric",
+                                month: "short",
+                                year: "numeric",
+                              })}
+                            </span>
+                            <span className="text-xs text-gray-400 truncate">{evento.ubicacion}</span>
+                          </div>
+                        </div>
+                        <svg className="w-4 h-4 text-gray-400 ml-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+                {searchResults.length > 5 && (
+                  <div className="px-4 py-2 bg-gray-50 border-t border-gray-100">
+                    <p className="text-xs text-gray-500 text-center">
+                      {searchResults.length} resultados encontrados
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </div>
-      </div>
+      </nav>
 
       {/* Contenido principal */}
-      <div className="max-w-7xl mx-auto">
+      <div className="container mx-auto px-4">
         {viewMode === "calendar" ? (
-          <div className="grid lg:grid-cols-5 gap-8">
+          <div className="grid lg:grid-cols-6 gap-2">
             {/* Calendario */}
             <div
-              className="lg:col-span-3"
+              className="lg:col-span-4"
               data-calendar
             >
-              <div className="bg-white rounded-2xl shadow-xl p-6 mb-8">
-                <Calendar
-                  onChange={(v: any) => {
-                    if (!v || Array.isArray(v)) return;
-                    handleDateClick(v);
-                  }}
-                  value={date}
-                  tileClassName={tileClassName}
-                  tileContent={tileContent}
-                  className="mx-auto"
-                  locale="es-ES"
-                />
+              <div className="">
+                {isMounted ? (
+                  <Calendar
+                    onChange={(v: any) => {
+                      if (!v || Array.isArray(v)) return;
+                      handleDateClick(v);
+                    }}
+                    value={date}
+                    tileClassName={tileClassName}
+                    tileContent={tileContent}
+                    className="mx-auto"
+                    locale="es-ES"
+                  />
+                ) : (
+                  <div className="h-80 flex items-center justify-center">
+                    <div className="animate-pulse text-slate-400">Cargando calendario...</div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -582,21 +706,14 @@ const CalendarView: React.FC = () => {
       )}
 
       {/* Modales */}
-      {selectedEvento && <EventModal evento={selectedEvento} onClose={() => setSelectedEvento(null)} />}
+      {selectedEvento && <EventModal evento={selectedEvento} usuario={usuario} onClose={() => setSelectedEvento(null)} />}
 
-      <LoginModal
+      <AuthModal
         isOpen={isLoginOpen}
+        initialMode={authMode}
         onClose={() => setIsLoginOpen(false)}
-        onLoginSuccess={handleAuthSuccess}
-      // onSwitchToRegister={openRegister}
+        onAuthSuccess={handleAuthSuccess}
       />
-
-      {/* <RegisterModal
-        isOpen={isRegisterOpen}
-        onClose={() => setIsRegisterOpen(false)}
-        onRegisterSuccess={handleAuthSuccess}
-        onSwitchToLogin={openLogin}
-      /> */}
 
       {/* Panel de Administración */}
       <AdminPanel
@@ -604,6 +721,14 @@ const CalendarView: React.FC = () => {
         onClose={() => setIsAdminPanelOpen(false)}
         onEventCreated={fetchHistorias}
       />
+
+      {/* Modal de comentarios del usuario */}
+      {isUserCommentsOpen && usuario && (
+        <UserComments
+          usuario={usuario}
+          onClose={() => setIsUserCommentsOpen(false)}
+        />
+      )}
     </div>
   );
 };

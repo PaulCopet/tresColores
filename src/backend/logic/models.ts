@@ -18,6 +18,18 @@ export interface Integrante {
     descripcion: string;
 }
 
+export interface Comentario {
+    id: string;
+    eventoId: string;
+    usuarioId: string;
+    usuarioNombre: string;
+    contenido: string;
+    fechaCreacion: string;
+    estado: 'pendiente' | 'aprobado' | 'rechazado';
+    fechaModeracion?: string;
+    moderadoPor?: string;
+}
+
 export interface EventModel {
     id: string;
     fecha: string;
@@ -26,6 +38,7 @@ export interface EventModel {
     integrantes: Integrante[];
     ubicacion: string;
     consecuencias: string[];
+    comentarios?: Comentario[];
 }
 
 // Alias para mantener compatibilidad con código existente

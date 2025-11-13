@@ -1,0 +1,46 @@
+[
+  {
+    "eventoId": "1948-04-09",
+    "usuarioId": "user@user.com",
+    "usuarioNombre": "prueba",
+    "contenido": "hola",
+    "estado": "aprobado",
+    "id": "comentario_1762966075824_tjn713zu6",
+    "fechaCreacion": "2025-11-12T16:47:55.824Z",
+    "fechaModeracion": "2025-11-12T17:06:34.666Z",
+    "moderadoPor": "admin@admin.com"
+  },
+  {
+    "eventoId": "1948-04-09",
+    "usuarioId": "user@user.com",
+    "usuarioNombre": "prueba",
+    "contenido": "Mensaje de prueba aprobado",
+    "estado": "aprobado",
+    "id": "comentario_1762980944875_8g18hi06w",
+    "fechaCreacion": "2025-11-12T20:55:44.876Z",
+    "fechaModeracion": "2025-11-12T20:56:38.230Z",
+    "moderadoPor": "admin@admin.com"
+  },
+  {
+    "eventoId": "1999-01-07",
+    "usuarioId": "user@user.com",
+    "usuarioNombre": "Techcode",
+    "contenido": "Interesante",
+    "estado": "rechazado",
+    "id": "comentario_1762991322143_4kuao2r5r",
+    "fechaCreacion": "2025-11-12T23:48:42.143Z",
+    "fechaModeracion": "2025-11-13T01:09:54.644Z",
+    "moderadoPor": "admin@admin.com"
+  },
+  {
+    "eventoId": "1948-04-09",
+    "usuarioId": "user@user.com",
+    "usuarioNombre": "Techcode",
+    "contenido": "Esto es un comentario de prueba",
+    "estado": "aprobado",
+    "id": "comentario_1762996159393_sytun676p",
+    "fechaCreacion": "2025-11-13T01:09:19.393Z",
+    "fechaModeracion": "2025-11-13T01:09:49.564Z",
+    "moderadoPor": "admin@admin.com"
+  }
+]

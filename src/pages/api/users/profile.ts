@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { adminAuth, adminDb } from '../../../lib/firebase.admin';
+import { adminAuth, adminDb } from '../../../backend/firebase-admin';
 
 async function getUserFromCookie(cookies: any) {
   const session = cookies.get('session')?.value;

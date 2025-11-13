@@ -26,10 +26,15 @@ function readEventosFile(): { eventos: EventModel[]; shape: StorageShape } {
 }
 
 function writeEventosFile(eventos: EventModel[], shape: StorageShape) {
-    if (shape === 'object') {
-        writeFileSync(DATA_FILE, JSON.stringify({ historias: eventos }, null, 2), 'utf-8');
-    } else {
-        writeFileSync(DATA_FILE, JSON.stringify(eventos, null, 2), 'utf-8');
+    try {
+        const dataToWrite = shape === 'object' ? { historias: eventos } : eventos;
+        const jsonString = JSON.stringify(dataToWrite, null, 2);
+        console.log('Data Layer: Escribiendo archivo JSON con', eventos.length, 'eventos');
+        writeFileSync(DATA_FILE, jsonString, 'utf-8');
+        console.log('Data Layer: Archivo escrito exitosamente');
+    } catch (error) {
+        console.error('Data Layer: Error al escribir archivo:', error);
+        throw new Error(`No se pudo escribir el archivo: ${error instanceof Error ? error.message : 'Error desconocido'}`);
     }
 }
 
@@ -82,31 +87,41 @@ export async function getEventById(id: string): Promise<EventModel | null> {
  */
 export async function createEvent(eventoData: Omit<EventModel, 'id'>): Promise<EventModel> {
     console.log('Data Layer: Repositories - Creando nuevo evento');
+    console.log('Data Layer: Datos recibidos:', JSON.stringify(eventoData, null, 2));
+
     try {
         const { eventos, shape } = readEventosFile();
+        console.log('Data Layer: Archivo leído, eventos existentes:', eventos.length);
 
-        // Generar ID único
-        const maxId = eventos.reduce((max, e) => {
-            const id = parseInt(e.id);
-            return id > max ? id : max;
-        }, 0);
-        const newId = (maxId + 1).toString();
+        // Usar la fecha como ID (formato YYYY-MM-DD)
+        const newId = eventoData.fecha;
+        console.log('Data Layer: Generando ID desde fecha:', newId);
+
+        // Verificar si ya existe un evento con esa fecha
+        const existingEvent = eventos.find(e => e.id === newId);
+        if (existingEvent) {
+            console.warn('Data Layer: Ya existe evento con esa fecha');
+            throw new Error(`Ya existe un evento con la fecha ${newId}`);
+        }
 
         // Crear evento completo
         const nuevoEvento: EventModel = {
             id: newId,
             ...eventoData
         };
+        console.log('Data Layer: Nuevo evento creado:', JSON.stringify(nuevoEvento, null, 2));
 
         // Agregar al array y guardar
         eventos.push(nuevoEvento);
+        console.log('Data Layer: Evento agregado al array, total eventos:', eventos.length);
+
         writeEventosFile(eventos, shape);
 
-        console.log(`Data Layer: Repositories - Evento creado con ID: ${newId}`);
+        console.log(`Data Layer: Repositories - Evento creado exitosamente con ID: ${newId}`);
         return nuevoEvento;
     } catch (error) {
         console.error('Data Layer: Repositories - Error al crear evento:', error);
-        throw new Error('No se pudo crear el evento');
+        throw new Error(error instanceof Error ? error.message : 'No se pudo crear el evento');
     }
 }
 

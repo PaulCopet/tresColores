@@ -1,11 +1,50 @@
 import type { APIRoute } from 'astro';
-import { adminAuth, adminDb } from '../../../lib/firebase.admin';
+import { adminAuth, adminDb } from '../../../backend/firebase-admin';
+import { env } from '../../../backend/env';
+
+function isAdminRole(value: unknown): boolean {
+  if (value === undefined || value === null) return false;
+  if (typeof value === 'number') return value === 2;
+  if (typeof value === 'string') {
+    const normalized = value.toLowerCase();
+    return normalized === 'admin' || normalized === '2';
+  }
+  return false;
+}
 
 async function getUserFromCookie(cookies: any) {
   const session = cookies.get('session')?.value;
   if (!session) return null;
+
   try {
-    return await adminAuth.verifySessionCookie(session, true);
+    const decoded = await adminAuth.verifySessionCookie(session, true);
+    const tokenRole = (decoded as any).role;
+    if (isAdminRole(tokenRole)) {
+      (decoded as any).role = 'admin';
+      return decoded;
+    }
+
+    const email = decoded.email?.toLowerCase();
+    if (email) {
+      const adminEmails = (env('ADMIN_EMAILS') || '')
+        .split(',')
+        .map((e) => e.trim().toLowerCase())
+        .filter(Boolean);
+      if (adminEmails.includes(email)) {
+        (decoded as any).role = 'admin';
+        return decoded;
+      }
+    }
+
+    const userSnap = await adminDb.collection('users').doc(decoded.uid).get();
+    const userData = userSnap.exists ? userSnap.data() : undefined;
+    const storedRole = userData?.role ?? userData?.rol;
+    if (isAdminRole(storedRole)) {
+      (decoded as any).role = 'admin';
+      return decoded;
+    }
+
+    return null;
   } catch {
     return null;
   }
@@ -27,7 +66,7 @@ export const GET: APIRoute = async ({ url }) => {
 
 export const POST: APIRoute = async ({ request, cookies }) => {
   const user = await getUserFromCookie(cookies);
-  if (!user || (user as any).role !== 'admin') {
+  if (!user) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 403 });
   }
   const payload = await request.json();
